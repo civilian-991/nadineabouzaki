@@ -29,15 +29,19 @@
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  cursor: none;
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+  }
 }
 
-a, button, [role="button"], input, textarea, select {
-  cursor: none;
+@layer base {
+  a, button, [role="button"], input, textarea, select {
+    cursor: none;
+  }
 }
 
 html {

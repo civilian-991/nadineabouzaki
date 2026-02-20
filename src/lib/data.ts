@@ -363,6 +363,20 @@ export const biography = {
   ],
 };
 
+export const siteConfig = {
+  name: "Nadine Abou Zaki",
+  tagline: "Sculptor, Writer, Director",
+  email: "info@nadineabouzaki.com",
+  domain: "nadineabouzaki.com",
+  url: "https://www.nadineabouzaki.com",
+  description:
+    "Lebanese-French sculptor, writer, and director exploring tactile aesthetics and sensory perception.",
+  featuredHeading:
+    "Exploring the boundaries between touch and perception",
+  featuredDescription:
+    "Her distinctive approach involves creating sculptures while blindfolded, replacing sight with tactile sensation. She invites audiences to touch her work in darkness through interactive performances.",
+};
+
 export const socialLinks = {
   facebook: "https://www.facebook.com/nadineabouzaki",
   twitter: "https://twitter.com/NadineAbouZaki",

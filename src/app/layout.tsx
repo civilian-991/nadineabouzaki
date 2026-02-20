@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import GrainOverlay from "@/components/GrainOverlay";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
+import { siteConfig } from "@/lib/data";
 
 const bodoni = Bodoni_Moda({
   variable: "--font-display",
@@ -21,18 +22,17 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Nadine Abou Zaki | Sculptor, Writer, Director",
-  description:
-    "Nadine Abou Zaki: Sculptor, Writer, Director. Lebanese-French artist exploring tactile aesthetics through sculpture, theater, and interactive performance.",
+  title: `${siteConfig.name} | ${siteConfig.tagline}`,
+  description: `${siteConfig.name}: ${siteConfig.tagline}. ${siteConfig.description}`,
   keywords:
     "Artist, Lebanese artist, art, tactile art, theater, performance, sculptor, sculpture, writer, author, blindfold, dance, accessibility, disability",
-  authors: [{ name: "Nadine Abou Zaki" }],
+  authors: [{ name: siteConfig.name }],
   openGraph: {
     type: "website",
-    siteName: "NadineAbouZaki",
-    url: "https://www.nadineabouzaki.com/",
-    title: "Nadine Abou Zaki: Sculptor, Writer, Director",
-    description: "Lebanese-French artist exploring tactile aesthetics through sculpture, theater, and interactive performance.",
+    siteName: siteConfig.name.replace(/\s/g, ""),
+    url: siteConfig.url,
+    title: `${siteConfig.name}: ${siteConfig.tagline}`,
+    description: siteConfig.description,
   },
 };
 

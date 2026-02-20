@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { gsap } from "gsap";
-import { socialLinks } from "@/lib/data";
+import { socialLinks, siteConfig } from "@/lib/data";
 import SocialLinks from "@/components/SocialLinks";
 
 export default function ContactPage() {
@@ -39,12 +39,14 @@ export default function ContactPage() {
   }
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-32 pb-24 px-6">
+    <section ref={containerRef} className="min-h-screen pt-32 pb-24 px-6 md:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Page Header */}
         <div className="mb-24">
           <span className="section-number block mb-4">Get in Touch</span>
-          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">Contact</h1>
+          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">
+            Contact
+          </h1>
           <div className="divider-line" />
         </div>
 
@@ -70,7 +72,13 @@ export default function ContactPage() {
                   >
                     Name
                   </label>
-                  <input id="name" type="text" placeholder="Your name" required className="contact-input" />
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="Your name"
+                    required
+                    className="contact-input"
+                  />
                 </div>
 
                 <div>
@@ -80,7 +88,13 @@ export default function ContactPage() {
                   >
                     Email
                   </label>
-                  <input id="email" type="email" placeholder="Your email" required className="contact-input" />
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Your email"
+                    required
+                    className="contact-input"
+                  />
                 </div>
 
                 <div>
@@ -90,7 +104,13 @@ export default function ContactPage() {
                   >
                     Subject
                   </label>
-                  <input id="subject" type="text" placeholder="Subject" required className="contact-input" />
+                  <input
+                    id="subject"
+                    type="text"
+                    placeholder="Subject"
+                    required
+                    className="contact-input"
+                  />
                 </div>
 
                 <div>
@@ -100,7 +120,13 @@ export default function ContactPage() {
                   >
                     Message
                   </label>
-                  <textarea id="message" rows={5} placeholder="Your message" required className="contact-input resize-none" />
+                  <textarea
+                    id="message"
+                    rows={5}
+                    placeholder="Your message"
+                    required
+                    className="contact-input resize-none"
+                  />
                 </div>
 
                 <button
@@ -108,7 +134,7 @@ export default function ContactPage() {
                   className="group inline-flex items-center gap-5 py-4 font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
                 >
                   Send Message
-                  <svg className="w-6 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-10 group-hover:bg-[var(--foreground)]" />
+                  <span className="block w-6 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-10 group-hover:bg-[var(--foreground)]" />
                 </button>
               </form>
             )}
@@ -116,7 +142,7 @@ export default function ContactPage() {
 
           {/* Right: Contact Info */}
           <div className="contact-info lg:pt-4">
-            <div className="space-y-14">
+            <div className="space-y-16">
               <div>
                 <h3 className="font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] mb-6 text-[var(--accent)] font-medium">
                   Inquiries
@@ -132,10 +158,10 @@ export default function ContactPage() {
                   Email
                 </h3>
                 <a
-                  href="mailto:info@nadineabouzaki.com"
+                  href={`mailto:${siteConfig.email}`}
                   className="text-[var(--foreground)]/60 text-base font-light transition-colors duration-500 hover:text-[var(--accent)] tracking-wide"
                 >
-                  info@nadineabouzaki.com
+                  {siteConfig.email}
                 </a>
               </div>
 
@@ -149,6 +175,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

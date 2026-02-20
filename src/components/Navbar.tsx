@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { siteConfig } from "@/lib/data";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -56,7 +57,7 @@ export default function Navbar() {
             href="/"
             className="font-[family-name:var(--font-display)] text-[0.85rem] tracking-[0.12em] text-[var(--foreground)] uppercase font-normal"
           >
-            Nadine Abou Zaki
+            {siteConfig.name}
           </Link>
 
           {/* Desktop nav */}

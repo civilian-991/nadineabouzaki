@@ -7,7 +7,13 @@ import Image from "next/image";
 import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
 import BackToTop from "@/components/BackToTop";
-import { portfolioItems, socialLinks, categories, biography } from "@/lib/data";
+import {
+  portfolioItems,
+  socialLinks,
+  categories,
+  biography,
+  siteConfig,
+} from "@/lib/data";
 import type { Category } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,7 +22,11 @@ function SplitText({ text, className }: { text: string; className?: string }) {
   return (
     <span className={className} aria-label={text}>
       {text.split("").map((char, i) => (
-        <span key={i} className="hero-title-char inline-block" style={{ willChange: "transform, opacity" }}>
+        <span
+          key={i}
+          className="hero-title-char inline-block"
+          style={{ willChange: "transform, opacity" }}
+        >
           {char === " " ? "\u00A0" : char}
         </span>
       ))}
@@ -52,7 +62,10 @@ export default function HomePage() {
       const chars = gsap.utils.toArray<HTMLElement>(".hero-title-char");
       gsap.set(chars, { opacity: 0, y: 60, rotateX: -60 });
 
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.3 });
+      const tl = gsap.timeline({
+        defaults: { ease: "power4.out" },
+        delay: 0.3,
+      });
 
       tl.to(chars, {
         opacity: 1,
@@ -61,27 +74,22 @@ export default function HomePage() {
         duration: 1.4,
         stagger: 0.025,
       })
-        .from(".hero-line-left, .hero-line-right", {
-          scaleX: 0,
-          duration: 1,
-          ease: "power2.inOut",
-        }, "-=0.6")
-        .from(".hero-subtitle", {
-          y: 30,
-          opacity: 0,
-          duration: 1.2,
-          ease: "power3.out",
-        }, "-=0.5")
-        .from(".hero-social", {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        }, "-=0.6")
-        .from(".scroll-indicator", {
-          opacity: 0,
-          duration: 1.2,
-        }, "-=0.4");
+        .from(
+          ".hero-line-left, .hero-line-right",
+          { scaleX: 0, duration: 1, ease: "power2.inOut" },
+          "-=0.6"
+        )
+        .from(
+          ".hero-subtitle",
+          { y: 30, opacity: 0, duration: 1.2, ease: "power3.out" },
+          "-=0.5"
+        )
+        .from(
+          ".hero-social",
+          { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" },
+          "-=0.6"
+        )
+        .from(".scroll-indicator", { opacity: 0, duration: 1.2 }, "-=0.4");
 
       gsap.to(".scroll-line", {
         scaleY: 1,
@@ -196,47 +204,62 @@ export default function HomePage() {
     return () => ctx.revert();
   }, []);
 
-  const handleFilter = useCallback((category: Category) => {
-    if (category === activeFilter) return;
-    setActiveFilter(category);
+  const handleFilter = useCallback(
+    (category: Category) => {
+      if (category === activeFilter) return;
+      setActiveFilter(category);
 
-    const items = itemsRef.current.filter(Boolean);
-    items.forEach((item) => {
-      if (!item) return;
-      const itemCategory = item.dataset.category;
-      const matches = category === "All" || itemCategory === category;
+      const items = itemsRef.current.filter(Boolean);
+      items.forEach((item) => {
+        if (!item) return;
+        const itemCategory = item.dataset.category;
+        const matches = category === "All" || itemCategory === category;
 
-      if (matches) {
-        gsap.to(item, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.5,
-          ease: "power2.out",
-          onStart: () => { item.style.display = ""; },
-        });
-      } else {
-        gsap.to(item, {
-          opacity: 0,
-          scale: 0.97,
-          duration: 0.35,
-          ease: "power2.in",
-          onComplete: () => { item.style.display = "none"; },
-        });
-      }
-    });
-  }, [activeFilter]);
+        if (matches) {
+          gsap.to(item, {
+            opacity: 1,
+            scale: 1,
+            duration: 0.5,
+            ease: "power2.out",
+            onStart: () => {
+              item.style.display = "";
+            },
+          });
+        } else {
+          gsap.to(item, {
+            opacity: 0,
+            scale: 0.97,
+            duration: 0.35,
+            ease: "power2.in",
+            onComplete: () => {
+              item.style.display = "none";
+            },
+          });
+        }
+      });
+    },
+    [activeFilter]
+  );
 
-  // Featured item - use first sculpture portfolio item
-  const featuredItem = portfolioItems.find(p => p.category === "Sculptures") || portfolioItems[0];
+  const featuredItem =
+    portfolioItems.find((p) => p.category === "Sculptures") ||
+    portfolioItems[0];
+
+  const [firstName, ...lastParts] = siteConfig.name.split(" ");
+  const lastName = lastParts.join(" ");
 
   return (
     <>
       {/* ─── Hero ─── */}
       <section ref={heroRef} className="hero-section">
-        <div ref={heroImageRef} className="absolute inset-0 will-change-transform" style={{ top: "-10%", height: "120%" }}>
+        <div
+          ref={heroImageRef}
+          className="absolute inset-0 will-change-transform"
+          style={{ top: "-10%", height: "120%" }}
+        >
           <Image
             src="/images/hero/cover.jpg"
-            alt="Nadine Abou Zaki"
+            alt={siteConfig.name}
             fill
             className="object-cover"
             priority
@@ -247,16 +270,16 @@ export default function HomePage() {
 
         <div className="hero-content px-6">
           <h1 className="mb-8 font-[family-name:var(--font-display)] text-[clamp(2.8rem,9vw,8rem)] font-normal tracking-[0.06em] uppercase text-white leading-[0.95]">
-            <SplitText text="Nadine" />
+            <SplitText text={firstName} />
             <br />
-            <SplitText text="Abou Zaki" />
+            <SplitText text={lastName} />
           </h1>
 
           {/* Decorative lines flanking subtitle */}
           <div className="flex items-center gap-6 mb-10">
             <div className="hero-line-left h-px w-16 bg-[var(--accent)]/40 origin-right" />
             <p className="hero-subtitle font-[family-name:var(--font-body)] text-[clamp(0.65rem,1.2vw,0.8rem)] text-white/40 tracking-[0.35em] uppercase font-medium">
-              Sculptor &ensp;&middot;&ensp; Writer &ensp;&middot;&ensp; Director
+              {siteConfig.tagline.replace(/,\s*/g, " \u2003\u00B7\u2003")}
             </p>
             <div className="hero-line-right h-px w-16 bg-[var(--accent)]/40 origin-left" />
           </div>
@@ -270,7 +293,10 @@ export default function HomePage() {
               Scroll
             </span>
             <div className="h-10 w-px bg-white/[0.06] overflow-hidden">
-              <div className="scroll-line h-full w-full bg-[var(--accent)]/30 origin-top" style={{ transform: "scaleY(0)" }} />
+              <div
+                className="scroll-line h-full w-full bg-[var(--accent)]/30 origin-top"
+                style={{ transform: "scaleY(0)" }}
+              />
             </div>
           </div>
         </div>
@@ -281,7 +307,10 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1300px] px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             {/* Image */}
-            <div className="featured-image relative overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
+            <div
+              className="featured-image relative overflow-hidden"
+              style={{ clipPath: "inset(0 0 0 0)" }}
+            >
               <div className="aspect-[4/5] relative">
                 <Image
                   src={featuredItem.image}
@@ -299,17 +328,17 @@ export default function HomePage() {
               <h2 className="section-title">Featured Work</h2>
               <div className="divider-line mb-10" />
               <h3 className="section-heading text-[clamp(2rem,4vw,3.5rem)] mb-8">
-                Exploring the boundaries between touch and perception
+                {siteConfig.featuredHeading}
               </h3>
               <p className="text-[var(--muted)] text-base leading-relaxed font-light mb-10 max-w-md">
-                {biography.artisticPractice.slice(0, 200)}...
+                {siteConfig.featuredDescription}
               </p>
               <Link
                 href="/portfolio"
-                className="group inline-flex items-center gap-4 font-[family-name:var(--font-body)] text-[0.7rem] uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
+                className="group inline-flex items-center gap-5 font-[family-name:var(--font-body)] text-[0.7rem] uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
               >
                 View Portfolio
-                <svg className="w-5 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-8 group-hover:bg-[var(--foreground)]" />
+                <span className="block w-8 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-14 group-hover:bg-[var(--foreground)]" />
               </Link>
             </div>
           </div>
@@ -317,7 +346,10 @@ export default function HomePage() {
       </section>
 
       {/* ─── Portfolio ─── */}
-      <section ref={portfolioRef} className="portfolio-section py-24 md:py-32 bg-[var(--surface)]">
+      <section
+        ref={portfolioRef}
+        className="portfolio-section py-24 md:py-32 bg-[var(--surface)]"
+      >
         <div className="mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-12">
           <div className="portfolio-header flex flex-col md:flex-row md:items-end md:justify-between mb-16">
             <div>
@@ -345,7 +377,9 @@ export default function HomePage() {
             {portfolioItems.map((item, i) => (
               <div
                 key={item.id}
-                ref={(el) => { itemsRef.current[i] = el; }}
+                ref={(el) => {
+                  itemsRef.current[i] = el;
+                }}
                 data-category={item.category}
                 className="portfolio-item"
               >
@@ -379,8 +413,16 @@ export default function HomePage() {
       </section>
 
       {/* ─── About Teaser ─── */}
-      <section ref={aboutRef} className="py-32 md:py-40">
-        <div className="about-teaser mx-auto max-w-[900px] px-6 sm:px-8 text-center">
+      <section ref={aboutRef} className="py-32 md:py-40 relative overflow-hidden">
+        {/* Subtle background accent */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.03]"
+          style={{
+            background:
+              "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
+          }}
+        />
+        <div className="about-teaser relative mx-auto max-w-[900px] px-6 sm:px-8 text-center">
           <span className="section-number block mb-6">03</span>
           <h2 className="section-title">About the Artist</h2>
           <div className="divider-line mx-auto mb-12" />
@@ -392,10 +434,10 @@ export default function HomePage() {
           </p>
           <Link
             href="/about"
-            className="group inline-flex items-center gap-4 font-[family-name:var(--font-body)] text-[0.7rem] uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
+            className="group inline-flex items-center gap-5 font-[family-name:var(--font-body)] text-[0.7rem] uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
           >
             Read Full Biography
-            <svg className="w-5 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-8 group-hover:bg-[var(--foreground)]" />
+            <span className="block w-8 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-14 group-hover:bg-[var(--foreground)]" />
           </Link>
         </div>
       </section>

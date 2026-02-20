@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { socialLinks } from "@/lib/data";
+import { socialLinks, siteConfig } from "@/lib/data";
 import SocialLinks from "./SocialLinks";
 
 export default function Footer() {
@@ -20,16 +20,22 @@ export default function Footer() {
         }}
       />
 
-      <div className="mx-auto max-w-[1200px] px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 mb-16">
+      <div className="mx-auto max-w-[1200px] px-8 sm:px-12 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 mb-16">
           {/* Brand */}
           <div>
             <p className="font-[family-name:var(--font-display)] text-[0.9rem] tracking-[0.08em] text-[var(--foreground)] uppercase font-normal mb-4">
-              Nadine Abou Zaki
+              {siteConfig.name}
             </p>
-            <p className="text-[var(--muted)] text-sm font-light leading-relaxed max-w-xs">
-              Lebanese-French sculptor, writer, and director exploring tactile aesthetics and sensory perception.
+            <p className="text-[var(--muted)] text-sm font-light leading-relaxed">
+              {siteConfig.description}
             </p>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="inline-block mt-4 text-[var(--accent)]/60 text-sm font-light tracking-wide transition-colors duration-500 hover:text-[var(--accent)]"
+            >
+              {siteConfig.email}
+            </a>
           </div>
 
           {/* Quick Links */}
@@ -68,7 +74,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between pt-10 border-t border-white/[0.03]">
           <p className="font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.15em] text-[var(--foreground)]/12 uppercase font-medium">
-            &copy; {new Date().getFullYear()} nadineabouzaki.com
+            &copy; {new Date().getFullYear()} {siteConfig.domain}
           </p>
           <button
             onClick={scrollToTop}

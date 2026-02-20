@@ -42,20 +42,25 @@ export default function NewsPage() {
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16">
           <span className="section-number block mb-4">Latest</span>
-          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">News</h1>
+          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">
+            News
+          </h1>
           <div className="divider-line" />
         </div>
 
         <div ref={gridRef} className="news-grid">
           {newsItems.map((item) => (
-            <div
+            <article
               key={item.id}
               className="news-card group"
               style={{ opacity: 0 }}
             >
               <div className="overflow-hidden bg-[var(--surface)] transition-colors duration-500 group-hover:bg-[var(--surface-hover)]">
                 {/* Image */}
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/10" }}>
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{ aspectRatio: "16/10" }}
+                >
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -80,7 +85,7 @@ export default function NewsPage() {
                   </p>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
