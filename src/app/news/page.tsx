@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { newsItems } from "@/lib/data";
-import PlaceholderImage from "@/components/PlaceholderImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -55,11 +55,14 @@ export default function NewsPage() {
               }}
             >
               {/* Image */}
-              <PlaceholderImage
-                title={item.title}
-                aspectRatio="16/10"
-                className="w-full"
-              />
+              <div className="relative w-full" style={{ aspectRatio: "16/10" }}>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
 
               {/* Content */}
               <div className="px-5 py-5">

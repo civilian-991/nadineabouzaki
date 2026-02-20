@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import Image from "next/image";
 import SocialLinks from "@/components/SocialLinks";
 import BackToTop from "@/components/BackToTop";
 import { portfolioItems, socialLinks, categories } from "@/lib/data";
@@ -155,16 +155,12 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <section ref={heroRef} className="hero-section">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at 20% 50%, rgba(201, 169, 110, 0.08) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 20%, rgba(60, 40, 20, 0.3) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 80%, rgba(30, 20, 40, 0.4) 0%, transparent 50%),
-              linear-gradient(180deg, #0a0a0a 0%, #111 40%, #0d0b0f 70%, #0a0a0a 100%)
-            `,
-          }}
+        <Image
+          src="/images/hero/cover.jpg"
+          alt="Nadine Abou Zaki"
+          fill
+          className="object-cover"
+          priority
         />
         <div className="hero-overlay" />
 
@@ -231,7 +227,13 @@ export default function HomePage() {
               data-category={item.category}
               className="portfolio-item rounded-sm"
             >
-              <PlaceholderImage title={item.title} className="w-full h-full" />
+              <Image
+                src={item.image}
+                alt={item.title}
+                width={440}
+                height={360}
+                className="w-full h-full object-cover"
+              />
               <div className="overlay">
                 <div>
                   <h3 className="text-white font-[family-name:var(--font-ubuntu-condensed)] text-lg uppercase tracking-wide leading-tight">

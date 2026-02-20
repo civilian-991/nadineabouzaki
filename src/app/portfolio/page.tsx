@@ -3,8 +3,8 @@
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import gsap from "gsap";
+import Image from "next/image";
 import { categories, portfolioItems, type Category } from "@/lib/data";
-import PlaceholderImage from "@/components/PlaceholderImage";
 
 function PortfolioContent() {
   const searchParams = useSearchParams();
@@ -101,10 +101,12 @@ function PortfolioContent() {
       <div ref={gridRef} className="portfolio-grid max-w-7xl mx-auto">
         {filteredItems.map((item) => (
           <div key={item.id} className="portfolio-item rounded-sm">
-            <PlaceholderImage
-              title={item.title}
-              className="w-full h-full"
-              aspectRatio="440/360"
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={440}
+              height={360}
+              className="w-full h-full object-cover"
             />
             <div className="overlay">
               <div>
