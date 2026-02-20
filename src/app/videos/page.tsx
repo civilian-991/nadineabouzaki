@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { videoItems } from "@/lib/data";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -46,35 +47,35 @@ export default function VideosPage() {
 
         <div ref={gridRef} className="video-grid">
           {videoItems.map((video) => (
-            <div
+            <a
               key={video.id}
-              className="video-card group"
+              href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="video-card group block"
               style={{ opacity: 0 }}
             >
               <div className="overflow-hidden bg-[var(--card)]">
-                {/* Video thumbnail */}
+                {/* YouTube thumbnail */}
                 <div
                   className="relative flex items-center justify-center overflow-hidden"
                   style={{ aspectRatio: "16/9" }}
                 >
-                  {/* Gradient bg */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#0e0e0d] via-[#151413] to-[#0e0e0d] transition-all duration-700 group-hover:scale-105" />
-
-                  {/* Subtle grid */}
-                  <div
-                    className="absolute inset-0 opacity-[0.03]"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(rgba(232,228,222,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(232,228,222,0.3) 1px, transparent 1px)",
-                      backgroundSize: "40px 40px",
-                    }}
+                  <Image
+                    src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                    alt={video.title}
+                    fill
+                    className="object-cover transition-all duration-700 group-hover:scale-105 filter brightness-75 group-hover:brightness-100"
+                    unoptimized
                   />
 
-                  {/* Play button */}
-                  <div className="relative flex items-center justify-center w-14 h-14 border border-[var(--accent)]/20 transition-all duration-500 group-hover:border-[var(--accent)]/50 group-hover:scale-110">
-                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-                      <path d="M14 8L0 16V0L14 8Z" fill="currentColor" className="text-[var(--accent)]/50 transition-all duration-500 group-hover:text-[var(--accent)]" />
-                    </svg>
+                  {/* Play button overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative flex items-center justify-center w-14 h-14 border border-white/20 bg-black/30 backdrop-blur-sm transition-all duration-500 group-hover:border-[var(--accent)]/50 group-hover:scale-110 group-hover:bg-black/50">
+                      <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+                        <path d="M14 8L0 16V0L14 8Z" fill="currentColor" className="text-white/70 transition-all duration-500 group-hover:text-[var(--accent)]" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
 
@@ -90,7 +91,7 @@ export default function VideosPage() {
                   </p>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
