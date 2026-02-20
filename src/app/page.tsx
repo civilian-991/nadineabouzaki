@@ -4,9 +4,10 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
 import BackToTop from "@/components/BackToTop";
-import { portfolioItems, socialLinks, categories } from "@/lib/data";
+import { portfolioItems, socialLinks, categories, biography } from "@/lib/data";
 import type { Category } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -27,16 +28,17 @@ export default function HomePage() {
   const [activeFilter, setActiveFilter] = useState<Category>("All");
   const heroRef = useRef<HTMLDivElement>(null);
   const heroImageRef = useRef<HTMLDivElement>(null);
+  const featuredRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Hero parallax + text animation
+  // Hero animations
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Parallax on hero image
       if (heroImageRef.current) {
         gsap.to(heroImageRef.current, {
-          y: "20%",
+          y: "25%",
           ease: "none",
           scrollTrigger: {
             trigger: heroRef.current,
@@ -47,39 +49,40 @@ export default function HomePage() {
         });
       }
 
-      // Split text reveal
       const chars = gsap.utils.toArray<HTMLElement>(".hero-title-char");
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+      gsap.set(chars, { opacity: 0, y: 60, rotateX: -60 });
+
+      const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.3 });
 
       tl.to(chars, {
         opacity: 1,
         y: 0,
         rotateX: 0,
-        duration: 1.2,
-        stagger: 0.03,
+        duration: 1.4,
+        stagger: 0.025,
       })
-        .from(
-          ".hero-ornament",
-          { scaleX: 0, duration: 0.8, ease: "power2.inOut" },
-          "-=0.5"
-        )
-        .from(
-          ".hero-subtitle",
-          { y: 20, opacity: 0, duration: 1, ease: "power3.out" },
-          "-=0.4"
-        )
-        .from(
-          ".hero-social",
-          { y: 15, opacity: 0, duration: 0.8, ease: "power3.out" },
-          "-=0.5"
-        )
-        .from(
-          ".scroll-indicator",
-          { opacity: 0, duration: 1 },
-          "-=0.3"
-        );
+        .from(".hero-line-left, .hero-line-right", {
+          scaleX: 0,
+          duration: 1,
+          ease: "power2.inOut",
+        }, "-=0.6")
+        .from(".hero-subtitle", {
+          y: 30,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power3.out",
+        }, "-=0.5")
+        .from(".hero-social", {
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        }, "-=0.6")
+        .from(".scroll-indicator", {
+          opacity: 0,
+          duration: 1.2,
+        }, "-=0.4");
 
-      // Scroll indicator subtle animation
       gsap.to(".scroll-line", {
         scaleY: 1,
         repeat: -1,
@@ -87,39 +90,57 @@ export default function HomePage() {
         duration: 1.5,
         ease: "power1.inOut",
       });
-
-      // Set initial state for chars
-      gsap.set(chars, { opacity: 0, y: 40, rotateX: -40 });
-      tl.play();
     }, heroRef);
 
     return () => ctx.revert();
   }, []);
 
-  // Portfolio scroll-in animations
+  // Featured section
   useEffect(() => {
+    if (!featuredRef.current) return;
     const ctx = gsap.context(() => {
-      gsap.from(".portfolio-section .section-title", {
+      gsap.from(".featured-image", {
         scrollTrigger: {
-          trigger: ".portfolio-section .section-title",
-          start: "top 85%",
+          trigger: ".featured-section",
+          start: "top 75%",
           toggleActions: "play none none none",
         },
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
+        clipPath: "inset(0 100% 0 0)",
+        duration: 1.4,
+        ease: "power3.inOut",
       });
 
-      gsap.from(".portfolio-section .divider-line", {
+      gsap.from(".featured-text > *", {
         scrollTrigger: {
-          trigger: ".portfolio-section .divider-line",
+          trigger: ".featured-text",
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power3.out",
+      });
+    }, featuredRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Portfolio section
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".portfolio-header > *", {
+        scrollTrigger: {
+          trigger: ".portfolio-header",
           start: "top 85%",
           toggleActions: "play none none none",
         },
-        scaleX: 0,
-        duration: 0.6,
-        ease: "power2.out",
+        y: 25,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.1,
+        ease: "power3.out",
       });
 
       gsap.from(".filter-bar", {
@@ -144,8 +165,8 @@ export default function HomePage() {
           },
           y: 40,
           opacity: 0,
-          duration: 0.7,
-          stagger: 0.06,
+          duration: 0.8,
+          stagger: 0.04,
           ease: "power3.out",
         });
       }
@@ -154,7 +175,27 @@ export default function HomePage() {
     return () => ctx.revert();
   }, []);
 
-  // Filter animation
+  // About teaser
+  useEffect(() => {
+    if (!aboutRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.from(".about-teaser > *", {
+        scrollTrigger: {
+          trigger: ".about-teaser",
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.12,
+        ease: "power3.out",
+      });
+    }, aboutRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const handleFilter = useCallback((category: Category) => {
     if (category === activeFilter) return;
     setActiveFilter(category);
@@ -185,11 +226,14 @@ export default function HomePage() {
     });
   }, [activeFilter]);
 
+  // Featured item - use first sculpture portfolio item
+  const featuredItem = portfolioItems.find(p => p.category === "Sculptures") || portfolioItems[0];
+
   return (
     <>
       {/* ─── Hero ─── */}
       <section ref={heroRef} className="hero-section">
-        <div ref={heroImageRef} className="absolute inset-0 will-change-transform" style={{ top: "-10%" , height: "120%" }}>
+        <div ref={heroImageRef} className="absolute inset-0 will-change-transform" style={{ top: "-10%", height: "120%" }}>
           <Image
             src="/images/hero/cover.jpg"
             alt="Nadine Abou Zaki"
@@ -202,42 +246,88 @@ export default function HomePage() {
         <div className="hero-overlay" />
 
         <div className="hero-content px-6">
-          <h1 className="mb-6 font-[family-name:var(--font-display)] text-[clamp(2.5rem,8vw,7rem)] font-light tracking-[0.15em] uppercase text-white leading-none">
-            <SplitText text="Nadine Abou Zaki" />
+          <h1 className="mb-8 font-[family-name:var(--font-display)] text-[clamp(2.8rem,9vw,8rem)] font-normal tracking-[0.06em] uppercase text-white leading-[0.95]">
+            <SplitText text="Nadine" />
+            <br />
+            <SplitText text="Abou Zaki" />
           </h1>
 
-          {/* Decorative ornament */}
-          <div className="hero-ornament mb-6 h-px w-24 bg-[var(--accent)] origin-center" />
+          {/* Decorative lines flanking subtitle */}
+          <div className="flex items-center gap-6 mb-10">
+            <div className="hero-line-left h-px w-16 bg-[var(--accent)]/40 origin-right" />
+            <p className="hero-subtitle font-[family-name:var(--font-body)] text-[clamp(0.65rem,1.2vw,0.8rem)] text-white/40 tracking-[0.35em] uppercase font-medium">
+              Sculptor &ensp;&middot;&ensp; Writer &ensp;&middot;&ensp; Director
+            </p>
+            <div className="hero-line-right h-px w-16 bg-[var(--accent)]/40 origin-left" />
+          </div>
 
-          <p className="hero-subtitle font-[family-name:var(--font-body)] text-[clamp(0.9rem,2vw,1.25rem)] text-white/50 tracking-[0.3em] uppercase font-extralight mb-12">
-            Sculptor &ensp;&middot;&ensp; Writer &ensp;&middot;&ensp; Director
-          </p>
-
-          <div className="hero-social mb-20">
+          <div className="hero-social">
             <SocialLinks links={socialLinks} size="md" />
           </div>
 
-          {/* Scroll indicator - minimal line */}
           <div className="scroll-indicator absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-            <span className="font-[family-name:var(--font-display)] text-[0.55rem] uppercase tracking-[0.4em] text-white/20">
+            <span className="font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.35em] text-white/15 font-medium">
               Scroll
             </span>
-            <div className="h-8 w-px bg-white/10 overflow-hidden">
-              <div className="scroll-line h-full w-full bg-[var(--accent)]/40 origin-top" style={{ transform: "scaleY(0)" }} />
+            <div className="h-10 w-px bg-white/[0.06] overflow-hidden">
+              <div className="scroll-line h-full w-full bg-[var(--accent)]/30 origin-top" style={{ transform: "scaleY(0)" }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Featured Work ─── */}
+      <section ref={featuredRef} className="featured-section py-32 md:py-40">
+        <div className="mx-auto max-w-[1300px] px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Image */}
+            <div className="featured-image relative overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
+              <div className="aspect-[4/5] relative">
+                <Image
+                  src={featuredItem.image}
+                  alt={featuredItem.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+
+            {/* Text */}
+            <div className="featured-text flex flex-col justify-center">
+              <span className="section-number mb-6">01</span>
+              <h2 className="section-title">Featured Work</h2>
+              <div className="divider-line mb-10" />
+              <h3 className="section-heading text-[clamp(2rem,4vw,3.5rem)] mb-8">
+                Exploring the boundaries between touch and perception
+              </h3>
+              <p className="text-[var(--muted)] text-base leading-relaxed font-light mb-10 max-w-md">
+                {biography.artisticPractice.slice(0, 200)}...
+              </p>
+              <Link
+                href="/portfolio"
+                className="group inline-flex items-center gap-4 font-[family-name:var(--font-body)] text-[0.7rem] uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
+              >
+                View Portfolio
+                <svg className="w-5 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-8 group-hover:bg-[var(--foreground)]" />
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* ─── Portfolio ─── */}
-      <section ref={portfolioRef} className="portfolio-section py-24 md:py-32">
+      <section ref={portfolioRef} className="portfolio-section py-24 md:py-32 bg-[var(--surface)]">
         <div className="mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="section-title">Selected Works</h2>
-            <div className="divider-line mx-auto" />
+          <div className="portfolio-header flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+            <div>
+              <span className="section-number block mb-4">02</span>
+              <h2 className="section-title mb-0">Selected Works</h2>
+            </div>
+            <div className="divider-line mt-6 md:mt-0 md:mb-1" />
           </div>
 
-          <div className="filter-bar flex flex-wrap justify-center gap-3 mb-16">
+          <div className="filter-bar flex flex-wrap justify-start gap-3 mb-14">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -269,15 +359,15 @@ export default function HomePage() {
                 <div className="overlay">
                   <div>
                     <div className="overlay-line" />
-                    <h3 className="text-white font-[family-name:var(--font-display)] text-base tracking-[0.1em] uppercase leading-tight font-light">
+                    <h3 className="text-white font-[family-name:var(--font-display)] text-[0.95rem] tracking-[0.06em] uppercase leading-tight font-normal">
                       {item.title}
                     </h3>
                     {item.venue && (
-                      <p className="text-white/40 text-sm mt-1.5 font-[family-name:var(--font-body)] font-light italic">
+                      <p className="text-white/35 text-sm mt-1.5 font-[family-name:var(--font-body)] font-light">
                         {item.venue}
                       </p>
                     )}
-                    <p className="text-[var(--accent)]/70 text-xs mt-2 font-[family-name:var(--font-display)] tracking-[0.2em]">
+                    <p className="text-[var(--accent)]/60 text-xs mt-2.5 font-[family-name:var(--font-body)] tracking-[0.15em] font-medium">
                       {item.year}
                     </p>
                   </div>
@@ -285,6 +375,28 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── About Teaser ─── */}
+      <section ref={aboutRef} className="py-32 md:py-40">
+        <div className="about-teaser mx-auto max-w-[900px] px-6 sm:px-8 text-center">
+          <span className="section-number block mb-6">03</span>
+          <h2 className="section-title">About the Artist</h2>
+          <div className="divider-line mx-auto mb-12" />
+          <p className="section-heading text-[clamp(1.6rem,3.5vw,2.8rem)] mb-10 leading-[1.3]">
+            {biography.intro}
+          </p>
+          <p className="text-[var(--muted)] text-base leading-relaxed font-light max-w-2xl mx-auto mb-12">
+            {biography.artisticPractice}
+          </p>
+          <Link
+            href="/about"
+            className="group inline-flex items-center gap-4 font-[family-name:var(--font-body)] text-[0.7rem] uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
+          >
+            Read Full Biography
+            <svg className="w-5 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-8 group-hover:bg-[var(--foreground)]" />
+          </Link>
         </div>
       </section>
 

@@ -27,8 +27,8 @@ function PortfolioContent() {
     gsap.to(items, {
       opacity: 1,
       y: 0,
-      duration: 0.7,
-      stagger: 0.06,
+      duration: 0.8,
+      stagger: 0.04,
       ease: "power3.out",
       delay: 0.3,
     });
@@ -72,7 +72,8 @@ function PortfolioContent() {
     <section className="pt-32 pb-24 min-h-screen">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 mb-16">
         <div className="mb-16">
-          <h1 className="section-title">Portfolio</h1>
+          <span className="section-number block mb-4">Collection</span>
+          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">Portfolio</h1>
           <div className="divider-line" />
         </div>
 
@@ -102,15 +103,15 @@ function PortfolioContent() {
             <div className="overlay">
               <div>
                 <div className="overlay-line" />
-                <h3 className="font-[family-name:var(--font-display)] text-base tracking-[0.1em] text-white uppercase font-light mb-1">
+                <h3 className="font-[family-name:var(--font-display)] text-[0.95rem] tracking-[0.06em] text-white uppercase font-normal mb-1">
                   {item.title}
                 </h3>
                 {item.venue && (
-                  <p className="text-white/40 text-sm font-[family-name:var(--font-body)] font-light italic">
+                  <p className="text-white/35 text-sm font-[family-name:var(--font-body)] font-light">
                     {item.venue}
                   </p>
                 )}
-                <p className="text-[var(--accent)]/70 text-xs mt-2 font-[family-name:var(--font-display)] tracking-[0.2em]">
+                <p className="text-[var(--accent)]/60 text-xs mt-2.5 font-[family-name:var(--font-body)] tracking-[0.15em] font-medium">
                   {item.year}
                 </p>
               </div>

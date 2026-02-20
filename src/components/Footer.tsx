@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { socialLinks } from "@/lib/data";
 import SocialLinks from "./SocialLinks";
 
@@ -9,38 +10,76 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-white/[0.03] bg-[var(--background)] py-20">
-      {/* Decorative top gradient */}
+    <footer className="relative border-t border-white/[0.03] bg-[var(--background)]">
+      {/* Decorative gradient line */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 h-px"
         style={{
-          width: "200px",
-          background: "linear-gradient(90deg, transparent, var(--accent), transparent)",
+          width: "240px",
+          background: "linear-gradient(90deg, transparent, var(--accent), var(--rose), transparent)",
         }}
       />
 
-      <div className="mx-auto max-w-7xl px-6 text-center">
-        <button
-          onClick={scrollToTop}
-          className="mb-8 inline-flex items-center justify-center w-10 h-10 border border-white/[0.08] transition-all duration-500 hover:border-[var(--accent)] hover:text-[var(--accent)]"
-          aria-label="Back to top"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="18 15 12 9 6 15" />
-          </svg>
-        </button>
+      <div className="mx-auto max-w-[1200px] px-6 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 mb-16">
+          {/* Brand */}
+          <div>
+            <p className="font-[family-name:var(--font-display)] text-[0.9rem] tracking-[0.08em] text-[var(--foreground)] uppercase font-normal mb-4">
+              Nadine Abou Zaki
+            </p>
+            <p className="text-[var(--muted)] text-sm font-light leading-relaxed max-w-xs">
+              Lebanese-French sculptor, writer, and director exploring tactile aesthetics and sensory perception.
+            </p>
+          </div>
 
-        <p className="mb-6 font-[family-name:var(--font-display)] text-[0.7rem] tracking-[0.3em] text-[var(--foreground)]/30 uppercase">
-          Nadine Abou Zaki
-        </p>
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium mb-6">
+              Navigate
+            </h4>
+            <div className="grid grid-cols-2 gap-y-3">
+              {[
+                { href: "/portfolio", label: "Portfolio" },
+                { href: "/videos", label: "Videos" },
+                { href: "/news", label: "News" },
+                { href: "/about", label: "About" },
+                { href: "/contact", label: "Contact" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[var(--foreground)]/30 text-sm font-light transition-colors duration-400 hover:text-[var(--foreground)]/70"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
 
-        <div className="mb-8 flex justify-center">
-          <SocialLinks links={socialLinks} size="sm" />
+          {/* Social */}
+          <div>
+            <h4 className="font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium mb-6">
+              Follow
+            </h4>
+            <SocialLinks links={socialLinks} size="sm" />
+          </div>
         </div>
 
-        <p className="font-[family-name:var(--font-display)] text-[0.6rem] tracking-[0.2em] text-[var(--foreground)]/15 uppercase">
-          &copy; 2014 nadineabouzaki.com
-        </p>
+        {/* Bottom bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between pt-10 border-t border-white/[0.03]">
+          <p className="font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.15em] text-[var(--foreground)]/12 uppercase font-medium">
+            &copy; {new Date().getFullYear()} nadineabouzaki.com
+          </p>
+          <button
+            onClick={scrollToTop}
+            className="mt-4 sm:mt-0 inline-flex items-center gap-3 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.2em] text-[var(--foreground)]/20 uppercase font-medium transition-colors duration-500 hover:text-[var(--accent)]"
+          >
+            Back to top
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="18 15 12 9 6 15" />
+            </svg>
+          </button>
+        </div>
       </div>
     </footer>
   );

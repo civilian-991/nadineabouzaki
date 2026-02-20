@@ -17,7 +17,7 @@ export default function AboutPage() {
         gsap.to(section, {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 1.1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
@@ -27,11 +27,10 @@ export default function AboutPage() {
         });
       });
 
-      // Animate decorative lines
       gsap.utils.toArray<HTMLElement>(".line-reveal").forEach((line) => {
         gsap.from(line, {
           scaleX: 0,
-          duration: 0.8,
+          duration: 0.9,
           ease: "power2.out",
           scrollTrigger: {
             trigger: line,
@@ -49,28 +48,32 @@ export default function AboutPage() {
     <main ref={containerRef} className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-2xl mx-auto">
         {/* Page Header */}
-        <div className="reveal mb-20">
-          <h1 className="section-title">About</h1>
+        <div className="reveal mb-8">
+          <span className="section-number block mb-4">About</span>
+          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">Biography</h1>
           <div className="divider-line line-reveal origin-left" />
         </div>
 
-        {/* Intro */}
-        <div className="reveal mb-24">
-          <p className="font-[family-name:var(--font-display)] text-[clamp(1.5rem,4vw,2.5rem)] leading-[1.4] font-light text-[var(--foreground)]">
+        {/* Intro — large editorial statement */}
+        <div className="reveal mb-28 mt-16">
+          <p className="font-[family-name:var(--font-display)] text-[clamp(1.8rem,4.5vw,3rem)] leading-[1.25] font-normal italic text-[var(--foreground)]">
             {biography.intro}
           </p>
         </div>
 
         {/* Education */}
-        <section className="reveal mb-20">
-          <h2 className="font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] mb-8 text-[var(--accent)] font-normal">
-            Education & Academic Background
-          </h2>
-          <div className="space-y-5 pl-6 border-l border-white/[0.06]">
+        <section className="reveal mb-24">
+          <div className="flex items-center gap-4 mb-10">
+            <span className="section-number">01</span>
+            <h2 className="font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium">
+              Education & Background
+            </h2>
+          </div>
+          <div className="space-y-5 pl-8 border-l border-white/[0.04]">
             {biography.education.map((item, i) => (
               <p
                 key={i}
-                className="text-[var(--foreground)]/70 text-[0.95rem] leading-relaxed font-light"
+                className="text-[var(--foreground)]/60 text-[0.95rem] leading-relaxed font-light"
               >
                 {item}
               </p>
@@ -79,55 +82,66 @@ export default function AboutPage() {
         </section>
 
         {/* Research Focus */}
-        <section className="reveal mb-20">
-          <h2 className="font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] mb-8 text-[var(--accent)] font-normal">
-            Research Focus
-          </h2>
-          <p className="text-[var(--foreground)]/70 text-lg leading-relaxed font-light">
+        <section className="reveal mb-24">
+          <div className="flex items-center gap-4 mb-10">
+            <span className="section-number">02</span>
+            <h2 className="font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium">
+              Research Focus
+            </h2>
+          </div>
+          <p className="text-[var(--foreground)]/60 text-lg leading-relaxed font-light">
             {biography.research}
           </p>
         </section>
 
-        {/* Artistic Practice - Featured pull quote */}
-        <section className="reveal mb-20">
-          <div className="relative py-10 px-8 md:px-12 border-l border-[var(--accent)]/30">
-            <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-[var(--accent)] via-[var(--accent)]/20 to-transparent" />
-            <h2 className="font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] mb-8 text-[var(--accent)] font-normal">
+        {/* Artistic Practice — Pull Quote */}
+        <section className="reveal mb-24">
+          <div className="flex items-center gap-4 mb-10">
+            <span className="section-number">03</span>
+            <h2 className="font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium">
               Artistic Practice
             </h2>
-            <p className="font-[family-name:var(--font-display)] text-xl md:text-2xl leading-relaxed font-light text-[var(--foreground)]/90 italic">
+          </div>
+          <div className="pull-quote py-2">
+            <p className="font-[family-name:var(--font-display)] text-[clamp(1.2rem,2.5vw,1.7rem)] leading-[1.5] font-normal italic text-[var(--foreground)]/85">
               {biography.artisticPractice}
             </p>
           </div>
         </section>
 
         {/* Social Impact */}
-        <section className="reveal mb-20">
-          <h2 className="font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] mb-8 text-[var(--accent)] font-normal">
-            Social Impact
-          </h2>
-          <p className="text-[var(--foreground)]/70 text-lg leading-relaxed font-light">
+        <section className="reveal mb-24">
+          <div className="flex items-center gap-4 mb-10">
+            <span className="section-number">04</span>
+            <h2 className="font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium">
+              Social Impact
+            </h2>
+          </div>
+          <p className="text-[var(--foreground)]/60 text-lg leading-relaxed font-light">
             {biography.socialImpact}
           </p>
         </section>
 
         {/* Divider */}
-        <div className="reveal mb-20">
+        <div className="reveal mb-24">
           <div className="ornament">
-            <span className="block w-1.5 h-1.5 border border-[var(--accent)]/30 rotate-45" />
+            <span className="block w-1.5 h-1.5 border border-[var(--accent-soft)]/30 rotate-45" />
           </div>
         </div>
 
         {/* Notable Achievements */}
         <section className="reveal mb-8">
-          <h2 className="font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] mb-10 text-[var(--accent)] font-normal">
-            Notable Achievements
-          </h2>
-          <div className="space-y-6">
+          <div className="flex items-center gap-4 mb-12">
+            <span className="section-number">05</span>
+            <h2 className="font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium">
+              Notable Achievements
+            </h2>
+          </div>
+          <div className="space-y-7">
             {biography.achievements.map((item, i) => (
-              <div key={i} className="flex items-start gap-4 group">
-                <span className="mt-2.5 block w-px h-3 bg-[var(--accent)]/40 shrink-0 transition-all duration-300 group-hover:h-5 group-hover:bg-[var(--accent)]" />
-                <p className="text-[var(--foreground)]/60 text-[0.95rem] leading-relaxed font-light transition-colors duration-300 group-hover:text-[var(--foreground)]/80">
+              <div key={i} className="flex items-start gap-5 group">
+                <span className="mt-2.5 block w-px h-3.5 bg-[var(--accent-soft)]/30 shrink-0 transition-all duration-500 group-hover:h-6 group-hover:bg-[var(--accent)]" />
+                <p className="text-[var(--foreground)]/50 text-[0.95rem] leading-relaxed font-light transition-colors duration-500 group-hover:text-[var(--foreground)]/75">
                   {item}
                 </p>
               </div>

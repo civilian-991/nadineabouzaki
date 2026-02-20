@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Crimson_Pro } from "next/font/google";
+import { Bodoni_Moda, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GrainOverlay from "@/components/GrainOverlay";
 import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
 
-const cormorant = Cormorant_Garamond({
+const bodoni = Bodoni_Moda({
   variable: "--font-display",
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
 });
 
-const crimson = Crimson_Pro({
+const jakarta = Plus_Jakarta_Sans({
   variable: "--font-body",
   subsets: ["latin", "latin-ext"],
-  weight: ["200", "300", "400", "500", "600"],
-  style: ["normal", "italic"],
+  weight: ["200", "300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: "Nadine Abou Zaki | Sculptor, Writer, Director",
   description:
-    "Nadine Abou Zaki: Sculptor, Writer, Director. Artist, Lebanese artist, tactile art, theater, performance, interactive performance, sculptor, sculpture.",
+    "Nadine Abou Zaki: Sculptor, Writer, Director. Lebanese-French artist exploring tactile aesthetics through sculpture, theater, and interactive performance.",
   keywords:
     "Artist, Lebanese artist, art, tactile art, theater, performance, sculptor, sculpture, writer, author, blindfold, dance, accessibility, disability",
   authors: [{ name: "Nadine Abou Zaki" }],
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "NadineAbouZaki",
     url: "https://www.nadineabouzaki.com/",
     title: "Nadine Abou Zaki: Sculptor, Writer, Director",
-    description: "Artist, Sculptor, Writer, Director, Interactive Performance",
+    description: "Lebanese-French artist exploring tactile aesthetics through sculpture, theater, and interactive performance.",
   },
 };
 
@@ -43,9 +43,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cormorant.variable} ${crimson.variable}`}>
+      <body className={`${bodoni.variable} ${jakarta.variable}`}>
         <CustomCursor />
         <GrainOverlay />
+        <ScrollProgress />
         <Navbar />
         <main>{children}</main>
         <Footer />

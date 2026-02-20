@@ -12,10 +12,10 @@ const navLinks = [
     children: [
       { href: "/portfolio", label: "All" },
       { href: "/portfolio?category=Theater+%26+Dance", label: "Theater & Dance" },
-      { href: "/portfolio?category=Tactile+Art+Performances", label: "Tactile Art Performances" },
+      { href: "/portfolio?category=Tactile+Art+Performances", label: "Tactile Art" },
       { href: "/portfolio?category=Sculptures", label: "Sculptures" },
-      { href: "/portfolio?category=Lino+prints", label: "Lino prints" },
-      { href: "/portfolio?category=Authored+Books", label: "Authored Books" },
+      { href: "/portfolio?category=Lino+prints", label: "Lino Prints" },
+      { href: "/portfolio?category=Authored+Books", label: "Books" },
     ],
   },
   { href: "/videos", label: "Videos" },
@@ -32,7 +32,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -42,10 +42,10 @@ export default function Navbar() {
   }, [pathname]);
 
   const linkClass = (href: string) =>
-    `font-[family-name:var(--font-display)] text-[0.7rem] tracking-[0.2em] uppercase transition-all duration-500 ${
+    `font-[family-name:var(--font-body)] text-[0.65rem] tracking-[0.22em] uppercase font-medium transition-all duration-500 ${
       pathname === href
         ? "text-[var(--accent)]"
-        : "text-[var(--foreground)]/50 hover:text-[var(--foreground)]"
+        : "text-[var(--foreground)]/40 hover:text-[var(--foreground)]"
     }`;
 
   return (
@@ -54,13 +54,13 @@ export default function Navbar() {
         <div className="flex h-20 items-center justify-between">
           <Link
             href="/"
-            className="font-[family-name:var(--font-display)] text-[0.7rem] tracking-[0.3em] text-[var(--foreground)] uppercase font-light"
+            className="font-[family-name:var(--font-display)] text-[0.85rem] tracking-[0.12em] text-[var(--foreground)] uppercase font-normal"
           >
             Nadine Abou Zaki
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center gap-9 md:flex">
             {navLinks.map((link) =>
               link.children ? (
                 <div
@@ -71,15 +71,15 @@ export default function Navbar() {
                 >
                   <Link href={link.href} className={linkClass(link.href)}>
                     {link.label}
-                    <span className="ml-1.5 text-[0.5rem] opacity-40">&#9662;</span>
+                    <span className="ml-1 text-[0.45rem] opacity-30">&#9662;</span>
                   </Link>
                   {dropdownOpen && (
-                    <div className="absolute top-full left-0 mt-3 min-w-[240px] border border-white/5 bg-[var(--background)]/95 py-3 shadow-2xl backdrop-blur-xl">
+                    <div className="absolute top-full left-0 mt-3 min-w-[220px] border border-white/[0.04] bg-[var(--background)]/95 py-3 shadow-2xl backdrop-blur-2xl">
                       {link.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-5 py-2.5 font-[family-name:var(--font-display)] text-[0.7rem] tracking-[0.15em] text-[var(--foreground)]/40 uppercase transition-all duration-300 hover:text-[var(--accent)] hover:pl-7"
+                          className="block px-5 py-2.5 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.18em] text-[var(--foreground)]/30 uppercase font-medium transition-all duration-300 hover:text-[var(--accent)] hover:pl-7"
                         >
                           {child.label}
                         </Link>
@@ -109,24 +109,24 @@ export default function Navbar() {
 
         {/* Mobile nav */}
         {mobileOpen && (
-          <div className="border-t border-white/5 py-6 md:hidden">
+          <div className="border-t border-white/[0.04] py-8 md:hidden">
             {navLinks.map((link) => (
               <div key={link.href}>
                 <Link
                   href={link.href}
-                  className={`block py-3 font-[family-name:var(--font-display)] text-[0.75rem] tracking-[0.2em] uppercase ${
-                    pathname === link.href ? "text-[var(--accent)]" : "text-[var(--foreground)]/50"
+                  className={`block py-3 font-[family-name:var(--font-body)] text-[0.7rem] tracking-[0.2em] uppercase font-medium ${
+                    pathname === link.href ? "text-[var(--accent)]" : "text-[var(--foreground)]/40"
                   }`}
                 >
                   {link.label}
                 </Link>
                 {link.children && (
-                  <div className="ml-4 border-l border-white/5 pl-4">
+                  <div className="ml-4 border-l border-white/[0.04] pl-4">
                     {link.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block py-2 font-[family-name:var(--font-display)] text-[0.65rem] tracking-[0.15em] text-[var(--foreground)]/30 uppercase hover:text-[var(--accent)]"
+                        className="block py-2 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.15em] text-[var(--foreground)]/25 uppercase font-medium hover:text-[var(--accent)]"
                       >
                         {child.label}
                       </Link>

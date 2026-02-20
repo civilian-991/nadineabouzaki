@@ -22,7 +22,7 @@ export default function NewsPage() {
       {
         opacity: 1,
         y: 0,
-        duration: 0.7,
+        duration: 0.8,
         stagger: 0.1,
         ease: "power3.out",
         scrollTrigger: {
@@ -41,7 +41,8 @@ export default function NewsPage() {
     <section className="min-h-screen pt-32 pb-24 px-6 md:px-8 lg:px-12">
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16">
-          <h1 className="section-title">News</h1>
+          <span className="section-number block mb-4">Latest</span>
+          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">News</h1>
           <div className="divider-line" />
         </div>
 
@@ -52,18 +53,18 @@ export default function NewsPage() {
               className="news-card group"
               style={{ opacity: 0 }}
             >
-              <div className="overflow-hidden bg-[var(--card)] transition-colors duration-500 group-hover:bg-[var(--card-hover)]">
+              <div className="overflow-hidden bg-[var(--surface)] transition-colors duration-500 group-hover:bg-[var(--surface-hover)]">
                 {/* Image */}
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/10" }}>
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-90 group-hover:brightness-100"
+                    className="object-cover transition-all duration-700 group-hover:scale-105 filter brightness-[0.8] group-hover:brightness-100"
                   />
                   {/* Date overlay */}
-                  <div className="absolute bottom-0 left-0 px-4 py-2 bg-[var(--background)]/80 backdrop-blur-sm">
-                    <span className="font-[family-name:var(--font-display)] text-[0.6rem] tracking-[0.25em] uppercase text-[var(--accent)]">
+                  <div className="absolute bottom-0 left-0 px-4 py-2.5 bg-[var(--background)]/80 backdrop-blur-sm">
+                    <span className="font-[family-name:var(--font-body)] text-[0.55rem] tracking-[0.25em] uppercase text-[var(--accent)] font-medium">
                       {item.date}
                     </span>
                   </div>
@@ -71,7 +72,7 @@ export default function NewsPage() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="font-[family-name:var(--font-display)] text-[0.8rem] text-[var(--foreground)]/80 tracking-[0.08em] uppercase font-normal leading-snug mb-3 transition-colors duration-300 group-hover:text-[var(--foreground)]">
+                  <h3 className="font-[family-name:var(--font-display)] text-[0.85rem] text-[var(--foreground)]/70 tracking-[0.04em] uppercase font-normal leading-snug mb-3 transition-colors duration-500 group-hover:text-[var(--foreground)]">
                     {item.title}
                   </h3>
                   <p className="font-[family-name:var(--font-body)] text-sm leading-relaxed text-[var(--muted)] font-light">
