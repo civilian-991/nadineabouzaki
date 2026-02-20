@@ -10,14 +10,14 @@ interface SocialLinksProps {
 }
 
 const sizeClasses = {
-  sm: "w-10 h-10 text-sm",
-  md: "w-12 h-12 text-base",
-  lg: "w-14 h-14 text-lg",
+  sm: "w-10 h-10 text-xs",
+  md: "w-12 h-12 text-sm",
+  lg: "w-14 h-14 text-base",
 };
 
 export default function SocialLinks({ links, size = "md" }: SocialLinksProps) {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-3">
       <a
         href={links.facebook}
         target="_blank"

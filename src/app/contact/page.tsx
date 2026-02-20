@@ -15,27 +15,19 @@ export default function ContactPage() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(".contact-form", {
-        x: -60,
+        x: -40,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".contact-form",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
+        delay: 0.2,
       });
 
       gsap.from(".contact-info", {
-        x: 60,
+        x: 40,
         opacity: 0,
         duration: 1,
         ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".contact-info",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
+        delay: 0.4,
       });
     }, containerRef);
 
@@ -48,62 +40,33 @@ export default function ContactPage() {
   }
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-24 pb-20 px-6">
+    <main ref={containerRef} className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Page Header */}
-        <div className="reveal mb-16">
-          <h1 className="section-title text-3xl">Contact</h1>
-          <div
-            className="w-16 h-px mt-4"
-            style={{ background: "var(--accent)" }}
-          />
+        <div className="mb-20">
+          <h1 className="section-title">Contact</h1>
+          <div className="divider-line" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-20">
           {/* Left: Contact Form */}
           <div className="contact-form">
             {submitted ? (
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <div
-                  className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
-                  style={{ background: "var(--accent)" }}
-                >
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#0a0a0a"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <h3
-                  className="text-xl mb-2"
-                  style={{
-                    fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-                    color: "var(--foreground)",
-                  }}
-                >
+              <div className="flex flex-col items-start py-16">
+                <div className="divider-line mb-8" />
+                <h3 className="font-[family-name:var(--font-display)] text-2xl font-light mb-3 text-[var(--foreground)]">
                   Message Sent
                 </h3>
-                <p style={{ color: "var(--muted)" }}>
+                <p className="text-[var(--muted)] font-light text-base">
                   Thank you for reaching out. I will get back to you soon.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-10">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm uppercase tracking-[0.15em] mb-2"
-                    style={{
-                      fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-                      color: "var(--muted)",
-                    }}
+                    className="block font-[family-name:var(--font-display)] text-[0.65rem] uppercase tracking-[0.25em] mb-3 text-[var(--muted)]"
                   >
                     Name
                   </label>
@@ -119,11 +82,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm uppercase tracking-[0.15em] mb-2"
-                    style={{
-                      fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-                      color: "var(--muted)",
-                    }}
+                    className="block font-[family-name:var(--font-display)] text-[0.65rem] uppercase tracking-[0.25em] mb-3 text-[var(--muted)]"
                   >
                     Email
                   </label>
@@ -139,11 +98,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block text-sm uppercase tracking-[0.15em] mb-2"
-                    style={{
-                      fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-                      color: "var(--muted)",
-                    }}
+                    className="block font-[family-name:var(--font-display)] text-[0.65rem] uppercase tracking-[0.25em] mb-3 text-[var(--muted)]"
                   >
                     Subject
                   </label>
@@ -159,17 +114,13 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm uppercase tracking-[0.15em] mb-2"
-                    style={{
-                      fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-                      color: "var(--muted)",
-                    }}
+                    className="block font-[family-name:var(--font-display)] text-[0.65rem] uppercase tracking-[0.25em] mb-3 text-[var(--muted)]"
                   >
                     Message
                   </label>
                   <textarea
                     id="message"
-                    rows={6}
+                    rows={5}
                     placeholder="Your message"
                     required
                     className="contact-input resize-none"
@@ -178,78 +129,48 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-3 text-sm uppercase tracking-[0.2em] font-medium transition-opacity duration-300 hover:opacity-85 cursor-pointer"
-                  style={{
-                    background: "var(--accent)",
-                    color: "#0a0a0a",
-                    fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-                    border: "none",
-                  }}
+                  className="group relative inline-flex items-center gap-4 py-4 font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)] border-b border-[var(--accent)]/30 hover:border-[var(--accent)] bg-transparent"
+                  style={{ border: "none", borderBottom: "1px solid rgba(184, 149, 106, 0.3)" }}
                 >
                   Send Message
+                  <svg className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </button>
               </form>
             )}
           </div>
 
           {/* Right: Contact Info */}
-          <div className="contact-info">
-            <div className="space-y-10">
+          <div className="contact-info lg:pt-4">
+            <div className="space-y-12">
               <div>
-                <h3
-                  className="text-sm uppercase tracking-[0.2em] mb-4"
-                  style={{
-                    fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-                    color: "var(--accent)",
-                  }}
-                >
+                <h3 className="font-[family-name:var(--font-display)] text-[0.65rem] uppercase tracking-[0.25em] mb-5 text-[var(--accent)]">
                   Get in Touch
                 </h3>
-                <p
-                  className="text-base leading-relaxed mb-6"
-                  style={{ color: "rgba(237, 237, 237, 0.85)" }}
-                >
+                <p className="text-[var(--foreground)]/60 text-base leading-relaxed font-light">
                   For inquiries about exhibitions, collaborations, commissions,
                   or any other matter, please feel free to reach out.
                 </p>
               </div>
 
               <div>
-                <h3
-                  className="text-sm uppercase tracking-[0.2em] mb-4"
-                  style={{
-                    fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-                    color: "var(--accent)",
-                  }}
-                >
+                <h3 className="font-[family-name:var(--font-display)] text-[0.65rem] uppercase tracking-[0.25em] mb-5 text-[var(--accent)]">
                   Email
                 </h3>
                 <a
                   href="mailto:info@nadineabouzaki.com"
-                  className="text-base transition-colors duration-300"
-                  style={{ color: "var(--foreground)" }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--accent)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "var(--foreground)")
-                  }
+                  className="text-[var(--foreground)]/70 text-base font-light transition-colors duration-400 hover:text-[var(--accent)] tracking-wide"
                 >
                   info@nadineabouzaki.com
                 </a>
               </div>
 
               <div>
-                <h3
-                  className="text-sm uppercase tracking-[0.2em] mb-4"
-                  style={{
-                    fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-                    color: "var(--accent)",
-                  }}
-                >
+                <h3 className="font-[family-name:var(--font-display)] text-[0.65rem] uppercase tracking-[0.25em] mb-5 text-[var(--accent)]">
                   Follow
                 </h3>
-                <SocialLinks links={socialLinks} size="md" />
+                <SocialLinks links={socialLinks} size="sm" />
               </div>
             </div>
           </div>

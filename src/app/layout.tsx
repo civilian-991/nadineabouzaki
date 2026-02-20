@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
-import { Lora, Ubuntu_Condensed } from "next/font/google";
+import { Cormorant_Garamond, Crimson_Pro } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import GrainOverlay from "@/components/GrainOverlay";
+import CustomCursor from "@/components/CustomCursor";
 
-const lora = Lora({
-  variable: "--font-lora",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-display",
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
-const ubuntuCondensed = Ubuntu_Condensed({
-  variable: "--font-ubuntu-condensed",
+const crimson = Crimson_Pro({
+  variable: "--font-body",
   subsets: ["latin", "latin-ext"],
-  weight: "400",
+  weight: ["200", "300", "400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -39,7 +43,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lora.variable} ${ubuntuCondensed.variable}`}>
+      <body className={`${cormorant.variable} ${crimson.variable}`}>
+        <CustomCursor />
+        <GrainOverlay />
         <Navbar />
         <main>{children}</main>
         <Footer />

@@ -18,24 +18,22 @@ function PortfolioContent() {
       ? portfolioItems
       : portfolioItems.filter((item) => item.category === activeFilter);
 
-  // Initial stagger animation on mount
   useEffect(() => {
     if (hasAnimated.current || !gridRef.current) return;
     hasAnimated.current = true;
 
     const items = gridRef.current.querySelectorAll(".portfolio-item");
-    gsap.set(items, { opacity: 0, y: 40 });
+    gsap.set(items, { opacity: 0, y: 30 });
     gsap.to(items, {
       opacity: 1,
       y: 0,
-      duration: 0.6,
-      stagger: 0.08,
+      duration: 0.7,
+      stagger: 0.06,
       ease: "power3.out",
-      delay: 0.2,
+      delay: 0.3,
     });
   }, []);
 
-  // Filter change animation
   const handleFilter = useCallback(
     (category: Category) => {
       if (category === activeFilter || !gridRef.current) return;
@@ -43,48 +41,42 @@ function PortfolioContent() {
       const items = gridRef.current.querySelectorAll(".portfolio-item");
       gsap.to(items, {
         opacity: 0,
-        y: 20,
+        y: 15,
         duration: 0.3,
-        stagger: 0.03,
+        stagger: 0.02,
         ease: "power2.in",
-        onComplete: () => {
-          setActiveFilter(category);
-        },
+        onComplete: () => setActiveFilter(category),
       });
     },
     [activeFilter]
   );
 
-  // Animate new items in after filter state updates
   useEffect(() => {
     if (!hasAnimated.current || !gridRef.current) return;
 
-    // Wait for DOM to update with new filtered items
     requestAnimationFrame(() => {
       if (!gridRef.current) return;
       const items = gridRef.current.querySelectorAll(".portfolio-item");
-      gsap.set(items, { opacity: 0, y: 30 });
+      gsap.set(items, { opacity: 0, y: 20 });
       gsap.to(items, {
         opacity: 1,
         y: 0,
         duration: 0.5,
-        stagger: 0.06,
+        stagger: 0.04,
         ease: "power3.out",
       });
     });
   }, [activeFilter]);
 
   return (
-    <section className="pt-24 pb-20 px-6 md:px-12 lg:px-20 min-h-screen">
-      {/* Page header */}
-      <div className="max-w-7xl mx-auto mb-12">
-        <h1 className="section-title text-center text-3xl md:text-4xl mb-4">
-          Portfolio
-        </h1>
-        <div className="w-16 h-px bg-accent mx-auto mb-10" />
+    <section className="pt-32 pb-24 min-h-screen">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 mb-16">
+        <div className="mb-16">
+          <h1 className="section-title">Portfolio</h1>
+          <div className="divider-line" />
+        </div>
 
-        {/* Filter buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-start gap-3 mb-12">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -97,10 +89,9 @@ function PortfolioContent() {
         </div>
       </div>
 
-      {/* Portfolio grid */}
-      <div ref={gridRef} className="portfolio-grid max-w-7xl mx-auto">
+      <div ref={gridRef} className="portfolio-grid max-w-[1400px] mx-auto px-2 sm:px-4">
         {filteredItems.map((item) => (
-          <div key={item.id} className="portfolio-item rounded-sm">
+          <div key={item.id} className="portfolio-item">
             <Image
               src={item.image}
               alt={item.title}
@@ -110,13 +101,18 @@ function PortfolioContent() {
             />
             <div className="overlay">
               <div>
-                <h3 className="font-[family-name:var(--font-ubuntu-condensed)] text-base tracking-wide text-white mb-1">
+                <div className="overlay-line" />
+                <h3 className="font-[family-name:var(--font-display)] text-base tracking-[0.1em] text-white uppercase font-light mb-1">
                   {item.title}
                 </h3>
                 {item.venue && (
-                  <p className="text-white/60 text-sm">{item.venue}</p>
+                  <p className="text-white/40 text-sm font-[family-name:var(--font-body)] font-light italic">
+                    {item.venue}
+                  </p>
                 )}
-                <p className="text-accent text-sm mt-1">{item.year}</p>
+                <p className="text-[var(--accent)]/70 text-xs mt-2 font-[family-name:var(--font-display)] tracking-[0.2em]">
+                  {item.year}
+                </p>
               </div>
             </div>
           </div>
@@ -130,12 +126,10 @@ export default function PortfolioPage() {
   return (
     <Suspense
       fallback={
-        <section className="pt-24 pb-20 px-6 md:px-12 lg:px-20 min-h-screen">
-          <div className="max-w-7xl mx-auto mb-12">
-            <h1 className="section-title text-center text-3xl md:text-4xl mb-4">
-              Portfolio
-            </h1>
-            <div className="w-16 h-px bg-accent mx-auto" />
+        <section className="pt-32 pb-24 min-h-screen">
+          <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+            <h1 className="section-title">Portfolio</h1>
+            <div className="divider-line" />
           </div>
         </section>
       }

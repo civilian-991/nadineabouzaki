@@ -31,9 +31,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -43,16 +41,26 @@ export default function Navbar() {
     setDropdownOpen(false);
   }, [pathname]);
 
+  const linkClass = (href: string) =>
+    `font-[family-name:var(--font-display)] text-[0.7rem] tracking-[0.2em] uppercase transition-all duration-500 ${
+      pathname === href
+        ? "text-[var(--accent)]"
+        : "text-[var(--foreground)]/50 hover:text-[var(--foreground)]"
+    }`;
+
   return (
     <nav className={`navbar ${scrolled || pathname !== "/" ? "scrolled" : ""}`}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="font-[family-name:var(--font-ubuntu-condensed)] text-lg tracking-widest text-white uppercase">
+      <div className="mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-12">
+        <div className="flex h-20 items-center justify-between">
+          <Link
+            href="/"
+            className="font-[family-name:var(--font-display)] text-[0.7rem] tracking-[0.3em] text-[var(--foreground)] uppercase font-light"
+          >
             Nadine Abou Zaki
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden items-center gap-6 md:flex">
+          <div className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) =>
               link.children ? (
                 <div
@@ -61,21 +69,17 @@ export default function Navbar() {
                   onMouseEnter={() => setDropdownOpen(true)}
                   onMouseLeave={() => setDropdownOpen(false)}
                 >
-                  <Link
-                    href={link.href}
-                    className={`font-[family-name:var(--font-ubuntu-condensed)] text-sm tracking-wider uppercase transition-colors hover:text-[var(--accent)] ${
-                      pathname === link.href ? "text-[var(--accent)]" : "text-white/80"
-                    }`}
-                  >
-                    {link.label} <span className="ml-1 text-xs">&#9662;</span>
+                  <Link href={link.href} className={linkClass(link.href)}>
+                    {link.label}
+                    <span className="ml-1.5 text-[0.5rem] opacity-40">&#9662;</span>
                   </Link>
                   {dropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 min-w-[220px] bg-[#111] py-2 shadow-xl">
+                    <div className="absolute top-full left-0 mt-3 min-w-[240px] border border-white/5 bg-[var(--background)]/95 py-3 shadow-2xl backdrop-blur-xl">
                       {link.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-4 py-2 text-sm text-white/70 transition-colors hover:bg-[var(--accent)] hover:text-black"
+                          className="block px-5 py-2.5 font-[family-name:var(--font-display)] text-[0.7rem] tracking-[0.15em] text-[var(--foreground)]/40 uppercase transition-all duration-300 hover:text-[var(--accent)] hover:pl-7"
                         >
                           {child.label}
                         </Link>
@@ -84,13 +88,7 @@ export default function Navbar() {
                   )}
                 </div>
               ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`font-[family-name:var(--font-ubuntu-condensed)] text-sm tracking-wider uppercase transition-colors hover:text-[var(--accent)] ${
-                    pathname === link.href ? "text-[var(--accent)]" : "text-white/80"
-                  }`}
-                >
+                <Link key={link.href} href={link.href} className={linkClass(link.href)}>
                   {link.label}
                 </Link>
               )
@@ -99,7 +97,7 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="nav-toggle md:hidden"
+            className={`nav-toggle md:hidden ${mobileOpen ? "open" : ""}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation"
           >
@@ -111,24 +109,24 @@ export default function Navbar() {
 
         {/* Mobile nav */}
         {mobileOpen && (
-          <div className="border-t border-white/10 py-4 md:hidden">
+          <div className="border-t border-white/5 py-6 md:hidden">
             {navLinks.map((link) => (
               <div key={link.href}>
                 <Link
                   href={link.href}
-                  className={`block py-2 font-[family-name:var(--font-ubuntu-condensed)] text-sm tracking-wider uppercase ${
-                    pathname === link.href ? "text-[var(--accent)]" : "text-white/80"
+                  className={`block py-3 font-[family-name:var(--font-display)] text-[0.75rem] tracking-[0.2em] uppercase ${
+                    pathname === link.href ? "text-[var(--accent)]" : "text-[var(--foreground)]/50"
                   }`}
                 >
                   {link.label}
                 </Link>
                 {link.children && (
-                  <div className="ml-4">
+                  <div className="ml-4 border-l border-white/5 pl-4">
                     {link.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block py-1.5 text-xs text-white/60 hover:text-[var(--accent)]"
+                        className="block py-2 font-[family-name:var(--font-display)] text-[0.65rem] tracking-[0.15em] text-[var(--foreground)]/30 uppercase hover:text-[var(--accent)]"
                       >
                         {child.label}
                       </Link>

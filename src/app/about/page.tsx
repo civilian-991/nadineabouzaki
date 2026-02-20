@@ -26,149 +26,113 @@ export default function AboutPage() {
           },
         });
       });
+
+      // Animate decorative lines
+      gsap.utils.toArray<HTMLElement>(".line-reveal").forEach((line) => {
+        gsap.from(line, {
+          scaleX: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: line,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-24 pb-20 px-6">
-      <div className="max-w-3xl mx-auto">
+    <main ref={containerRef} className="min-h-screen pt-32 pb-24 px-6">
+      <div className="max-w-2xl mx-auto">
         {/* Page Header */}
-        <div className="reveal mb-16">
-          <h1 className="section-title text-3xl">About</h1>
-          <div
-            className="w-16 h-px mt-4"
-            style={{ background: "var(--accent)" }}
-          />
+        <div className="reveal mb-20">
+          <h1 className="section-title">About</h1>
+          <div className="divider-line line-reveal origin-left" />
         </div>
 
         {/* Intro */}
-        <div className="reveal mb-16">
-          <p
-            className="text-2xl md:text-3xl leading-relaxed font-light"
-            style={{ color: "var(--foreground)" }}
-          >
+        <div className="reveal mb-24">
+          <p className="font-[family-name:var(--font-display)] text-[clamp(1.5rem,4vw,2.5rem)] leading-[1.4] font-light text-[var(--foreground)]">
             {biography.intro}
           </p>
         </div>
 
         {/* Education */}
-        <section className="reveal mb-16">
-          <h2
-            className="text-sm uppercase tracking-[0.2em] mb-6"
-            style={{
-              fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-              color: "var(--accent)",
-            }}
-          >
-            Education &amp; Academic Background
+        <section className="reveal mb-20">
+          <h2 className="font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] mb-8 text-[var(--accent)] font-normal">
+            Education & Academic Background
           </h2>
-          <ul className="space-y-4">
+          <div className="space-y-5 pl-6 border-l border-white/[0.06]">
             {biography.education.map((item, i) => (
-              <li
+              <p
                 key={i}
-                className="flex items-start gap-3 text-base leading-relaxed"
-                style={{ color: "rgba(237, 237, 237, 0.85)" }}
+                className="text-[var(--foreground)]/70 text-[0.95rem] leading-relaxed font-light"
               >
-                <span
-                  className="mt-2 block w-1.5 h-1.5 rounded-full shrink-0"
-                  style={{ background: "var(--accent)" }}
-                />
                 {item}
-              </li>
+              </p>
             ))}
-          </ul>
+          </div>
         </section>
 
         {/* Research Focus */}
-        <section className="reveal mb-16">
-          <h2
-            className="text-sm uppercase tracking-[0.2em] mb-6"
-            style={{
-              fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-              color: "var(--accent)",
-            }}
-          >
+        <section className="reveal mb-20">
+          <h2 className="font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] mb-8 text-[var(--accent)] font-normal">
             Research Focus
           </h2>
-          <p
-            className="text-lg leading-relaxed"
-            style={{ color: "rgba(237, 237, 237, 0.85)" }}
-          >
+          <p className="text-[var(--foreground)]/70 text-lg leading-relaxed font-light">
             {biography.research}
           </p>
         </section>
 
-        {/* Artistic Practice */}
-        <section className="reveal mb-16">
-          <div
-            className="border-l-2 pl-8 py-4"
-            style={{ borderColor: "var(--accent)" }}
-          >
-            <h2
-              className="text-sm uppercase tracking-[0.2em] mb-6"
-              style={{
-                fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-                color: "var(--accent)",
-              }}
-            >
+        {/* Artistic Practice - Featured pull quote */}
+        <section className="reveal mb-20">
+          <div className="relative py-10 px-8 md:px-12 border-l border-[var(--accent)]/30">
+            <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-[var(--accent)] via-[var(--accent)]/20 to-transparent" />
+            <h2 className="font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] mb-8 text-[var(--accent)] font-normal">
               Artistic Practice
             </h2>
-            <p
-              className="text-lg md:text-xl leading-relaxed font-light"
-              style={{ color: "var(--foreground)" }}
-            >
+            <p className="font-[family-name:var(--font-display)] text-xl md:text-2xl leading-relaxed font-light text-[var(--foreground)]/90 italic">
               {biography.artisticPractice}
             </p>
           </div>
         </section>
 
         {/* Social Impact */}
-        <section className="reveal mb-16">
-          <h2
-            className="text-sm uppercase tracking-[0.2em] mb-6"
-            style={{
-              fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-              color: "var(--accent)",
-            }}
-          >
+        <section className="reveal mb-20">
+          <h2 className="font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] mb-8 text-[var(--accent)] font-normal">
             Social Impact
           </h2>
-          <p
-            className="text-lg leading-relaxed"
-            style={{ color: "rgba(237, 237, 237, 0.85)" }}
-          >
+          <p className="text-[var(--foreground)]/70 text-lg leading-relaxed font-light">
             {biography.socialImpact}
           </p>
         </section>
 
+        {/* Divider */}
+        <div className="reveal mb-20">
+          <div className="ornament">
+            <span className="block w-1.5 h-1.5 border border-[var(--accent)]/30 rotate-45" />
+          </div>
+        </div>
+
         {/* Notable Achievements */}
         <section className="reveal mb-8">
-          <h2
-            className="text-sm uppercase tracking-[0.2em] mb-6"
-            style={{
-              fontFamily: "var(--font-ubuntu-condensed), sans-serif",
-              color: "var(--accent)",
-            }}
-          >
+          <h2 className="font-[family-name:var(--font-display)] text-[0.7rem] uppercase tracking-[0.25em] mb-10 text-[var(--accent)] font-normal">
             Notable Achievements
           </h2>
-          <ul className="space-y-4">
+          <div className="space-y-6">
             {biography.achievements.map((item, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-3 text-base leading-relaxed"
-                style={{ color: "rgba(237, 237, 237, 0.85)" }}
-              >
-                <span
-                  className="mt-2 block w-1.5 h-1.5 rounded-full shrink-0"
-                  style={{ background: "var(--accent)" }}
-                />
-                {item}
-              </li>
+              <div key={i} className="flex items-start gap-4 group">
+                <span className="mt-2.5 block w-px h-3 bg-[var(--accent)]/40 shrink-0 transition-all duration-300 group-hover:h-5 group-hover:bg-[var(--accent)]" />
+                <p className="text-[var(--foreground)]/60 text-[0.95rem] leading-relaxed font-light transition-colors duration-300 group-hover:text-[var(--foreground)]/80">
+                  {item}
+                </p>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
       </div>
     </main>
