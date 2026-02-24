@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import gsap from "gsap";
 import Image from "next/image";
+import Link from "next/link";
 import { categories, portfolioItems, type Category } from "@/lib/data";
 
 function PortfolioContent() {
@@ -92,7 +93,7 @@ function PortfolioContent() {
 
       <div ref={gridRef} className="portfolio-grid max-w-[1400px] mx-auto px-2 sm:px-4">
         {filteredItems.map((item) => (
-          <div key={item.id} className="portfolio-item">
+          <Link key={item.id} href={`/portfolio/${item.slug}`} className="portfolio-item">
             <Image
               src={item.image}
               alt={item.title}
@@ -116,7 +117,7 @@ function PortfolioContent() {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

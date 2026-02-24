@@ -22,6 +22,7 @@ export interface NewsItem {
   date: string;
   description: string;
   image: string;
+  slug: string;
 }
 
 export const categories = [
@@ -310,6 +311,7 @@ export const newsItems: NewsItem[] = [
     description:
       "I am thrilled to share that my series of lino prints and sculptures are currently on display at the Centre Hospitalier des Quatre Villes - Saint-Cloud.",
     image: "/images/news/quatre-villes.jpg",
+    slug: "exhibition-centre-hospitalier-des-quatre-villes",
   },
   {
     id: 2,
@@ -318,6 +320,7 @@ export const newsItems: NewsItem[] = [
     description:
       'The opening of the event organized by la ville de Saint-Cloud "Un artiste, un commerçant" will be held at Le Carré gallery. I am delighted to showcase lino prints alongside other talented artists.',
     image: "/images/news/le-carre.jpg",
+    slug: "un-artiste-un-commercant-le-carre",
   },
   {
     id: 3,
@@ -326,6 +329,7 @@ export const newsItems: NewsItem[] = [
     description:
       'I am thrilled to announce my participation to "Fenêtres" in the upcoming Open House event at INECAT in Paris with "Prière de Toucher" ("Please Touch") performance and exhibition. It will be preceded by "Terre... Prière de Toucher" art workshop. The event will take place from Sept 29 to October 1, 2023.',
     image: "/images/news/inecat.jpg",
+    slug: "priere-de-toucher-inecat-paris",
   },
   {
     id: 4,
@@ -334,6 +338,7 @@ export const newsItems: NewsItem[] = [
     description:
       'On the occasion of the "Journée de l\'estampe contemporaine", I will be exhibiting my lino prints at Saint-Sulpice in Paris on June 12-13, along with other engravers.',
     image: "/images/news/lino-prints-exhibition.jpg",
+    slug: "lino-prints-exhibition",
   },
   {
     id: 5,
@@ -342,6 +347,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki animated a training of trainers (TOT) workshop on "How Arts help the inclusiveness of our society" during the workshop on Intercultural Dialogue and human rights through Arts. She discussed the new challenges to cultural participation for persons with disabilities in light of the Covid-19 and the key opportunities. The event was organized by UNESCO and the Lebanese National Commission for UNESCO.',
     image: "/images/news/arts-inclusiveness-covid-unesco.jpg",
+    slug: "arts-inclusiveness-covid-unesco",
   },
   {
     id: 6,
@@ -350,6 +356,7 @@ export const newsItems: NewsItem[] = [
     description:
       "A book by Nadine Abou Zaki has now been released. You can also order a print or ebook version online at l'harmattan.",
     image: "/images/news/la-chambre-dalberto.jpg",
+    slug: "la-chambre-dalberto-book-release",
   },
   {
     id: 7,
@@ -358,6 +365,7 @@ export const newsItems: NewsItem[] = [
     description:
       'We have the pleasure to cordially invite you to the blindfold walk performance "Elephant in the Dark" on Saturday, September 28 at MACAM in Alita- Byblos.',
     image: "/images/news/elephant-in-the-dark.jpg",
+    slug: "elephant-in-the-dark-blindfold-walk",
   },
   {
     id: 8,
@@ -366,6 +374,7 @@ export const newsItems: NewsItem[] = [
     description:
       'In 2018, my book on the Lebanese art critic "Nazih Khater: the Republic of Enemies" was translated in Braille, along with my book "Le Lieu et le corps". This initiative intends to make my books accessible to the blind and visually impaired and to support this segment of the population to participate fully in the cultural and artistic life of Lebanon.',
     image: "/images/news/nazih-khater-braille.jpg",
+    slug: "nazih-khater-braille",
   },
   {
     id: 9,
@@ -374,6 +383,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Following the success of "The Diary of a Mulberry Tree" at Al Madina Theatre last summer, Red Oak Performing Troupe has the pleasure to invite you to "The Diary of a Mulberry Tree" on 15 September 2018 at 8:00 pm at Hammana Artist House.',
     image: "/images/news/diary-mulberry-tree-hammana.jpg",
+    slug: "diary-mulberry-tree-hammana",
   },
   {
     id: 10,
@@ -382,6 +392,7 @@ export const newsItems: NewsItem[] = [
     description:
       "Do trees have a memory? Do they have consciousness? Do they communicate with their environment? Can they hear, smell and feel? How do they respond emotionally to humans? Do they feel pain or experience joy or sadness? What is our responsibility as humans towards the nature and environment in today's digital age?",
     image: "/images/news/diary-mulberry-tree-al-madina.jpg",
+    slug: "diary-mulberry-tree-al-madina-2017",
   },
   {
     id: 11,
@@ -390,6 +401,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Please Touch the Trash is an Interactive Art Performance that will take place on April 16-17, 2016 during Moultaqa Leymoun within BIPOD (Beirut International Platform of Dance) at Al Madina theatre- Beirut. This interactive performance questions the concept of waste and its philosophical, social, economic and environmental dimensions.',
     image: "/images/news/please-touch-trash-bipod.jpg",
+    slug: "please-touch-the-trash-bipod",
   },
   {
     id: 12,
@@ -398,6 +410,7 @@ export const newsItems: NewsItem[] = [
     description:
       "What if you were a performer for one night?! Come & be the sculpture at Waste pop-up shop - Saifi village - Beirut - Feb 17 2016 at 7pm.",
     image: "/images/news/please-touch-waste.jpg",
+    slug: "please-touch-waste-2016",
   },
   {
     id: 13,
@@ -406,6 +419,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki will be signing her new book "Nazih Khater: L\'HOMME TERRIBLE DE LA VILLE" at the Salon du livre francophone de Beyrouth (Beirut French Book Fair) on Saturday 31 October 2015 at 6 p.m.',
     image: "/images/news/book-signing-nazih-khater.jpg",
+    slug: "book-signing-nazih-khater",
   },
   {
     id: 14,
@@ -414,6 +428,7 @@ export const newsItems: NewsItem[] = [
     description:
       '"Please Touch" new performances will be presented at Beirut Art Fair 2015 (Biel) with four dancers: Bshara Atallah, Lisa Chehade, Rabih Yammine & Corine Skaff. This performance/installation is featured in the segment Digital Art: "Virtual Reality".',
     image: "/images/news/please-touch-beirut-art-fair.jpg",
+    slug: "please-touch-beirut-art-fair-digital",
   },
   {
     id: 15,
@@ -422,6 +437,7 @@ export const newsItems: NewsItem[] = [
     description:
       '"PLEASE DON\'T TOUCH" will be performed for the second time in Lebanon at Beirut Art Fair #6- Biel. This edition of the Fair will focus on digital art: "Virtual/Reality". Curated by Pascal Odille, it presents an exhibition that will destabilize the visitors\' senses and will make them travel across the kingdom of illusions.',
     image: "/images/news/please-touch-beirut-art-fair-2.jpg",
+    slug: "please-touch-beirut-art-fair-sept-2015",
   },
   {
     id: 16,
@@ -430,6 +446,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Moroccan writer and sociologist Fatema Mernissi will present "De femme à homme" (second edition, Marsam Ed.) by Nadine Abou Zaki. The event will take place on May 23, 2015 at Marsam Editions- Rabat. Marsam is one of the oldest contemporary art galleries in Morocco and the first art editor.',
     image: "/images/news/de-femme-a-homme-marsam.jpg",
+    slug: "de-femme-a-homme-marsam-rabat",
   },
   {
     id: 17,
@@ -438,6 +455,7 @@ export const newsItems: NewsItem[] = [
     description:
       '"PLEASE DON\'T TOUCH" is an interactive performance introducing a new concept to sculpture. Nadine Abou Zaki sculpted blindfolded in the dark, focusing on the inner self, thereby substituting the sense of sight with that of touch. She questions the role of image as a contemporary tool, the physical act of touching in artistic creation, and its relation to memory.',
     image: "/images/news/please-dont-touch-station.jpg",
+    slug: "please-dont-touch-station-beirut",
   },
   {
     id: 18,
@@ -446,6 +464,7 @@ export const newsItems: NewsItem[] = [
     description:
       "Solidere & Afak organized an exhibition with 19 artists from Lebanon and Syria at SV gallery in Saifi village- Beirut. Nadine Abou Zaki exhibited a sculpture along with the artworks of Wajih Nahle, Hussein Madi, Amine Al Basha, Halim Jerdak, Nazir Nabaa, Bahram, Moustapha Ali, Sabhan Adam, and others.",
     image: "/images/news/19-artists-sv-gallery.jpg",
+    slug: "19-artists-lebanon-syria-sv-gallery",
   },
   {
     id: 19,
@@ -454,6 +473,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki and Pierre-Marie Hasse signed the second edition of "De femme à homme" (Marsam Editions, Morocco) at Paris Book Fair (Salon du livre de Paris). Paris Book Fair is an event of international repute that is held at the Paris Porte de Versailles, for a period of 4 days.',
     image: "/images/news/de-femme-a-homme-paris-book-fair.jpg",
+    slug: "de-femme-a-homme-paris-book-fair",
   },
   {
     id: 20,
@@ -462,6 +482,7 @@ export const newsItems: NewsItem[] = [
     description:
       'The DAFG and the Koerber Foundation invited Nadine Abou Zaki for a public discussion on "A Women\'s Uprising? Emancipation in the Arab World" at the KoerberForum, Korber Foundation\'s headquarters in Hamburg on 10 December 2013. The discussion was moderated by television journalist Minou Amir-Sehhi.',
     image: "/images/news/koerberforum-hamburg.jpg",
+    slug: "public-discussion-koerberforum-hamburg",
   },
   {
     id: 21,
@@ -470,6 +491,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki gave a public lecture on: "The New Arab Woman Forum: The transforming role of Arab women and its future impact on society" in the DAFG-office in Berlin on 11 December 2013.',
     image: "/images/news/public-lecture-dafg-berlin.jpg",
+    slug: "public-lecture-dafg-berlin",
   },
   {
     id: 22,
@@ -478,6 +500,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki presented a paper on "Socrates and Women" during the "Philosophical symposium on Socrates- True Wisdom" at the Hellenic Cultural Center, Beirut, Lebanon.',
     image: "/images/news/socrates-and-women.jpg",
+    slug: "socrates-and-women-hellenic-center",
   },
   {
     id: 23,
@@ -486,6 +509,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki and Pierre-Marie Hasse were invited to a debate about the book "De femme à homme" at the Arab World Institute (Institut du Monde Arabe- IMA). The discussion was moderated by François Zabbal, editor in chief of Qantara magazine - Institut du monde arabe.',
     image: "/images/news/arab-world-institute-paris.jpg",
+    slug: "arab-world-institute-paris",
   },
   {
     id: 24,
@@ -494,6 +518,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki signed her book "De femme à homme" at the "18th Francophone Book Fair". The most prominent francophone cultural event in Lebanon took place at the Beirut International Exhibition center (BIEL). The center was filled with conferences, book signings, readings, and exhibitions.',
     image: "/images/news/book-signing-18th-francophone.jpg",
+    slug: "book-signing-18th-francophone-beirut",
   },
   {
     id: 25,
@@ -502,6 +527,7 @@ export const newsItems: NewsItem[] = [
     description:
       "A book by Nadine Abou Zaki has now been released. You can buy your copy in Paris at L'Harmattan bookstore and in Lebanon at Virgin Megastore, Librairie Antoine and Al Bourj. You can also order a print or ebook version online at editions-harmattan.fr or at Amazon.",
     image: "/images/news/de-femme-a-homme-book.jpg",
+    slug: "de-femme-a-homme-book-release",
   },
   {
     id: 26,
@@ -510,6 +536,7 @@ export const newsItems: NewsItem[] = [
     description:
       'NAWF Founder and Executive Chair Nadine Abou Zaki initiated a women\'s march in Beirut under the slogan "Sawa Sawa". The march was organized within the framework of NAWF, held under the theme: "Women and the Arab Spring". Representatives from Lebanon, Egypt, UAE, KSA, Afghanistan, Bahrain, Yemen, Tunisia, Libya notably activists from women rights organizations participated in the march.',
     image: "/images/news/sawa-sawa-march.jpg",
+    slug: "sawa-sawa-march-beirut",
   },
   {
     id: 27,
@@ -518,6 +545,7 @@ export const newsItems: NewsItem[] = [
     description:
       'On March 2011, Nadine Abou Zaki presented her book "Le lieu et le corps" at Le Scribe L\'Harmattan in Paris. The presentation was followed by a debate and a book signing.',
     image: "/images/news/le-lieu-et-le-corps-paris.jpg",
+    slug: "le-lieu-et-le-corps-paris",
   },
   {
     id: 28,
@@ -526,6 +554,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki signed her book "Le lieu et le corps / Al Makan Wal Jasad" at the 17th Francophone Book Fair and in NAWF 2010, along with Malek Chebel, Rachid Al-Daif, Mona Abou Hamzeh, Rima Karaki, Mona Tayem, and Rasha Atrach.',
     image: "/images/news/book-signing-17th-francophone.jpg",
+    slug: "book-signing-17th-francophone-beirut",
   },
   {
     id: 29,
@@ -534,6 +563,7 @@ export const newsItems: NewsItem[] = [
     description:
       "A sculpture installation was exhibited by the artist Nadine Abou Zaki at the Lebanese Art Book Festival in UNESCO Palace, Beirut. This 2nd edition was inaugurated by the Lebanese Minister of Culture H.E. Mr. Tammam Salam.",
     image: "/images/news/art-book-festival-unesco.jpg",
+    slug: "art-book-festival-unesco-beirut",
   },
   {
     id: 30,
@@ -542,6 +572,7 @@ export const newsItems: NewsItem[] = [
     description:
       'At the occasion of "Beirut World Book Capital" and as a tribute to Lebanese writers and poets, Nadine Abou Zaki inaugurated "The Garden of Dialogue" with 5 sculptures in stone that will be permanently exhibited near the French Cultural Center in Damascus Street- Beirut. The inauguration was held in the presence of H.E. Tammam Salam, H.E. Marwan Hamadeh, Beirut Municipal President Abdel Mounim Ariss and the French ambassador Denis Pieton.',
     image: "/images/news/garden-of-dialogue.jpg",
+    slug: "garden-of-dialogue-beirut",
   },
   {
     id: 31,
@@ -550,6 +581,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki was selected as the "Sculptor Ambassador" for Lebanon by the Ministry of Culture and represented Lebanon at the 6th Francophone Games (6iemes Jeux de la Francophonie). Lebanon hosted the 6th Francophone Games held from September 27 to October 6 with the participation of 42 French-speaking countries and more than 3,000 athletes.',
     image: "/images/news/sculptor-ambassador-francophone.jpg",
+    slug: "sculptor-ambassador-francophone-games",
   },
   {
     id: 32,
@@ -558,6 +590,7 @@ export const newsItems: NewsItem[] = [
     description:
       "The Secular Republican Committee (Comite de la laicite republicaine), one of the largest and most important secular foundations in France, has honored Nadine Abou Zaki, with its 4th International Secular Award (Prix de la Laicite) at a special ceremony held at the Paris municipality headed by the First Assistant to the mayor of Paris Anne Hidalgo with the participation of a number of French and Lebanese personalities.",
     image: "/images/news/secular-award-paris.jpg",
+    slug: "secular-award-paris",
   },
   {
     id: 33,
@@ -566,6 +599,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki held her third individual exhibition "And I fly off" at Surface Libre gallery and exhibited 26 sculptures in stone and wood.',
     image: "/images/news/and-i-fly-off-surface-libre.jpg",
+    slug: "and-i-fly-off-surface-libre",
   },
   {
     id: 34,
@@ -574,6 +608,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki participated in the conference "Transmission des cultures et du dialogue interculturel à travers le rôle de la femme" organized by the Association of Intercultural and Inter-Religious Dialogue (ADICR), in partnership with the European Parliament information office in France.',
     image: "/images/news/european-parliament-paris.jpg",
+    slug: "european-parliament-paris",
   },
   {
     id: 35,
@@ -582,6 +617,7 @@ export const newsItems: NewsItem[] = [
     description:
       "On April 16, V-Day, the global movement to end violence against women and girls, celebrated its tenth anniversary, V TO THE TENTH, in New Orleans. Over 30,000 people attended the events over the two days. The event featured over 125 speakers, over 40 stars. Two days of revolutionary conversations, slam poets, singers, performers, storytelling, astounding art.",
     image: "/images/news/v-to-the-tenth-new-orleans.jpg",
+    slug: "v-to-the-tenth-new-orleans",
   },
   {
     id: 36,
@@ -590,6 +626,7 @@ export const newsItems: NewsItem[] = [
     description:
       'The world-famous Moroccan sociologist and writer Fatema Mernissi organized a two-day workshop on "Love in Digital Islam". The workshop was hosted by the Cultural Center of Asturias and ended up with a conference in the Niemeyer Center. The diversity of generations and nationalities encouraged the in-depth meditation.',
     image: "/images/news/workshop-fatema-mernissi.jpg",
+    slug: "workshop-fatema-mernissi-spain",
   },
   {
     id: 37,
@@ -598,6 +635,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki participated in the panel "Women in Conflict Zones" in V-Day Festival "Until the violence stops: NYC", New York. This panel was moderated by V-Day Founder and playwright Eve Ensler.',
     image: "/images/news/v-day-festival-nyc.jpg",
+    slug: "v-day-festival-nyc",
   },
   {
     id: 38,
@@ -606,6 +644,7 @@ export const newsItems: NewsItem[] = [
     description:
       'Nadine Abou Zaki gave a public lecture on: "New Media for a New Arab Woman", during the conference "Women, Creativity, and Dissidence", led by writer and activist Nawal El Saadawi- Cairo- Egypt. The conference was part of the 7th International conference of the Arab Women\'s Solidarity Association (AWSA).',
     image: "/images/news/new-media-arab-woman-cairo.jpg",
+    slug: "new-media-arab-woman-cairo",
   },
 ];
 

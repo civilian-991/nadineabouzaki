@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { newsItems } from "@/lib/data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -50,9 +51,10 @@ export default function NewsPage() {
 
         <div ref={gridRef} className="news-grid">
           {newsItems.map((item) => (
-            <article
+            <Link
               key={item.id}
-              className="news-card group"
+              href={`/news/${item.slug}`}
+              className="news-card group block"
               style={{ opacity: 0 }}
             >
               <div className="overflow-hidden bg-[var(--surface)] transition-colors duration-500 group-hover:bg-[var(--surface-hover)]">
@@ -85,7 +87,7 @@ export default function NewsPage() {
                   </p>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>
