@@ -41,7 +41,7 @@ export default function HomePage() {
   const featuredRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
-  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const itemsRef = useRef<(HTMLAnchorElement | HTMLDivElement | null)[]>([]);
 
   // Hero animations
   useEffect(() => {
@@ -375,8 +375,9 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1400px] px-2 sm:px-4">
           <div className="portfolio-grid">
             {portfolioItems.map((item, i) => (
-              <div
+              <Link
                 key={item.id}
+                href={`/portfolio/${item.slug}`}
                 ref={(el) => {
                   itemsRef.current[i] = el;
                 }}
@@ -406,7 +407,7 @@ export default function HomePage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
