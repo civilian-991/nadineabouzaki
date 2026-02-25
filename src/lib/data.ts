@@ -6,6 +6,8 @@ export interface PortfolioItem {
   category: string;
   slug: string;
   image: string;
+  description?: string;
+  galleryImages?: string[];
 }
 
 export interface VideoItem {
@@ -45,6 +47,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Lino prints",
     slug: "lino-prints",
     image: "/images/portfolio/lino-prints.jpg",
+    description: "The search for transcendence and the insatiable quest to transcend the limits of existence form the core of this series of linocut prints. Each print captures moments of introspection and spiritual elevation. The textures and raised surfaces of the embossings are designed to be tactile and accessible to all, inviting sensory exploration through touch.",
+    galleryImages: ["/images/portfolio/gallery/lino-prints/1.jpg", "/images/portfolio/gallery/lino-prints/2.jpg", "/images/portfolio/gallery/lino-prints/3.jpg", "/images/portfolio/gallery/lino-prints/4.jpg", "/images/portfolio/gallery/lino-prints/5.jpg"],
   },
   {
     id: 2,
@@ -54,6 +58,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "priere-de-toucher-2023",
     image: "/images/portfolio/priere-de-toucher.jpg",
+    description: "\"Prière de Toucher\" (Please Touch) is an interactive tactile art performance and sculpture exhibition held at INECAT in Paris. The performance invites visitors to experience sculptures through touch rather than sight, exploring the relationship between tactile sensation and artistic perception. Preceded by \"Terre... Prière de Toucher\" art workshop, this event challenges conventional exhibition practices by prioritizing sensory engagement over visual observation.",
+    galleryImages: ["/images/portfolio/gallery/priere-de-toucher-2023/1.jpg", "/images/portfolio/gallery/priere-de-toucher-2023/2.jpg", "/images/portfolio/gallery/priere-de-toucher-2023/3.jpg", "/images/portfolio/gallery/priere-de-toucher-2023/4.jpg", "/images/portfolio/gallery/priere-de-toucher-2023/5.jpg"],
   },
   {
     id: 3,
@@ -63,6 +69,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Authored Books",
     slug: "la-chambre-dalberto",
     image: "/images/portfolio/la-chambre-dalberto.jpg",
+    description: "Linda loue un appartement a Paris pour quelques jours. Elle est immediatement secouee a la vue du visage d'un homme qu'elle voit dans un cadre photo. A novel exploring identity, memory, and the lingering presence of the past through a woman's encounter with the traces of a man's life in a Parisian apartment.",
+    galleryImages: ["/images/portfolio/gallery/la-chambre-dalberto/1.jpg"],
   },
   {
     id: 4,
@@ -72,6 +80,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "elephant-in-the-dark",
     image: "/images/portfolio/elephant-in-the-dark.jpg",
+    description: "\"Elephant in the Dark\" is a blindfold walk performance at MACAM Museum in Alita-Byblos. Inspired by Rumi's parable about blind men encountering an elephant, this immersive performance invites participants to navigate art through touch and sensory perception rather than sight, questioning our reliance on visual experience in understanding the world around us.",
+    galleryImages: ["/images/portfolio/gallery/elephant-in-the-dark/1.jpg", "/images/portfolio/gallery/elephant-in-the-dark/2.jpg", "/images/portfolio/gallery/elephant-in-the-dark/3.jpg", "/images/portfolio/gallery/elephant-in-the-dark/4.jpg", "/images/portfolio/gallery/elephant-in-the-dark/5.jpg"],
   },
   {
     id: 5,
@@ -81,6 +91,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Theater & Dance",
     slug: "perceptions",
     image: "/images/portfolio/perceptions.jpg",
+    description: "\"Perceptions\" is Lebanon's first Theater by the Blind and Deaf -- a groundbreaking theatrical production bringing together blind, visually impaired, deaf, and hard-of-hearing performers. This pioneering work challenges conventional perceptions of disability and artistic expression, creating a space where different sensory experiences converge on stage.",
+    galleryImages: ["/images/portfolio/gallery/perceptions/1.jpg", "/images/portfolio/gallery/perceptions/2.jpg", "/images/portfolio/gallery/perceptions/3.jpg", "/images/portfolio/gallery/perceptions/4.jpg", "/images/portfolio/gallery/perceptions/5.jpg"],
   },
   {
     id: 6,
@@ -90,6 +102,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Theater & Dance",
     slug: "diary-mulberry-tree-2018",
     image: "/images/portfolio/diary-mulberry-tree-2018.jpg",
+    description: "\"The Diary of a Mulberry Tree\" is a residency and performance at Hammana Artist House. Do trees have a memory? Do they have consciousness? Do they communicate with their environment? Can they hear, smell and feel? How do they respond emotionally to humans? This performance explores the relationship between humans and nature in today's digital age.",
+    galleryImages: ["/images/portfolio/gallery/diary-mulberry-tree-2018/1.jpg", "/images/portfolio/gallery/diary-mulberry-tree-2018/2.jpg", "/images/portfolio/gallery/diary-mulberry-tree-2018/3.jpg", "/images/portfolio/gallery/diary-mulberry-tree-2018/4.jpg", "/images/portfolio/gallery/diary-mulberry-tree-2018/5.jpg"],
   },
   {
     id: 7,
@@ -99,6 +113,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Authored Books",
     slug: "le-journal-dun-murier",
     image: "/images/portfolio/le-journal-dun-murier.jpg",
+    description: "\"Le journal d'un murier\" published by L'Harmattan, Paris 2018. This book accompanies the theatrical performance of the same name, weaving together philosophy, nature, and artistic expression to explore the consciousness and memory of trees and their relationship with humans.",
+    galleryImages: ["/images/portfolio/gallery/le-journal-dun-murier/1.jpg"],
   },
   {
     id: 8,
@@ -108,6 +124,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Authored Books",
     slug: "de-femme-a-homme-morocco",
     image: "/images/portfolio/de-femme-a-homme-morocco.jpg",
+    description: "Second edition of \"De femme a homme\" published by Marsam Editions in Rabat, Morocco (2014). This epistolary work with Pierre-Marie Hasse explores femininity, identity, and the dialogue between masculine and feminine perspectives in contemporary Arab society.",
+    galleryImages: ["/images/portfolio/gallery/de-femme-a-homme-morocco/1.jpg"],
   },
   {
     id: 9,
@@ -117,6 +135,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Theater & Dance",
     slug: "diary-mulberry-tree-2017",
     image: "/images/portfolio/diary-mulberry-tree-2017.jpg",
+    description: "\"The Diary of a Mulberry Tree\" premiered at Al Madina Theater in 2017. This theatrical performance questions our relationship with nature: Do trees have a memory? Do they communicate? Can they feel? What is our responsibility as humans towards nature in today's digital age?",
+    galleryImages: [],
   },
   {
     id: 10,
@@ -126,6 +146,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "please-touch-waste-studio",
     image: "/images/portfolio/please-touch-waste-studio.jpg",
+    description: "\"Please Touch\" at Waste Studio explores the intersection of art, sustainability, and tactile experience. What if you were a performer for one night? This interactive performance invited visitors to become living sculptures, blurring the boundaries between artist, artwork, and audience.",
+    galleryImages: ["/images/portfolio/gallery/please-touch-waste-studio/1.jpg", "/images/portfolio/gallery/please-touch-waste-studio/2.jpg", "/images/portfolio/gallery/please-touch-waste-studio/3.jpg", "/images/portfolio/gallery/please-touch-waste-studio/4.jpg", "/images/portfolio/gallery/please-touch-waste-studio/5.jpg"],
   },
   {
     id: 11,
@@ -135,6 +157,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "please-touch-trash",
     image: "/images/portfolio/please-touch-trash.jpg",
+    description: "\"Please Touch the Trash\" is an interactive art performance presented at BIPOD (Beirut International Platform of Dance) at Al Madina Theatre. This performance questions the concept of waste and its philosophical, social, economic and environmental dimensions, inviting audiences to reconsider their relationship with discarded materials through touch and sensory engagement.",
+    galleryImages: ["/images/portfolio/gallery/please-touch-trash/1.jpg", "/images/portfolio/gallery/please-touch-trash/2.jpg"],
   },
   {
     id: 12,
@@ -144,6 +168,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "please-touch-baf-2015",
     image: "/images/portfolio/please-touch-baf-2015.jpg",
+    description: "\"Please Touch\" presented at Beirut Art Fair 2015, featured in the Digital Art segment \"Virtual Reality\". Four dancers -- Bshara Atallah, Lisa Chehade, Rabih Yammine & Corine Skaff -- performed as living sculptures, destabilizing visitors' senses and making them travel across the kingdom of illusions.",
+    galleryImages: [],
   },
   {
     id: 13,
@@ -153,6 +179,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "please-touch-living-sculptures-2015",
     image: "/images/portfolio/please-touch-living-2015.jpg",
+    description: "\"Please Touch - Living Sculptures\" at Beirut Art Fair 2015. Living sculptures performed under designed fabrics, reacting to each visitor's touch and transforming into new sculptural forms. This performance challenges the boundary between performer and sculpture, audience and artwork.",
+    galleryImages: [],
   },
   {
     id: 14,
@@ -162,6 +190,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "please-touch-baf-perf-2015",
     image: "/images/portfolio/please-touch-baf-perf-2015.jpg",
+    description: "\"Please Touch\" performance at Beirut Art Fair 2015 within the \"Virtual/Reality\" segment curated by Pascal Odille. The exhibition destabilizes visitors' senses, creating an immersive experience that questions the role of touch and sight in experiencing art.",
+    galleryImages: [],
   },
   {
     id: 15,
@@ -171,6 +201,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Authored Books",
     slug: "lhomme-terrible-de-la-ville",
     image: "/images/portfolio/lhomme-terrible.jpg",
+    description: "\"L'Homme Terrible de la Ville\" -- a book about Lebanese art critic Nazih Khater, published jointly by L'Harmattan (Paris) and Dar An-Nahar (Beirut). This biographical work pays tribute to one of Lebanon's most prominent art critics and his impact on the cultural landscape.",
+    galleryImages: [],
   },
   {
     id: 16,
@@ -180,6 +212,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Sculptures",
     slug: "please-touch-agial",
     image: "/images/portfolio/please-touch-agial.jpg",
+    description: "\"Please Touch\" is an interactive sculpture performance at Agial Gallery, Beirut. Visitors are invited to touch, experience and interact in the dark with living sculptures. This performance introduces a new concept to sculpture -- substituting the sense of sight with touch. What is sculpting without a body? Communicating without body? Desiring without body? What if you have to touch to see?",
+    galleryImages: ["/images/portfolio/gallery/please-touch-agial/1.jpg", "/images/portfolio/gallery/please-touch-agial/2.jpg", "/images/portfolio/gallery/please-touch-agial/3.jpg", "/images/portfolio/gallery/please-touch-agial/4.jpg", "/images/portfolio/gallery/please-touch-agial/5.jpg"],
   },
   {
     id: 17,
@@ -189,6 +223,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "best-of-please-touch",
     image: "/images/portfolio/best-of-please-touch.jpg",
+    description: "Best of \"Please Touch\" -- an interactive art performance at Station Beirut, curated by Agial Art Gallery. Nadine Abou Zaki sculpted blindfolded in the dark, questioning the role of image as a contemporary tool and the physical act of touching in artistic creation. Credits: Concept by Nadine Abou Zaki, Living sculptures by Lisa Chehade, Textile recreation by Bshara Atallah, Film by Muriel Aboulrouss, Lighting by Alaa Minawi.",
+    galleryImages: ["/images/portfolio/gallery/best-of-please-touch/1.jpg", "/images/portfolio/gallery/best-of-please-touch/2.jpg", "/images/portfolio/gallery/best-of-please-touch/3.jpg", "/images/portfolio/gallery/best-of-please-touch/4.jpg", "/images/portfolio/gallery/best-of-please-touch/5.jpg"],
   },
   {
     id: 18,
@@ -198,6 +234,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "please-touch-living-sculptures-2014",
     image: "/images/portfolio/please-touch-living-2014.jpg",
+    description: "An interactive performance with living sculptures at Station Beirut (2014). Hidden under brown fabric designed by Bshara Atallah, the living sculpture (Lisa Chehade) moved when touched and transformed into other sculptural forms. Curated by Agial Art Gallery.",
+    galleryImages: ["/images/portfolio/gallery/please-touch-living-sculptures-2014/1.jpg", "/images/portfolio/gallery/please-touch-living-sculptures-2014/2.jpg", "/images/portfolio/gallery/please-touch-living-sculptures-2014/3.jpg", "/images/portfolio/gallery/please-touch-living-sculptures-2014/4.jpg", "/images/portfolio/gallery/please-touch-living-sculptures-2014/5.jpg"],
   },
   {
     id: 19,
@@ -207,6 +245,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "please-touch-sculptures-2014",
     image: "/images/portfolio/please-touch-sculptures-2014.jpg",
+    description: "\"Please Touch\" sculpture exhibition at Station Beirut (2014). This collection of sculptures was created blindfolded, focusing on inner perception rather than visual form. The sculptures invite tactile exploration, redefining the relationship between viewer and artwork. Curated by Agial Art Gallery.",
+    galleryImages: ["/images/portfolio/gallery/please-touch-sculptures-2014/1.jpg", "/images/portfolio/gallery/please-touch-sculptures-2014/2.jpg", "/images/portfolio/gallery/please-touch-sculptures-2014/3.jpg", "/images/portfolio/gallery/please-touch-sculptures-2014/4.jpg", "/images/portfolio/gallery/please-touch-sculptures-2014/5.jpg"],
   },
   {
     id: 20,
@@ -216,6 +256,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Art Performances",
     slug: "please-touch-film",
     image: "/images/portfolio/please-touch-film.jpg",
+    description: "\"Please Touch\" is an expressionistic film portraying the artist's emotions while sculpting blindfolded in the dark. All sounds and images are extracted from her universe. Directed by Muriel Aboulrouss, produced by Denise Jabbour, edited by Liliane Hanbali.",
+    galleryImages: ["/images/portfolio/gallery/please-touch-film/1.jpg"],
   },
   {
     id: 21,
@@ -225,6 +267,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Authored Books",
     slug: "de-femme-a-homme",
     image: "/images/portfolio/de-femme-a-homme.jpg",
+    description: "\"De femme a homme\" -- Sur l'actuel feminin, Recits et correspondance avec Pierre-Marie Hasse. First edition, L'Harmattan, Paris 2012. An intimate epistolary work exploring femininity, identity, and the dialogue between woman and man through personal narratives and philosophical correspondence.",
+    galleryImages: ["/images/portfolio/gallery/de-femme-a-homme/1.jpg"],
   },
   {
     id: 22,
@@ -234,6 +278,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Sculptures",
     slug: "public-monuments",
     image: "/images/portfolio/public-monuments.jpg",
+    description: "A collection of monumental public sculptures installed across Lebanon and the UAE. These permanent stone sculptures were inaugurated as part of \"Beirut World Book Capital\" in 2010, including \"The Garden of Dialogue\" near the French Cultural Center in Beirut, created as a tribute to Lebanese writers and poets.",
+    galleryImages: ["/images/portfolio/gallery/public-monuments/1.jpg", "/images/portfolio/gallery/public-monuments/2.jpg", "/images/portfolio/gallery/public-monuments/3.jpg", "/images/portfolio/gallery/public-monuments/4.jpg", "/images/portfolio/gallery/public-monuments/5.jpg"],
   },
   {
     id: 23,
@@ -243,6 +289,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Authored Books",
     slug: "le-lieu-et-le-corps",
     image: "/images/portfolio/le-lieu-et-le-corps.jpg",
+    description: "\"Le Lieu et le corps\" -- edition bilingue francais-arabe, L'Harmattan, Paris, 2010. How have new technologies transformed our relationship to time, space, self and other? How have they changed our conception of place? And how does the loss of place announce the death of the body and the extinction of desire? How to communicate without a body? How to desire without desire?",
+    galleryImages: ["/images/portfolio/gallery/le-lieu-et-le-corps/1.jpg"],
   },
   {
     id: 24,
@@ -252,6 +300,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Sculptures",
     slug: "and-i-fly-off",
     image: "/images/portfolio/and-i-fly-off.jpg",
+    description: "\"Et je m'envole\" (And I fly off) -- exhibited at Surface Libre, Lebanon in 2008 with 26 sculptures in stone and wood. To give body to abstract tensions of desire. An impetus towards other incarnations of the self. To remain oneself while turning into many. To make time physical, tangible, palpable. Privilege of the art. And I fly off... The elsewhere imagined.",
+    galleryImages: ["/images/portfolio/gallery/and-i-fly-off/1.jpg", "/images/portfolio/gallery/and-i-fly-off/2.jpg", "/images/portfolio/gallery/and-i-fly-off/3.jpg", "/images/portfolio/gallery/and-i-fly-off/4.jpg", "/images/portfolio/gallery/and-i-fly-off/5.jpg"],
   },
   {
     id: 25,
@@ -261,6 +311,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Authored Books",
     slug: "introduction-aux-epitres",
     image: "/images/portfolio/introduction-aux-epitres.jpg",
+    description: "\"Introduction aux Epitres de la Sagesse\" -- L'esoterisme druze a la lumiere de la doctrine de Cankara, L'Harmattan, Paris, 2006. A comparative study between Druze Tawhid philosophy and Cankara's Advaita Vedanta, exploring the Absolute, the relationship of the world to the Absolute, and deliverance. The first work to establish a comparison between these two intimately close yet geographically distant doctrines.",
+    galleryImages: ["/images/portfolio/gallery/introduction-aux-epitres/1.jpg"],
   },
   {
     id: 26,
@@ -270,6 +322,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Sculptures",
     slug: "the-one-acts",
     image: "/images/portfolio/the-one-acts.jpg",
+    description: "\"L'un regarde, l'autre agit\" (The one acts, the other contemplates) -- exhibition at Espace SD, Beirut, 2004. Catalogue text by Nazih Khater: \"Nadine Abou Zaki sculpts with cold insolence and unyielding precision -- a geometer of simple, legible forms, an unconditional devotee of clean lines that determine concrete, stable, and fulfilled volumes. Stone and wood are her materials, veined and taut, almost refractory yet capable of great docility.\"",
+    galleryImages: ["/images/portfolio/gallery/the-one-acts/1.jpg", "/images/portfolio/gallery/the-one-acts/2.jpg", "/images/portfolio/gallery/the-one-acts/3.jpg", "/images/portfolio/gallery/the-one-acts/4.jpg", "/images/portfolio/gallery/the-one-acts/5.jpg"],
   },
   {
     id: 27,
@@ -279,6 +333,8 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Sculptures",
     slug: "towers-of-silence",
     image: "/images/portfolio/towers-of-silence.jpg",
+    description: "\"Tours du Silence\" (Towers of Silence) -- exhibition at Espace SD, Beirut, 2002. Catalogue text by Aref Rayess: \"Conceived with sobriety, the sculptures reflect her spirit and world -- a world rich with a variety of geometric forms, rigorously constructed and articulated. They express an architectural sculptural sense engaging the viewer in a silence equal to that of the artist at work before raw matter. A certain talent and a promising future.\"",
+    galleryImages: ["/images/portfolio/gallery/towers-of-silence/1.jpg", "/images/portfolio/gallery/towers-of-silence/2.jpg", "/images/portfolio/gallery/towers-of-silence/3.jpg", "/images/portfolio/gallery/towers-of-silence/4.jpg", "/images/portfolio/gallery/towers-of-silence/5.jpg"],
   },
 ];
 
