@@ -173,7 +173,7 @@ export default function PortfolioDetailPage({
           </span>
 
           {item.description && (
-            <p className="font-[family-name:var(--font-body)] text-base md:text-lg leading-[1.9] text-[var(--foreground)]/50 font-light">
+            <p className="font-[family-name:var(--font-body)] text-base md:text-lg leading-[1.9] text-[var(--foreground)]/80 font-light">
               {item.description}
             </p>
           )}
@@ -203,7 +203,7 @@ export default function PortfolioDetailPage({
                   alt={`${item.title} — ${i + 1}`}
                   width={600}
                   height={450}
-                  className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 filter brightness-[0.85] group-hover:brightness-100"
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
             ))}
@@ -226,7 +226,7 @@ export default function PortfolioDetailPage({
               <span className="text-[var(--muted)] text-[0.65rem] uppercase tracking-[0.2em] font-[family-name:var(--font-body)] group-hover:text-[var(--accent)] transition-colors duration-500">
                 &larr; Previous
               </span>
-              <span className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.06em] text-[var(--foreground)]/60 group-hover:text-[var(--foreground)] transition-colors duration-500">
+              <span className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.06em] text-[var(--foreground)]/80 group-hover:text-[var(--foreground)] transition-colors duration-500">
                 {prevItem.title}
               </span>
             </Link>
@@ -242,7 +242,7 @@ export default function PortfolioDetailPage({
               <span className="text-[var(--muted)] text-[0.65rem] uppercase tracking-[0.2em] font-[family-name:var(--font-body)] group-hover:text-[var(--accent)] transition-colors duration-500">
                 Next &rarr;
               </span>
-              <span className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.06em] text-[var(--foreground)]/60 group-hover:text-[var(--foreground)] transition-colors duration-500">
+              <span className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.06em] text-[var(--foreground)]/80 group-hover:text-[var(--foreground)] transition-colors duration-500">
                 {nextItem.title}
               </span>
             </Link>

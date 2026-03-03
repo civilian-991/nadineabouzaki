@@ -46,7 +46,7 @@ export default function Navbar() {
     `font-[family-name:var(--font-body)] text-[0.65rem] tracking-[0.22em] uppercase font-medium transition-all duration-500 ${
       pathname === href
         ? "text-[var(--accent)]"
-        : "text-[var(--foreground)]/40 hover:text-[var(--foreground)]"
+        : "text-[var(--foreground)]/70 hover:text-[var(--foreground)]"
     }`;
 
   return (
@@ -81,7 +81,7 @@ export default function Navbar() {
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block px-5 py-2.5 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.18em] text-[var(--foreground)]/60 uppercase font-medium transition-all duration-300 hover:text-[var(--accent)] hover:pl-7"
+                            className="block px-5 py-2.5 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.18em] text-[var(--foreground)]/80 uppercase font-medium transition-all duration-300 hover:text-[var(--accent)] hover:pl-7"
                           >
                             {child.label}
                           </Link>
@@ -118,7 +118,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   className={`block py-3 font-[family-name:var(--font-body)] text-[0.7rem] tracking-[0.2em] uppercase font-medium ${
-                    pathname === link.href ? "text-[var(--accent)]" : "text-[var(--foreground)]/60"
+                    pathname === link.href ? "text-[var(--accent)]" : "text-[var(--foreground)]/80"
                   }`}
                 >
                   {link.label}
@@ -129,7 +129,7 @@ export default function Navbar() {
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block py-2 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.15em] text-[var(--foreground)]/50 uppercase font-medium hover:text-[var(--accent)]"
+                        className="block py-2 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.15em] text-[var(--foreground)]/70 uppercase font-medium hover:text-[var(--accent)]"
                       >
                         {child.label}
                       </Link>

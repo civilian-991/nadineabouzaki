@@ -108,7 +108,7 @@ function PortfolioContent() {
                   {item.title}
                 </h3>
                 {item.venue && (
-                  <p className="text-white/60 text-sm font-[family-name:var(--font-body)] font-light">
+                  <p className="text-white/80 text-sm font-[family-name:var(--font-body)] font-light">
                     {item.venue}
                   </p>
                 )}

@@ -275,7 +275,7 @@ export default function HomePage() {
               <SplitText text={lastName} />
             </h1>
             <div className="hero-accent-line h-px w-12 bg-[var(--accent)] origin-left mt-5 mb-4" />
-            <p className="hero-tagline font-[family-name:var(--font-body)] text-[0.65rem] text-white/70 tracking-[0.3em] uppercase font-medium">
+            <p className="hero-tagline font-[family-name:var(--font-body)] text-[0.65rem] text-white/85 tracking-[0.3em] uppercase font-medium">
               {siteConfig.tagline.replace(/,\s*/g, " \u2003\u00B7\u2003")}
             </p>
             <div className="hero-social mt-6">
@@ -284,10 +284,10 @@ export default function HomePage() {
           </div>
 
           <div className="scroll-indicator absolute bottom-10 right-8 md:right-12 flex flex-col items-center gap-3">
-            <span className="font-[family-name:var(--font-body)] text-[0.55rem] uppercase tracking-[0.35em] text-white/40 font-medium">
+            <span className="font-[family-name:var(--font-body)] text-[0.55rem] uppercase tracking-[0.35em] text-white/60 font-medium">
               Scroll
             </span>
-            <div className="h-10 w-px bg-white/15 overflow-hidden">
+            <div className="h-10 w-px bg-white/25 overflow-hidden">
               <div
                 className="scroll-line h-full w-full bg-[var(--accent)]/60 origin-top"
                 style={{ transform: "scaleY(0)" }}
@@ -392,7 +392,7 @@ export default function HomePage() {
                       {item.title}
                     </h3>
                     {item.venue && (
-                      <p className="text-white/60 text-sm mt-1.5 font-[family-name:var(--font-body)] font-light">
+                      <p className="text-white/80 text-sm mt-1.5 font-[family-name:var(--font-body)] font-light">
                         {item.venue}
                       </p>
                     )}

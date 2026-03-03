@@ -66,7 +66,7 @@ export default function VideosPage() {
                     src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
                     alt={video.title}
                     fill
-                    className="object-cover transition-all duration-700 group-hover:scale-105 filter brightness-[0.65] group-hover:brightness-90"
+                    className="object-cover transition-all duration-700 group-hover:scale-105 filter brightness-[0.85] group-hover:brightness-100"
                     unoptimized
                   />
 
@@ -74,7 +74,7 @@ export default function VideosPage() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="relative flex items-center justify-center w-14 h-14 border border-white/15 bg-black/20 backdrop-blur-sm transition-all duration-500 group-hover:border-[var(--accent)]/40 group-hover:scale-110">
                       <svg width="12" height="14" viewBox="0 0 14 16" fill="none">
-                        <path d="M14 8L0 16V0L14 8Z" fill="currentColor" className="text-white/60 transition-all duration-500 group-hover:text-[var(--accent)]" />
+                        <path d="M14 8L0 16V0L14 8Z" fill="currentColor" className="text-white/80 transition-all duration-500 group-hover:text-[var(--accent)]" />
                       </svg>
                     </div>
                   </div>
@@ -82,7 +82,7 @@ export default function VideosPage() {
 
                 {/* Info */}
                 <div className="px-5 py-4 border-t border-white/[0.03]">
-                  <h3 className="font-[family-name:var(--font-display)] text-[0.8rem] text-[var(--foreground)]/70 tracking-[0.06em] uppercase font-normal mb-1 transition-colors duration-500 group-hover:text-[var(--foreground)]">
+                  <h3 className="font-[family-name:var(--font-display)] text-[0.8rem] text-[var(--foreground)]/90 tracking-[0.06em] uppercase font-normal mb-1 transition-colors duration-500 group-hover:text-[var(--foreground)]">
                     {video.title}
                   </h3>
                   <p className="font-[family-name:var(--font-body)] text-[0.7rem] text-[var(--muted)] font-light">

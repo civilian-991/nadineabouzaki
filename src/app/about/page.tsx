@@ -88,7 +88,7 @@ export default function AboutPage() {
                 src={sculptureItem.image}
                 alt="Sculpture"
                 fill
-                className="object-cover filter brightness-[0.7]"
+                className="object-cover filter brightness-[0.9]"
                 sizes="300px"
               />
             </div>
@@ -108,7 +108,7 @@ export default function AboutPage() {
               {biography.education.map((item, i) => (
                 <p
                   key={i}
-                  className="text-[var(--foreground)]/60 text-[0.95rem] leading-relaxed font-light"
+                  className="text-[var(--foreground)]/80 text-[0.95rem] leading-relaxed font-light"
                 >
                   {item}
                 </p>
@@ -126,7 +126,7 @@ export default function AboutPage() {
                 Research
               </h2>
             </div>
-            <p className="text-[var(--foreground)]/60 text-lg leading-relaxed font-light">
+            <p className="text-[var(--foreground)]/80 text-lg leading-relaxed font-light">
               {biography.research}
             </p>
           </div>
@@ -142,7 +142,7 @@ export default function AboutPage() {
               </h2>
             </div>
             <div className="pull-quote py-2">
-              <p className="font-[family-name:var(--font-display)] text-[clamp(1.15rem,2.2vw,1.6rem)] leading-[1.55] font-normal italic text-[var(--foreground)]/85">
+              <p className="font-[family-name:var(--font-display)] text-[clamp(1.15rem,2.2vw,1.6rem)] leading-[1.55] font-normal italic text-[var(--foreground)]">
                 {biography.artisticPractice}
               </p>
             </div>
@@ -158,7 +158,7 @@ export default function AboutPage() {
                 Impact
               </h2>
             </div>
-            <p className="text-[var(--foreground)]/60 text-lg leading-relaxed font-light">
+            <p className="text-[var(--foreground)]/80 text-lg leading-relaxed font-light">
               {biography.socialImpact}
             </p>
           </div>
@@ -184,7 +184,7 @@ export default function AboutPage() {
               {biography.achievements.map((item, i) => (
                 <div key={i} className="flex items-start gap-5 group">
                   <span className="mt-2.5 block w-px h-3.5 bg-[var(--accent-soft)]/30 shrink-0 transition-all duration-500 group-hover:h-6 group-hover:bg-[var(--accent)]" />
-                  <p className="text-[var(--foreground)]/50 text-[0.95rem] leading-relaxed font-light transition-colors duration-500 group-hover:text-[var(--foreground)]/75">
+                  <p className="text-[var(--foreground)]/70 text-[0.95rem] leading-relaxed font-light transition-colors duration-500 group-hover:text-[var(--foreground)]">
                     {item}
                   </p>
                 </div>
