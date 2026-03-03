@@ -24,7 +24,7 @@ function SplitText({ text, className }: { text: string; className?: string }) {
       {text.split("").map((char, i) => (
         <span
           key={i}
-          className="hero-title-char inline-block"
+          className="hero-char inline-block"
           style={{ willChange: "transform, opacity" }}
         >
           {char === " " ? "\u00A0" : char}
@@ -59,35 +59,34 @@ export default function HomePage() {
         });
       }
 
-      const chars = gsap.utils.toArray<HTMLElement>(".hero-title-char");
-      gsap.set(chars, { opacity: 0, y: 60, rotateX: -60 });
+      const chars = gsap.utils.toArray<HTMLElement>(".hero-char");
+      gsap.set(chars, { opacity: 0, y: 40 });
 
       const tl = gsap.timeline({
         defaults: { ease: "power4.out" },
-        delay: 0.3,
+        delay: 0.5,
       });
 
       tl.to(chars, {
         opacity: 1,
         y: 0,
-        rotateX: 0,
-        duration: 1.4,
-        stagger: 0.025,
+        duration: 1.2,
+        stagger: 0.03,
       })
         .from(
-          ".hero-line-left, .hero-line-right",
-          { scaleX: 0, duration: 1, ease: "power2.inOut" },
-          "-=0.6"
+          ".hero-accent-line",
+          { scaleX: 0, duration: 1.2, ease: "power3.inOut" },
+          "-=0.7"
         )
         .from(
-          ".hero-subtitle",
-          { y: 30, opacity: 0, duration: 1.2, ease: "power3.out" },
+          ".hero-tagline",
+          { y: 20, opacity: 0, duration: 1, ease: "power3.out" },
           "-=0.5"
         )
         .from(
           ".hero-social",
-          { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" },
-          "-=0.6"
+          { y: 15, opacity: 0, duration: 0.8, ease: "power3.out" },
+          "-=0.5"
         )
         .from(".scroll-indicator", { opacity: 0, duration: 1.2 }, "-=0.4");
 
@@ -266,35 +265,31 @@ export default function HomePage() {
             sizes="100vw"
           />
         </div>
-        <div className="hero-overlay" />
+        <div className="hero-overlay-editorial" />
 
-        <div className="hero-content px-6">
-          <h1 className="mb-8 font-[family-name:var(--font-display)] text-[clamp(2.8rem,9vw,8rem)] font-normal tracking-[0.06em] uppercase text-white leading-[0.95]">
-            <SplitText text={firstName} />
-            <br />
-            <SplitText text={lastName} />
-          </h1>
-
-          {/* Decorative lines flanking subtitle */}
-          <div className="flex items-center gap-6 mb-10">
-            <div className="hero-line-left h-px w-16 bg-[var(--accent)]/40 origin-right" />
-            <p className="hero-subtitle font-[family-name:var(--font-body)] text-[clamp(0.65rem,1.2vw,0.8rem)] text-white/40 tracking-[0.35em] uppercase font-medium">
+        <div className="hero-editorial">
+          <div className="hero-editorial-inner">
+            <h1 className="font-[family-name:var(--font-display)] text-[clamp(2rem,5vw,4rem)] font-normal tracking-[0.08em] uppercase text-white leading-[1.1]">
+              <SplitText text={firstName} />
+              <br />
+              <SplitText text={lastName} />
+            </h1>
+            <div className="hero-accent-line h-px w-12 bg-[var(--accent)] origin-left mt-5 mb-4" />
+            <p className="hero-tagline font-[family-name:var(--font-body)] text-[0.65rem] text-white/70 tracking-[0.3em] uppercase font-medium">
               {siteConfig.tagline.replace(/,\s*/g, " \u2003\u00B7\u2003")}
             </p>
-            <div className="hero-line-right h-px w-16 bg-[var(--accent)]/40 origin-left" />
+            <div className="hero-social mt-6">
+              <SocialLinks links={socialLinks} size="md" />
+            </div>
           </div>
 
-          <div className="hero-social">
-            <SocialLinks links={socialLinks} size="md" />
-          </div>
-
-          <div className="scroll-indicator absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-            <span className="font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.35em] text-white/15 font-medium">
+          <div className="scroll-indicator absolute bottom-10 right-8 md:right-12 flex flex-col items-center gap-3">
+            <span className="font-[family-name:var(--font-body)] text-[0.55rem] uppercase tracking-[0.35em] text-white/40 font-medium">
               Scroll
             </span>
-            <div className="h-10 w-px bg-white/[0.06] overflow-hidden">
+            <div className="h-10 w-px bg-white/15 overflow-hidden">
               <div
-                className="scroll-line h-full w-full bg-[var(--accent)]/30 origin-top"
+                className="scroll-line h-full w-full bg-[var(--accent)]/60 origin-top"
                 style={{ transform: "scaleY(0)" }}
               />
             </div>
@@ -311,15 +306,14 @@ export default function HomePage() {
               className="featured-image relative overflow-hidden"
               style={{ clipPath: "inset(0 0 0 0)" }}
             >
-              <div className="aspect-[4/5] relative">
-                <Image
-                  src={featuredItem.image}
-                  alt={featuredItem.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
+              <Image
+                src={featuredItem.image}
+                alt={featuredItem.title}
+                width={800}
+                height={1000}
+                className="w-full h-auto"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
 
             {/* Text */}
@@ -389,7 +383,7 @@ export default function HomePage() {
                   alt={item.title}
                   width={440}
                   height={360}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto"
                 />
                 <div className="overlay">
                   <div>
@@ -398,11 +392,11 @@ export default function HomePage() {
                       {item.title}
                     </h3>
                     {item.venue && (
-                      <p className="text-white/35 text-sm mt-1.5 font-[family-name:var(--font-body)] font-light">
+                      <p className="text-white/60 text-sm mt-1.5 font-[family-name:var(--font-body)] font-light">
                         {item.venue}
                       </p>
                     )}
-                    <p className="text-[var(--accent)]/60 text-xs mt-2.5 font-[family-name:var(--font-body)] tracking-[0.15em] font-medium">
+                    <p className="text-[var(--accent)] text-xs mt-2.5 font-[family-name:var(--font-body)] tracking-[0.15em] font-medium">
                       {item.year}
                     </p>
                   </div>

@@ -99,7 +99,7 @@ function PortfolioContent() {
               alt={item.title}
               width={440}
               height={360}
-              className="w-full h-full object-cover"
+              className="w-full h-auto"
             />
             <div className="overlay">
               <div>
@@ -108,11 +108,11 @@ function PortfolioContent() {
                   {item.title}
                 </h3>
                 {item.venue && (
-                  <p className="text-white/35 text-sm font-[family-name:var(--font-body)] font-light">
+                  <p className="text-white/60 text-sm font-[family-name:var(--font-body)] font-light">
                     {item.venue}
                   </p>
                 )}
-                <p className="text-[var(--accent)]/60 text-xs mt-2.5 font-[family-name:var(--font-body)] tracking-[0.15em] font-medium">
+                <p className="text-[var(--accent)] text-xs mt-2.5 font-[family-name:var(--font-body)] tracking-[0.15em] font-medium">
                   {item.year}
                 </p>
               </div>

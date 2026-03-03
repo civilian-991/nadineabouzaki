@@ -75,16 +75,18 @@ export default function Navbar() {
                     <span className="ml-1 text-[0.45rem] opacity-30">&#9662;</span>
                   </Link>
                   {dropdownOpen && (
-                    <div className="absolute top-full left-0 mt-3 min-w-[220px] border border-white/[0.04] bg-[var(--background)]/95 py-3 shadow-2xl backdrop-blur-2xl">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block px-5 py-2.5 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.18em] text-[var(--foreground)]/30 uppercase font-medium transition-all duration-300 hover:text-[var(--accent)] hover:pl-7"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                    <div className="absolute top-full left-0 pt-3 min-w-[220px]">
+                      <div className="border border-white/10 bg-[var(--background)]/95 py-3 shadow-2xl backdrop-blur-2xl">
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="block px-5 py-2.5 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.18em] text-[var(--foreground)]/60 uppercase font-medium transition-all duration-300 hover:text-[var(--accent)] hover:pl-7"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -110,24 +112,24 @@ export default function Navbar() {
 
         {/* Mobile nav */}
         {mobileOpen && (
-          <div className="border-t border-white/[0.04] py-8 md:hidden">
+          <div className="border-t border-white/10 py-8 md:hidden">
             {navLinks.map((link) => (
               <div key={link.href}>
                 <Link
                   href={link.href}
                   className={`block py-3 font-[family-name:var(--font-body)] text-[0.7rem] tracking-[0.2em] uppercase font-medium ${
-                    pathname === link.href ? "text-[var(--accent)]" : "text-[var(--foreground)]/40"
+                    pathname === link.href ? "text-[var(--accent)]" : "text-[var(--foreground)]/60"
                   }`}
                 >
                   {link.label}
                 </Link>
                 {link.children && (
-                  <div className="ml-4 border-l border-white/[0.04] pl-4">
+                  <div className="ml-4 border-l border-white/10 pl-4">
                     {link.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block py-2 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.15em] text-[var(--foreground)]/25 uppercase font-medium hover:text-[var(--accent)]"
+                        className="block py-2 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.15em] text-[var(--foreground)]/50 uppercase font-medium hover:text-[var(--accent)]"
                       >
                         {child.label}
                       </Link>

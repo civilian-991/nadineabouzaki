@@ -80,13 +80,14 @@ export default function NewsDetailPage({
         <div
           ref={imageRef}
           className="relative w-full overflow-hidden mb-12"
-          style={{ aspectRatio: "16/10", opacity: 0 }}
+          style={{ opacity: 0 }}
         >
           <Image
             src={item.image}
             alt={item.title}
-            fill
-            className="object-cover"
+            width={1200}
+            height={800}
+            className="w-full h-auto"
             priority
           />
         </div>

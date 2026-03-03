@@ -10,7 +10,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-white/[0.03] bg-[var(--background)]">
+    <footer className="relative border-t border-white/10 bg-[var(--background)]">
       {/* Decorative gradient line */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 h-px"
@@ -32,7 +32,7 @@ export default function Footer() {
             </p>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="inline-block mt-4 text-[var(--accent)]/60 text-sm font-light tracking-wide transition-colors duration-500 hover:text-[var(--accent)]"
+              className="inline-block mt-4 text-[var(--accent)] text-sm font-light tracking-wide transition-colors duration-500 hover:text-[var(--foreground)]"
             >
               {siteConfig.email}
             </a>
@@ -54,7 +54,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-[var(--foreground)]/30 text-sm font-light transition-colors duration-400 hover:text-[var(--foreground)]/70"
+                  className="text-[var(--foreground)]/60 text-sm font-light transition-colors duration-400 hover:text-[var(--foreground)]"
                 >
                   {link.label}
                 </Link>
@@ -72,13 +72,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between pt-10 border-t border-white/[0.03]">
-          <p className="font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.15em] text-[var(--foreground)]/12 uppercase font-medium">
+        <div className="flex flex-col sm:flex-row items-center justify-between pt-10 border-t border-white/10">
+          <p className="font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.15em] text-[var(--foreground)]/40 uppercase font-medium">
             &copy; {new Date().getFullYear()} {siteConfig.domain}
           </p>
           <button
             onClick={scrollToTop}
-            className="mt-4 sm:mt-0 inline-flex items-center gap-3 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.2em] text-[var(--foreground)]/20 uppercase font-medium transition-colors duration-500 hover:text-[var(--accent)]"
+            className="mt-4 sm:mt-0 inline-flex items-center gap-3 font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.2em] text-[var(--foreground)]/40 uppercase font-medium transition-colors duration-500 hover:text-[var(--accent)]"
           >
             Back to top
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
