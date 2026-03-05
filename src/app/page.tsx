@@ -253,17 +253,18 @@ export default function HomePage() {
       <section ref={heroRef} className="hero-section">
         <div
           ref={heroImageRef}
-          className="absolute inset-0 will-change-transform"
-          style={{ top: "-10%", height: "120%" }}
+          className="absolute inset-0 will-change-transform flex items-center justify-center pt-16"
         >
-          <Image
-            src="/images/hero/cover.jpg"
-            alt={siteConfig.name}
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
+          <div className="relative w-full max-w-[1000px] h-full max-h-[1000px]">
+            <Image
+              src="/images/hero/cover.png"
+              alt={siteConfig.name}
+              fill
+              className="object-contain object-center"
+              priority
+              sizes="1000px"
+            />
+          </div>
         </div>
         <div className="hero-overlay-editorial" />
 
