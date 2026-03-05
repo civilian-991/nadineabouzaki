@@ -59,13 +59,13 @@ export default function NewsPage() {
             >
               <div className="overflow-hidden bg-[var(--surface)] transition-colors duration-500 group-hover:bg-[var(--surface-hover)]">
                 {/* Image */}
-                <div className="relative w-full overflow-hidden">
+                <div className="relative w-full h-[240px] overflow-hidden">
                   <Image
                     src={item.image}
                     alt={item.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   {/* Date overlay */}
                   <div className="absolute bottom-0 left-0 px-4 py-2.5 bg-[var(--background)]/80 backdrop-blur-sm">
