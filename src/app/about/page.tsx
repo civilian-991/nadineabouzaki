@@ -96,7 +96,7 @@ export default function AboutPage() {
           {biography.slice(1).map((paragraph, i) => (
             <p
               key={i}
-              className="reveal text-[var(--foreground)]/85 text-lg leading-[1.9] font-light mb-10"
+              className="reveal text-[var(--foreground)]/85 text-lg leading-[1.9] font-light mb-5"
             >
               {paragraph}
             </p>
