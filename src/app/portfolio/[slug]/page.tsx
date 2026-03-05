@@ -125,58 +125,56 @@ export default function PortfolioDetailPage({
         </Link>
       </div>
 
-      {/* Hero image */}
-      <div
-        ref={imageRef}
-        className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 mb-16 opacity-0"
-      >
-        <div className="relative w-full overflow-hidden">
-          <Image
-            src={item.image}
-            alt={item.title}
-            width={1200}
-            height={800}
-            className="w-full h-auto object-cover"
-            priority
-          />
-        </div>
-      </div>
-
-      {/* Details */}
-      <div
-        ref={textRef}
-        className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12"
-      >
-        <div className="max-w-3xl">
-          <div className="divider-line mb-8" />
-
-          <h1 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl lg:text-4xl uppercase tracking-[0.08em] font-normal text-[var(--foreground)] mb-4">
-            {item.title}
-          </h1>
-
-          <div className="flex flex-wrap items-center gap-4 mb-8">
-            {item.venue && (
-              <p className="font-[family-name:var(--font-body)] text-base text-[var(--muted)] font-light">
-                {item.venue}
-              </p>
-            )}
-            {item.venue && (
-              <span className="w-1 h-1 rounded-full bg-[var(--accent-soft)]/40" />
-            )}
-            <p className="font-[family-name:var(--font-body)] text-base text-[var(--accent)] tracking-[0.15em] font-medium">
-              {item.year}
-            </p>
+      {/* Hero: image + details side by side */}
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          {/* Image */}
+          <div
+            ref={imageRef}
+            className="relative overflow-hidden opacity-0"
+          >
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={600}
+              height={500}
+              className="w-full h-auto object-cover"
+              priority
+            />
           </div>
 
-          <span className="inline-block px-3 py-1.5 border border-[var(--foreground)]/8 text-[var(--muted)] text-xs uppercase tracking-[0.2em] font-[family-name:var(--font-body)] mb-10">
-            {item.category}
-          </span>
+          {/* Details */}
+          <div ref={textRef} className="lg:pt-4">
+            <div className="divider-line mb-8" />
 
-          {item.description && (
-            <p className="font-[family-name:var(--font-body)] text-base md:text-lg leading-[1.9] text-[var(--foreground)]/80 font-light">
-              {item.description}
-            </p>
-          )}
+            <h1 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl lg:text-3xl uppercase tracking-[0.08em] font-normal text-[var(--foreground)] mb-4">
+              {item.title}
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-4 mb-6">
+              {item.venue && (
+                <p className="font-[family-name:var(--font-body)] text-base text-[var(--muted)] font-light">
+                  {item.venue}
+                </p>
+              )}
+              {item.venue && (
+                <span className="w-1 h-1 rounded-full bg-[var(--accent-soft)]/40" />
+              )}
+              <p className="font-[family-name:var(--font-body)] text-base text-[var(--accent)] tracking-[0.15em] font-medium">
+                {item.year}
+              </p>
+            </div>
+
+            <span className="inline-block px-3 py-1.5 border border-[var(--foreground)]/8 text-[var(--muted)] text-xs uppercase tracking-[0.2em] font-[family-name:var(--font-body)] mb-8">
+              {item.category}
+            </span>
+
+            {item.description && (
+              <p className="font-[family-name:var(--font-body)] text-base leading-[1.9] text-[var(--foreground)]/80 font-light">
+                {item.description}
+              </p>
+            )}
+          </div>
         </div>
       </div>
 

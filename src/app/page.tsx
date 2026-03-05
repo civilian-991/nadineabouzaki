@@ -413,10 +413,10 @@ export default function HomePage() {
           <h2 className="section-title">About the Artist</h2>
           <div className="divider-line mx-auto mb-12" />
           <p className="section-heading text-[clamp(1.6rem,3.5vw,2.8rem)] mb-10 leading-[1.3]">
-            {biography.intro}
+            {biography[0].split(".").slice(0, 1).join(".")}.
           </p>
           <p className="text-[var(--muted)] text-base leading-relaxed font-light max-w-2xl mx-auto mb-12">
-            {biography.artisticPractice}
+            {biography[2]}
           </p>
           <Link
             href="/about"
