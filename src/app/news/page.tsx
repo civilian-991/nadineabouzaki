@@ -43,7 +43,7 @@ export default function NewsPage() {
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16">
           <span className="section-number block mb-4">Latest</span>
-          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">
+          <h1 className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">
             News
           </h1>
           <div className="divider-line" />
@@ -69,7 +69,7 @@ export default function NewsPage() {
                   />
                   {/* Date overlay */}
                   <div className="absolute bottom-0 left-0 px-4 py-2.5 bg-[var(--background)]/80 backdrop-blur-sm">
-                    <span className="font-[family-name:var(--font-body)] text-[0.55rem] tracking-[0.25em] uppercase text-[var(--accent)] font-medium">
+                    <span className="font-[family-name:var(--font-body)] text-xs tracking-[0.25em] uppercase text-[var(--accent)] font-medium">
                       {item.date}
                     </span>
                   </div>
@@ -77,12 +77,9 @@ export default function NewsPage() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="font-[family-name:var(--font-display)] text-[0.85rem] text-[var(--foreground)]/90 tracking-[0.04em] uppercase font-normal leading-snug mb-3 transition-colors duration-500 group-hover:text-[var(--foreground)]">
+                  <h3 className="font-[family-name:var(--font-display)] text-[0.85rem] text-[var(--foreground)]/90 tracking-[0.04em] uppercase font-normal leading-snug transition-colors duration-500 group-hover:text-[var(--foreground)]">
                     {item.title}
                   </h3>
-                  <p className="font-[family-name:var(--font-body)] text-sm leading-relaxed text-[var(--muted)] font-light">
-                    {item.description}
-                  </p>
                 </div>
               </div>
             </Link>

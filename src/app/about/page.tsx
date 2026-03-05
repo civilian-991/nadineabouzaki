@@ -71,7 +71,7 @@ export default function AboutPage() {
         {/* Page Header */}
         <div className="reveal mb-8">
           <span className="section-number block mb-4">About</span>
-          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">
+          <h1 className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">
             Biography
           </h1>
           <div className="divider-line line-reveal origin-left" />
@@ -100,7 +100,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
             <div className="flex items-start gap-3">
               <span className="section-number mt-0.5">01</span>
-              <h2 className="font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium whitespace-nowrap">
+              <h2 className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] text-[var(--accent)] font-medium whitespace-nowrap">
                 Education
               </h2>
             </div>
@@ -122,7 +122,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
             <div className="flex items-start gap-3">
               <span className="section-number mt-0.5">02</span>
-              <h2 className="font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium whitespace-nowrap">
+              <h2 className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] text-[var(--accent)] font-medium whitespace-nowrap">
                 Research
               </h2>
             </div>
@@ -137,7 +137,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
             <div className="flex items-start gap-3">
               <span className="section-number mt-0.5">03</span>
-              <h2 className="font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium whitespace-nowrap">
+              <h2 className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] text-[var(--accent)] font-medium whitespace-nowrap">
                 Practice
               </h2>
             </div>
@@ -154,7 +154,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
             <div className="flex items-start gap-3">
               <span className="section-number mt-0.5">04</span>
-              <h2 className="font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium whitespace-nowrap">
+              <h2 className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] text-[var(--accent)] font-medium whitespace-nowrap">
                 Impact
               </h2>
             </div>
@@ -176,7 +176,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-16">
             <div className="flex items-start gap-3">
               <span className="section-number mt-0.5">05</span>
-              <h2 className="font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium whitespace-nowrap">
+              <h2 className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] text-[var(--accent)] font-medium whitespace-nowrap">
                 Achievements
               </h2>
             </div>

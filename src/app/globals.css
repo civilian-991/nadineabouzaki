@@ -151,8 +151,7 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(10, 10, 8, 0.1) 0%, rgba(10, 10, 8, 0.15) 40%, rgba(10, 10, 8, 0.65) 85%, rgba(10, 10, 8, 0.85) 100%),
-    linear-gradient(90deg, rgba(10, 10, 8, 0.5) 0%, transparent 50%);
+    linear-gradient(180deg, rgba(10, 10, 8, 0.05) 0%, rgba(10, 10, 8, 0.1) 50%, rgba(10, 10, 8, 0.6) 85%, rgba(10, 10, 8, 0.85) 100%);
   z-index: 1;
 }
 
@@ -165,8 +164,12 @@ body {
 .hero-editorial-inner {
   position: absolute;
   bottom: clamp(4rem, 10vh, 7rem);
-  left: clamp(1.5rem, 5vw, 4rem);
-  max-width: 480px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-char {
@@ -212,7 +215,7 @@ body {
    ═══════════════════════════════════════ */
 .section-number {
   font-family: var(--font-display), sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   letter-spacing: 0.15em;
   color: var(--accent);
   opacity: 0.8;
@@ -359,7 +362,7 @@ body {
   cursor: none;
   transition: all 0.5s var(--ease-out-expo);
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-weight: 500;
@@ -457,7 +460,7 @@ body {
    ═══════════════════════════════════════ */
 .section-title {
   font-family: var(--font-display), sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.3em;
   color: var(--accent);

@@ -51,12 +51,12 @@ export default function NewsDetailPage({
           <h1 className="font-[family-name:var(--font-display)] text-lg uppercase tracking-[0.2em] text-[var(--foreground)] mb-4">
             Not Found
           </h1>
-          <p className="font-[family-name:var(--font-body)] text-sm text-[var(--muted)] mb-8">
+          <p className="font-[family-name:var(--font-body)] text-base text-[var(--muted)] mb-8">
             This news item could not be found.
           </p>
           <Link
             href="/news"
-            className="font-[family-name:var(--font-body)] text-xs tracking-[0.2em] uppercase text-[var(--accent)] hover:text-[var(--foreground)] transition-colors duration-300"
+            className="font-[family-name:var(--font-body)] text-sm tracking-[0.2em] uppercase text-[var(--accent)] hover:text-[var(--foreground)] transition-colors duration-300"
           >
             &larr; Back to News
           </Link>
@@ -71,7 +71,7 @@ export default function NewsDetailPage({
         {/* Back link */}
         <Link
           href="/news"
-          className="inline-block font-[family-name:var(--font-body)] text-[0.65rem] tracking-[0.25em] uppercase text-[var(--accent)] hover:text-[var(--foreground)] transition-colors duration-300 mb-12"
+          className="inline-block font-[family-name:var(--font-body)] text-sm tracking-[0.25em] uppercase text-[var(--accent)] hover:text-[var(--foreground)] transition-colors duration-300 mb-12"
         >
           &larr; Back to News
         </Link>
@@ -95,7 +95,7 @@ export default function NewsDetailPage({
         {/* Content */}
         <div ref={contentRef}>
           {/* Date */}
-          <span className="block font-[family-name:var(--font-body)] text-[0.6rem] tracking-[0.3em] uppercase text-[var(--accent)] font-medium mb-6">
+          <span className="block font-[family-name:var(--font-body)] text-xs tracking-[0.3em] uppercase text-[var(--accent)] font-medium mb-6">
             {item.date}
           </span>
 
@@ -121,10 +121,10 @@ export default function NewsDetailPage({
                 href={`/news/${prevItem.slug}`}
                 className="group flex-1 min-w-0"
               >
-                <span className="block font-[family-name:var(--font-body)] text-[0.55rem] tracking-[0.25em] uppercase text-[var(--accent)] mb-2">
+                <span className="block font-[family-name:var(--font-body)] text-xs tracking-[0.25em] uppercase text-[var(--accent)] mb-2">
                   Previous
                 </span>
-                <span className="block font-[family-name:var(--font-display)] text-[0.8rem] uppercase tracking-[0.04em] text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors duration-300 leading-snug truncate">
+                <span className="block font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.04em] text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors duration-300 leading-snug truncate">
                   {prevItem.title}
                 </span>
               </Link>
@@ -137,10 +137,10 @@ export default function NewsDetailPage({
                 href={`/news/${nextItem.slug}`}
                 className="group flex-1 min-w-0 text-right"
               >
-                <span className="block font-[family-name:var(--font-body)] text-[0.55rem] tracking-[0.25em] uppercase text-[var(--accent)] mb-2">
+                <span className="block font-[family-name:var(--font-body)] text-xs tracking-[0.25em] uppercase text-[var(--accent)] mb-2">
                   Next
                 </span>
-                <span className="block font-[family-name:var(--font-display)] text-[0.8rem] uppercase tracking-[0.04em] text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors duration-300 leading-snug truncate">
+                <span className="block font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.04em] text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors duration-300 leading-snug truncate">
                   {nextItem.title}
                 </span>
               </Link>

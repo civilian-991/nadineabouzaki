@@ -97,7 +97,7 @@ export default function PortfolioDetailPage({
   if (!item) {
     return (
       <section className="pt-32 pb-24 min-h-screen flex flex-col items-center justify-center">
-        <p className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--muted)] mb-8">
+        <p className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.3em] text-[var(--muted)] mb-8">
           Work not found
         </p>
         <Link
@@ -163,12 +163,12 @@ export default function PortfolioDetailPage({
             {item.venue && (
               <span className="w-1 h-1 rounded-full bg-[var(--accent-soft)]/40" />
             )}
-            <p className="font-[family-name:var(--font-body)] text-sm text-[var(--accent)] tracking-[0.15em] font-medium">
+            <p className="font-[family-name:var(--font-body)] text-base text-[var(--accent)] tracking-[0.15em] font-medium">
               {item.year}
             </p>
           </div>
 
-          <span className="inline-block px-3 py-1.5 border border-[var(--foreground)]/8 text-[var(--muted)] text-[0.65rem] uppercase tracking-[0.2em] font-[family-name:var(--font-body)] mb-10">
+          <span className="inline-block px-3 py-1.5 border border-[var(--foreground)]/8 text-[var(--muted)] text-xs uppercase tracking-[0.2em] font-[family-name:var(--font-body)] mb-10">
             {item.category}
           </span>
 
@@ -184,7 +184,7 @@ export default function PortfolioDetailPage({
       {hasGallery && (
         <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 mt-20">
           <div className="mb-10">
-            <span className="font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] text-[var(--accent)] font-medium">
+            <span className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] text-[var(--accent)] font-medium">
               Gallery
             </span>
           </div>
@@ -223,7 +223,7 @@ export default function PortfolioDetailPage({
               href={`/portfolio/${prevItem.slug}`}
               className="group flex flex-col gap-1"
             >
-              <span className="text-[var(--muted)] text-[0.65rem] uppercase tracking-[0.2em] font-[family-name:var(--font-body)] group-hover:text-[var(--accent)] transition-colors duration-500">
+              <span className="text-[var(--muted)] text-xs uppercase tracking-[0.2em] font-[family-name:var(--font-body)] group-hover:text-[var(--accent)] transition-colors duration-500">
                 &larr; Previous
               </span>
               <span className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.06em] text-[var(--foreground)]/80 group-hover:text-[var(--foreground)] transition-colors duration-500">
@@ -239,7 +239,7 @@ export default function PortfolioDetailPage({
               href={`/portfolio/${nextItem.slug}`}
               className="group flex flex-col gap-1 items-end text-right"
             >
-              <span className="text-[var(--muted)] text-[0.65rem] uppercase tracking-[0.2em] font-[family-name:var(--font-body)] group-hover:text-[var(--accent)] transition-colors duration-500">
+              <span className="text-[var(--muted)] text-xs uppercase tracking-[0.2em] font-[family-name:var(--font-body)] group-hover:text-[var(--accent)] transition-colors duration-500">
                 Next &rarr;
               </span>
               <span className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.06em] text-[var(--foreground)]/80 group-hover:text-[var(--foreground)] transition-colors duration-500">

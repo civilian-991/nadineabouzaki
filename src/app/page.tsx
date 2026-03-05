@@ -269,13 +269,7 @@ export default function HomePage() {
 
         <div className="hero-editorial">
           <div className="hero-editorial-inner">
-            <h1 className="font-[family-name:var(--font-display)] text-[clamp(2rem,5vw,4rem)] font-normal tracking-[0.08em] uppercase text-white leading-[1.1]">
-              <SplitText text={firstName} />
-              <br />
-              <SplitText text={lastName} />
-            </h1>
-            <div className="hero-accent-line h-px w-12 bg-[var(--accent)] origin-left mt-5 mb-4" />
-            <p className="hero-tagline font-[family-name:var(--font-body)] text-[0.65rem] text-white/85 tracking-[0.3em] uppercase font-medium">
+            <p className="hero-tagline font-[family-name:var(--font-body)] text-sm text-white/85 tracking-[0.3em] uppercase font-medium">
               {siteConfig.tagline.replace(/,\s*/g, " \u2003\u00B7\u2003")}
             </p>
             <div className="hero-social mt-6">
@@ -284,7 +278,7 @@ export default function HomePage() {
           </div>
 
           <div className="scroll-indicator absolute bottom-10 right-8 md:right-12 flex flex-col items-center gap-3">
-            <span className="font-[family-name:var(--font-body)] text-[0.55rem] uppercase tracking-[0.35em] text-white/60 font-medium">
+            <span className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.35em] text-white/60 font-medium">
               Scroll
             </span>
             <div className="h-10 w-px bg-white/25 overflow-hidden">
@@ -328,7 +322,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/portfolio"
-                className="group inline-flex items-center gap-5 font-[family-name:var(--font-body)] text-[0.7rem] uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
+                className="group inline-flex items-center gap-5 font-[family-name:var(--font-body)] text-sm uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
               >
                 View Portfolio
                 <span className="block w-8 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-14 group-hover:bg-[var(--foreground)]" />
@@ -390,11 +384,11 @@ export default function HomePage() {
                       {item.title}
                     </h3>
                     {item.venue && (
-                      <p className="text-white/80 text-sm mt-1.5 font-[family-name:var(--font-body)] font-light">
+                      <p className="text-white/80 text-base mt-1.5 font-[family-name:var(--font-body)] font-light">
                         {item.venue}
                       </p>
                     )}
-                    <p className="text-[var(--accent)] text-xs mt-2.5 font-[family-name:var(--font-body)] tracking-[0.15em] font-medium">
+                    <p className="text-[var(--accent)] text-sm mt-2.5 font-[family-name:var(--font-body)] tracking-[0.15em] font-medium">
                       {item.year}
                     </p>
                   </div>
@@ -426,7 +420,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/about"
-            className="group inline-flex items-center gap-5 font-[family-name:var(--font-body)] text-[0.7rem] uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
+            className="group inline-flex items-center gap-5 font-[family-name:var(--font-body)] text-sm uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
           >
             Read Full Biography
             <span className="block w-8 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-14 group-hover:bg-[var(--foreground)]" />

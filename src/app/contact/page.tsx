@@ -44,7 +44,7 @@ export default function ContactPage() {
         {/* Page Header */}
         <div className="mb-24">
           <span className="section-number block mb-4">Get in Touch</span>
-          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">
+          <h1 className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">
             Contact
           </h1>
           <div className="divider-line" />
@@ -68,7 +68,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] mb-3 text-[var(--muted)] font-medium"
+                    className="block font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] mb-3 text-[var(--muted)] font-medium"
                   >
                     Name
                   </label>
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] mb-3 text-[var(--muted)] font-medium"
+                    className="block font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] mb-3 text-[var(--muted)] font-medium"
                   >
                     Email
                   </label>
@@ -100,7 +100,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] mb-3 text-[var(--muted)] font-medium"
+                    className="block font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] mb-3 text-[var(--muted)] font-medium"
                   >
                     Subject
                   </label>
@@ -116,7 +116,7 @@ export default function ContactPage() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] mb-3 text-[var(--muted)] font-medium"
+                    className="block font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] mb-3 text-[var(--muted)] font-medium"
                   >
                     Message
                   </label>
@@ -131,7 +131,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="group inline-flex items-center gap-5 py-4 font-[family-name:var(--font-body)] text-[0.65rem] uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
+                  className="group inline-flex items-center gap-5 py-4 font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:text-[var(--foreground)]"
                 >
                   Send Message
                   <span className="block w-6 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-10 group-hover:bg-[var(--foreground)]" />
@@ -144,7 +144,7 @@ export default function ContactPage() {
           <div className="contact-info lg:pt-4">
             <div className="space-y-16">
               <div>
-                <h3 className="font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] mb-6 text-[var(--accent)] font-medium">
+                <h3 className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] mb-6 text-[var(--accent)] font-medium">
                   Inquiries
                 </h3>
                 <p className="text-[var(--foreground)]/50 text-base leading-relaxed font-light">
@@ -154,7 +154,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <h3 className="font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] mb-6 text-[var(--accent)] font-medium">
+                <h3 className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] mb-6 text-[var(--accent)] font-medium">
                   Email
                 </h3>
                 <a
@@ -166,7 +166,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <h3 className="font-[family-name:var(--font-body)] text-[0.6rem] uppercase tracking-[0.25em] mb-6 text-[var(--accent)] font-medium">
+                <h3 className="font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.25em] mb-6 text-[var(--accent)] font-medium">
                   Follow
                 </h3>
                 <SocialLinks links={socialLinks} size="sm" />

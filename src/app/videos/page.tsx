@@ -42,7 +42,7 @@ export default function VideosPage() {
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16">
           <span className="section-number block mb-4">Archive</span>
-          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">Videos</h1>
+          <h1 className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">Videos</h1>
           <div className="divider-line" />
         </div>
 
@@ -85,7 +85,7 @@ export default function VideosPage() {
                   <h3 className="font-[family-name:var(--font-display)] text-[0.8rem] text-[var(--foreground)]/90 tracking-[0.06em] uppercase font-normal mb-1 transition-colors duration-500 group-hover:text-[var(--foreground)]">
                     {video.title}
                   </h3>
-                  <p className="font-[family-name:var(--font-body)] text-[0.7rem] text-[var(--muted)] font-light">
+                  <p className="font-[family-name:var(--font-body)] text-sm text-[var(--muted)] font-light">
                     {video.venue}
                     {video.venue && " \u00B7 "}
                     {video.year}

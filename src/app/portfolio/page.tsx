@@ -74,7 +74,7 @@ function PortfolioContent() {
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 mb-16">
         <div className="mb-16">
           <span className="section-number block mb-4">Collection</span>
-          <h1 className="font-[family-name:var(--font-display)] text-[0.75rem] uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">Portfolio</h1>
+          <h1 className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">Portfolio</h1>
           <div className="divider-line" />
         </div>
 
@@ -108,11 +108,11 @@ function PortfolioContent() {
                   {item.title}
                 </h3>
                 {item.venue && (
-                  <p className="text-white/80 text-sm font-[family-name:var(--font-body)] font-light">
+                  <p className="text-white/80 text-base font-[family-name:var(--font-body)] font-light">
                     {item.venue}
                   </p>
                 )}
-                <p className="text-[var(--accent)] text-xs mt-2.5 font-[family-name:var(--font-body)] tracking-[0.15em] font-medium">
+                <p className="text-[var(--accent)] text-sm mt-2.5 font-[family-name:var(--font-body)] tracking-[0.15em] font-medium">
                   {item.year}
                 </p>
               </div>
