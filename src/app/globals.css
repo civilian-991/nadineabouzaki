@@ -9,8 +9,8 @@
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
   --color-rose: var(--rose);
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  --font-display: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --font-body: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 :root {
@@ -51,7 +51,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -211,7 +211,7 @@ body {
    SECTION NUMBER (editorial)
    ═══════════════════════════════════════ */
 .section-number {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 0.65rem;
   letter-spacing: 0.15em;
   color: var(--accent);
@@ -358,7 +358,7 @@ body {
   color: var(--foreground);
   cursor: none;
   transition: all 0.5s var(--ease-out-expo);
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -456,7 +456,7 @@ body {
    SECTION TITLES
    ═══════════════════════════════════════ */
 .section-title {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.3em;
@@ -466,7 +466,7 @@ body {
 }
 
 .section-heading {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 400;
   font-style: italic;
   line-height: 1.15;
@@ -484,7 +484,7 @@ body {
   border: none;
   border-bottom: 1px solid rgba(237, 233, 227, 0.08);
   color: var(--foreground);
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 300;
   transition: border-color 0.5s var(--ease-out-expo);

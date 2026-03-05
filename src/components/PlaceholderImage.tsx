@@ -35,7 +35,7 @@ export default function PlaceholderImage({ title, className = "", aspectRatio = 
         `,
       }}
     >
-      <span className="px-4 text-center font-[family-name:var(--font-ubuntu-condensed)] text-sm tracking-wider text-white/30 uppercase">
+      <span className="px-4 text-center text-sm tracking-wider text-white/30 uppercase">
         {title}
       </span>
     </div>

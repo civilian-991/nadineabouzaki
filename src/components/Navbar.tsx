@@ -43,7 +43,7 @@ export default function Navbar() {
   }, [pathname]);
 
   const linkClass = (href: string) =>
-    `font-[family-name:var(--font-body)] text-[0.65rem] tracking-[0.22em] uppercase font-medium transition-all duration-500 ${
+    `font-[family-name:var(--font-body)] text-[0.65rem] tracking-[0.22em] uppercase font-medium transition-all duration-500 inline-flex items-center leading-none ${
       pathname === href
         ? "text-[var(--accent)]"
         : "text-[var(--foreground)]/70 hover:text-[var(--foreground)]"
@@ -66,7 +66,7 @@ export default function Navbar() {
               link.children ? (
                 <div
                   key={link.href}
-                  className="relative"
+                  className="relative flex items-center"
                   onMouseEnter={() => setDropdownOpen(true)}
                   onMouseLeave={() => setDropdownOpen(false)}
                 >

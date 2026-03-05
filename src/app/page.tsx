@@ -318,7 +318,6 @@ export default function HomePage() {
 
             {/* Text */}
             <div className="featured-text flex flex-col justify-center">
-              <span className="section-number mb-6">01</span>
               <h2 className="section-title">Featured Work</h2>
               <div className="divider-line mb-10" />
               <h3 className="section-heading text-[clamp(2rem,4vw,3.5rem)] mb-8">
@@ -347,7 +346,6 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-12">
           <div className="portfolio-header flex flex-col md:flex-row md:items-end md:justify-between mb-16">
             <div>
-              <span className="section-number block mb-4">02</span>
               <h2 className="section-title mb-0">Selected Works</h2>
             </div>
             <div className="divider-line mt-6 md:mt-0 md:mb-1" />
@@ -418,7 +416,6 @@ export default function HomePage() {
           }}
         />
         <div className="about-teaser relative mx-auto max-w-[900px] px-6 sm:px-8 text-center">
-          <span className="section-number block mb-6">03</span>
           <h2 className="section-title">About the Artist</h2>
           <div className="divider-line mx-auto mb-12" />
           <p className="section-heading text-[clamp(1.6rem,3.5vw,2.8rem)] mb-10 leading-[1.3]">
