@@ -13,7 +13,6 @@ export default function NewsPage() {
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const loaderRef = useRef<HTMLDivElement>(null);
 
   const visibleItems = newsItems.slice(0, visibleCount);
   const hasMore = visibleCount < newsItems.length;
@@ -41,26 +40,14 @@ export default function NewsPage() {
     );
   }, []);
 
-  // Intersection observer for infinite scroll
-  useEffect(() => {
-    if (!loaderRef.current || !hasMore) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisibleCount((prev) => {
-            const next = Math.min(prev + ITEMS_PER_PAGE, newsItems.length);
-            requestAnimationFrame(() => animateNewCards(prev));
-            return next;
-          });
-        }
-      },
-      { rootMargin: "200px" }
-    );
-
-    observer.observe(loaderRef.current);
-    return () => observer.disconnect();
-  }, [hasMore, animateNewCards]);
+  const loadMore = () => {
+    const prev = visibleCount;
+    const next = Math.min(prev + ITEMS_PER_PAGE, newsItems.length);
+    setVisibleCount(next);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => animateNewCards(prev));
+    });
+  };
 
   const updateScrollButtons = () => {
     if (!sliderRef.current) return;
@@ -175,12 +162,15 @@ export default function NewsPage() {
         </div>
       </div>
 
-      {/* Scroll trigger to load more */}
+      {/* Load more button */}
       {hasMore && (
-        <div ref={loaderRef} className="flex justify-center pt-16">
-          <span className="text-xs tracking-[0.2em] uppercase text-[var(--muted)]/50 font-medium">
-            Loading more...
-          </span>
+        <div className="flex justify-center pt-16">
+          <button
+            onClick={loadMore}
+            className="px-8 py-3 border border-[var(--foreground)]/15 rounded-full text-xs tracking-[0.2em] uppercase text-[var(--muted)] font-medium transition-all duration-500 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+          >
+            Load more
+          </button>
         </div>
       )}
     </section>
