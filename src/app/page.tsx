@@ -166,7 +166,7 @@ export default function HomePage() {
       if (items.length > 0) {
         gsap.from(items, {
           scrollTrigger: {
-            trigger: ".portfolio-grid",
+            trigger: ".portfolio-section",
             start: "top 85%",
             toggleActions: "play none none none",
           },
@@ -260,7 +260,7 @@ export default function HomePage() {
             src="/images/hero/cover.jpg"
             alt={siteConfig.name}
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
             sizes="100vw"
           />
@@ -359,7 +359,7 @@ export default function HomePage() {
         </div>
 
         <div className="mx-auto max-w-[1400px] px-2 sm:px-4">
-          <div className="portfolio-grid">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {portfolioItems.map((item, i) => (
               <Link
                 key={item.id}

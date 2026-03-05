@@ -143,8 +143,15 @@ body {
   position: relative;
   height: 100vh;
   height: 100dvh;
+  max-height: 900px;
   width: 100%;
   overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .hero-section {
+    max-height: none;
+  }
 }
 
 .hero-overlay-editorial {
@@ -221,40 +228,6 @@ body {
   opacity: 0.8;
 }
 
-/* ═══════════════════════════════════════
-   PORTFOLIO GRID
-   ═══════════════════════════════════════ */
-.portfolio-grid {
-  columns: 3;
-  column-gap: 32px;
-  padding: 0 12px;
-}
-
-.portfolio-grid .portfolio-item {
-  break-inside: avoid;
-  margin-bottom: 32px;
-}
-
-@media (max-width: 1024px) {
-  .portfolio-grid {
-    columns: 2;
-    column-gap: 28px;
-  }
-  .portfolio-grid .portfolio-item {
-    margin-bottom: 28px;
-  }
-}
-
-@media (max-width: 640px) {
-  .portfolio-grid {
-    columns: 1;
-    column-gap: 0;
-    padding: 0;
-  }
-  .portfolio-grid .portfolio-item {
-    margin-bottom: 24px;
-  }
-}
 
 .portfolio-item {
   position: relative;
@@ -447,14 +420,6 @@ body {
   }
 }
 
-/* ═══════════════════════════════════════
-   NEWS GRID
-   ═══════════════════════════════════════ */
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2px;
-}
 
 /* ═══════════════════════════════════════
    SECTION TITLES
