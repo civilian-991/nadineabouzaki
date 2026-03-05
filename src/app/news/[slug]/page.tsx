@@ -108,7 +108,7 @@ export default function NewsDetailPage({
           <div className="divider-line mb-10" />
 
           {/* Description */}
-          <p className="font-[family-name:var(--font-body)] text-base md:text-lg leading-[1.9] text-[var(--muted)] font-light max-w-[750px]">
+          <p className="font-[family-name:var(--font-body)] text-base leading-[1.9] text-[var(--muted)] font-light max-w-[750px]">
             {item.description}
           </p>
         </div>

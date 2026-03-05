@@ -74,8 +74,8 @@ export default function AboutPage() {
         </div>
 
         {/* Image + first paragraph */}
-        <div className="reveal grid grid-cols-1 lg:grid-cols-[1fr_0.45fr] gap-12 lg:gap-20 mb-16 mt-16 items-start">
-          <p className="text-[var(--foreground)]/85 text-lg leading-[1.9] font-light">
+        <div className="reveal grid grid-cols-1 lg:grid-cols-[1fr_0.45fr] gap-12 lg:gap-20 mb-8 mt-16 items-start">
+          <p className="text-[var(--foreground)]/85 text-base leading-[1.9] font-light">
             {biography[0]}
           </p>
           <div className="relative overflow-hidden hidden lg:block">
@@ -96,7 +96,7 @@ export default function AboutPage() {
           {biography.slice(1).map((paragraph, i) => (
             <p
               key={i}
-              className="reveal text-[var(--foreground)]/85 text-lg leading-[1.9] font-light mb-5"
+              className="reveal text-[var(--foreground)]/85 text-base leading-[1.9] font-light mb-5"
             >
               {paragraph}
             </p>
