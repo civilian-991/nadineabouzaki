@@ -91,16 +91,18 @@ function PortfolioContent() {
         </div>
       </div>
 
-      <div ref={gridRef} className="portfolio-grid max-w-[1400px] mx-auto px-2 sm:px-4">
+      <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {filteredItems.map((item) => (
           <Link key={item.id} href={`/portfolio/${item.slug}`} className="portfolio-item">
-            <Image
-              src={item.image}
-              alt={item.title}
-              width={440}
-              height={360}
-              className="w-full h-auto"
-            />
+            <div className="relative w-full h-[300px]">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            </div>
             <div className="overlay">
               <div>
                 <div className="overlay-line" />
