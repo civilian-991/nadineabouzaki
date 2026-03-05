@@ -56,8 +56,8 @@ export default function NewsPage() {
       href={`/news/${item.slug}`}
       className="news-card group block shrink-0 w-[320px]"
     >
-      <div className="overflow-hidden bg-[var(--surface)] rounded-lg transition-colors duration-500 group-hover:bg-[var(--surface-hover)]">
-        <div className="relative w-full h-[200px] overflow-hidden">
+      <div className="overflow-hidden bg-[var(--surface)] rounded-lg transition-colors duration-500 group-hover:bg-[var(--surface-hover)] h-[340px] flex flex-col">
+        <div className="relative w-full h-[200px] shrink-0 overflow-hidden">
           <Image
             src={item.image}
             alt={item.title}
@@ -66,8 +66,8 @@ export default function NewsPage() {
             sizes="320px"
           />
         </div>
-        <div className="p-5">
-          <h3 className="text-sm text-[var(--foreground)]/90 tracking-[0.04em] uppercase font-normal leading-snug transition-colors duration-500 group-hover:text-[var(--foreground)] mb-2.5 line-clamp-2">
+        <div className="p-5 flex flex-col justify-between flex-1">
+          <h3 className="text-sm text-[var(--foreground)]/90 tracking-[0.04em] uppercase font-normal leading-snug transition-colors duration-500 group-hover:text-[var(--foreground)] line-clamp-2">
             {item.title}
           </h3>
           <div className="flex items-center gap-2">
