@@ -1,16 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { newsItems } from "@/lib/data";
 import gsap from "gsap";
 
+const ITEMS_PER_PAGE = 8;
+
 export default function NewsPage() {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const loaderRef = useRef<HTMLDivElement>(null);
 
+  const visibleItems = newsItems.slice(0, visibleCount);
+  const hasMore = visibleCount < newsItems.length;
+
+  // Animate cards on mount
   useEffect(() => {
     if (!sliderRef.current) return;
     const cards = sliderRef.current.querySelectorAll(".news-card");
@@ -20,6 +28,39 @@ export default function NewsPage() {
       { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: "power3.out" }
     );
   }, []);
+
+  // Animate new cards when more are loaded
+  const animateNewCards = useCallback((startIndex: number) => {
+    if (!sliderRef.current) return;
+    const allCards = sliderRef.current.querySelectorAll(".news-card");
+    const newCards = Array.from(allCards).slice(startIndex);
+    gsap.fromTo(
+      newCards,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: "power3.out" }
+    );
+  }, []);
+
+  // Intersection observer for infinite scroll
+  useEffect(() => {
+    if (!loaderRef.current || !hasMore) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount((prev) => {
+            const next = Math.min(prev + ITEMS_PER_PAGE, newsItems.length);
+            requestAnimationFrame(() => animateNewCards(prev));
+            return next;
+          });
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(loaderRef.current);
+    return () => observer.disconnect();
+  }, [hasMore, animateNewCards]);
 
   const updateScrollButtons = () => {
     if (!sliderRef.current) return;
@@ -34,7 +75,7 @@ export default function NewsPage() {
     el.addEventListener("scroll", updateScrollButtons, { passive: true });
     updateScrollButtons();
     return () => el.removeEventListener("scroll", updateScrollButtons);
-  }, []);
+  }, [visibleCount]);
 
   const scroll = (direction: "left" | "right") => {
     if (!sliderRef.current) return;
@@ -45,10 +86,10 @@ export default function NewsPage() {
     });
   };
 
-  // Split items into two rows
-  const half = Math.ceil(newsItems.length / 2);
-  const topRow = newsItems.slice(0, half);
-  const bottomRow = newsItems.slice(half);
+  // Split visible items into two rows
+  const half = Math.ceil(visibleItems.length / 2);
+  const topRow = visibleItems.slice(0, half);
+  const bottomRow = visibleItems.slice(half);
 
   const renderCard = (item: (typeof newsItems)[0]) => (
     <Link
@@ -133,6 +174,15 @@ export default function NewsPage() {
           </div>
         </div>
       </div>
+
+      {/* Scroll trigger to load more */}
+      {hasMore && (
+        <div ref={loaderRef} className="flex justify-center pt-16">
+          <span className="text-xs tracking-[0.2em] uppercase text-[var(--muted)]/50 font-medium">
+            Loading more...
+          </span>
+        </div>
+      )}
     </section>
   );
 }
