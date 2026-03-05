@@ -91,7 +91,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Theater & Dance",
     slug: "perceptions",
     image: "/images/portfolio/perceptions.jpg",
-    description: "\"Perceptions\" is Lebanon's first Theater by the Blind and Deaf -- a groundbreaking theatrical production bringing together blind, visually impaired, deaf, and hard-of-hearing performers. This pioneering work challenges conventional perceptions of disability and artistic expression, creating a space where different sensory experiences converge on stage.",
+    description: "Perceptions is Lebanon's first Theater by the Blind and Deaf -- a groundbreaking theatrical production bringing together blind, visually impaired, deaf, and hard-of-hearing performers. This pioneering work challenges conventional perceptions of disability and artistic expression, creating a space where different sensory experiences converge on stage.",
     galleryImages: ["/images/portfolio/gallery/perceptions/1.jpg", "/images/portfolio/gallery/perceptions/2.jpg", "/images/portfolio/gallery/perceptions/3.jpg", "/images/portfolio/gallery/perceptions/4.jpg", "/images/portfolio/gallery/perceptions/5.jpg"],
   },
   {
