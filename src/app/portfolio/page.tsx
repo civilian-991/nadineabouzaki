@@ -91,7 +91,7 @@ function PortfolioContent() {
         </div>
       </div>
 
-      <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {filteredItems.map((item) => (
           <Link key={item.id} href={`/portfolio/${item.slug}`} className="portfolio-item">
             <div className="relative w-full h-[300px]">

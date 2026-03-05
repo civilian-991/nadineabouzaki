@@ -67,19 +67,19 @@ export default function NewsPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  {/* Date overlay */}
-                  <div className="absolute bottom-0 left-0 px-4 py-2.5 bg-[var(--background)]/80 backdrop-blur-sm">
-                    <span className="font-[family-name:var(--font-body)] text-xs tracking-[0.25em] uppercase text-[var(--accent)] font-medium">
-                      {item.date}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="font-[family-name:var(--font-display)] text-[0.85rem] text-[var(--foreground)]/90 tracking-[0.04em] uppercase font-normal leading-snug transition-colors duration-500 group-hover:text-[var(--foreground)]">
+                  <h3 className="font-[family-name:var(--font-display)] text-[0.85rem] text-[var(--foreground)]/90 tracking-[0.04em] uppercase font-normal leading-snug transition-colors duration-500 group-hover:text-[var(--foreground)] mb-3">
                     {item.title}
                   </h3>
+                  <div className="flex items-center gap-2">
+                    <span className="w-4 h-px bg-[var(--accent)]" />
+                    <span className="text-xs tracking-[0.2em] uppercase text-[var(--muted)] font-medium">
+                      {item.date}
+                    </span>
+                  </div>
                 </div>
               </div>
             </Link>

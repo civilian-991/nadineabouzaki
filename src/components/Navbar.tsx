@@ -55,7 +55,7 @@ export default function Navbar() {
         <div className="flex h-20 items-center justify-between">
           <Link
             href="/"
-            className="font-[family-name:var(--font-display)] text-[0.85rem] tracking-[0.12em] text-[var(--foreground)] uppercase font-normal"
+            className="font-[family-name:var(--font-display)] text-lg tracking-[0.12em] text-[var(--foreground)] uppercase font-normal"
           >
             {siteConfig.name}
           </Link>
