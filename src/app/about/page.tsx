@@ -4,16 +4,12 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { biography, portfolioItems } from "@/lib/data";
+import { biography, siteConfig } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const sculptureItem =
-    portfolioItems.find((p) => p.category === "Sculptures") ||
-    portfolioItems[0];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -75,16 +71,23 @@ export default function AboutPage() {
 
         {/* Image + first paragraph */}
         <div className="reveal grid grid-cols-1 lg:grid-cols-[1fr_0.45fr] gap-12 lg:gap-20 mb-8 mt-16 items-start">
-          <p className="text-[var(--foreground)]/85 text-base leading-[1.9] font-light">
-            {biography[0]}
-          </p>
+          <div>
+            {biography.slice(0, 2).map((paragraph, i) => (
+              <p
+                key={i}
+                className="text-[var(--foreground)]/85 text-base leading-[1.9] font-light mb-5 last:mb-0"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
           <div className="relative overflow-hidden hidden lg:block">
             <div className="about-accent-image aspect-[3/4] relative">
               <Image
-                src={sculptureItem.image}
-                alt="Sculpture"
+                src="/images/about/portrait.jpg"
+                alt={siteConfig.name}
                 fill
-                className="object-cover filter brightness-[0.9]"
+                className="object-cover object-top filter brightness-[0.9]"
                 sizes="300px"
               />
             </div>
@@ -93,7 +96,7 @@ export default function AboutPage() {
 
         {/* Remaining paragraphs */}
         <div className="max-w-3xl">
-          {biography.slice(1).map((paragraph, i) => (
+          {biography.slice(2).map((paragraph, i) => (
             <p
               key={i}
               className="reveal text-[var(--foreground)]/85 text-base leading-[1.9] font-light mb-5"

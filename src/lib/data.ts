@@ -340,23 +340,21 @@ export const portfolioItems: PortfolioItem[] = [
 
 export const videoItems: VideoItem[] = [
   { id: 1, title: "Prière de toucher", venue: "INECAT", year: "2023", youtubeId: "pGSWEwTEnIM" },
-  { id: 2, title: "Elephant in the Dark", venue: "MACAM Museum", year: "2020", youtubeId: "V8_sJ8L5hAc" },
-  { id: 3, title: "Please Touch (Prière de Toucher)", venue: "Beirut Art Fair", year: "2020", youtubeId: "XlN7PJHVZlk" },
   { id: 4, title: "The Diary of a Mulberry Tree", venue: "Al Madina Theater", year: "2020", youtubeId: "fYtY4hdasos" },
-  { id: 5, title: "Please Touch (Prière de Toucher)", venue: "Waste Studio", year: "2019", youtubeId: "fQQvJPNaQWU" },
-  { id: 6, title: "Doors. Please Touch", venue: "Sky News Arabiya", year: "2019", youtubeId: "uSL-Bk2vtrs" },
-  { id: 7, title: "Doors. Please Touch", venue: "Al Araby TV", year: "2019", youtubeId: "tE26NyE3Pts" },
-  { id: 8, title: "The Diary of a Mulberry Tree", venue: "Trailer", year: "2017", youtubeId: "IiR9x1REd0c" },
-  { id: 9, title: "Doors. Please Touch", venue: "National Museum of Beirut", year: "2017", youtubeId: "hGTE1nDIE6Y" },
+  { id: 3, title: "Please Touch (Prière de Toucher)", venue: "Beirut Art Fair", year: "2020", youtubeId: "XlN7PJHVZlk" },
+  { id: 2, title: "Elephant in the Dark", venue: "MACAM", year: "2020", youtubeId: "V8_sJ8L5hAc" },
+  { id: 11, title: "Please Touch", venue: "TV interview — Future TV", year: "2016", youtubeId: "2n-ljAGAEWg" },
+  { id: 7, title: "Doors. Please Touch — MACAM", venue: "TV interview — Al Araby TV", year: "2019", youtubeId: "tE26NyE3Pts" },
   { id: 10, title: "Please Touch the Trash", venue: "Beirut International Platform of Dance", year: "2016", youtubeId: "lRkIo7bdEFQ" },
-  { id: 11, title: "Please Touch", venue: "Future TV", year: "2016", youtubeId: "2n-ljAGAEWg" },
+  { id: 5, title: "Please Touch (Prière de Toucher)", venue: "Waste Studio", year: "2019", youtubeId: "fQQvJPNaQWU" },
+  { id: 15, title: "Please Touch", venue: "Sculpting Blindfolded", year: "2014", youtubeId: "acn0FVo538g" },
+  { id: 9, title: "Doors. Please Touch — National Museum of Beirut", venue: "TV interview — LBCI", year: "2017", youtubeId: "hGTE1nDIE6Y" },
+  { id: 16, title: "Please Touch", venue: "Exhibition & Performance", year: "2014", youtubeId: "RIydAu3nEpI" },
+  { id: 14, title: "Please Touch", venue: "Al Hurra TV", year: "2015", youtubeId: "mqZnaEXLzv8" },
+  { id: 8, title: "The Diary of a Mulberry Tree", venue: "Trailer", year: "2017", youtubeId: "IiR9x1REd0c" },
+  { id: 18, title: "Le Lieu et le corps", venue: "MTV", year: "2010", youtubeId: "2CaruHpYFwM" },
   { id: 12, title: "Nazih Khater", venue: "L'homme terrible de la ville", year: "2016", youtubeId: "TnBdmih2ef4" },
   { id: 13, title: "The Father of the Blinds", venue: "", year: "2015", youtubeId: "RHBy8j-V8Vo" },
-  { id: 14, title: "Please Touch", venue: "Al Hurra TV", year: "2015", youtubeId: "mqZnaEXLzv8" },
-  { id: 15, title: "Please Touch", venue: "Sculpting Blindfolded", year: "2014", youtubeId: "acn0FVo538g" },
-  { id: 16, title: "Please Touch", venue: "Exhibition & Performance", year: "2014", youtubeId: "RIydAu3nEpI" },
-  { id: 17, title: "A Women's Uprising", venue: "KorberForum", year: "2013", youtubeId: "Y1ecoU_TWXE" },
-  { id: 18, title: "Le Lieu et le corps", venue: "MTV", year: "2010", youtubeId: "2CaruHpYFwM" },
 ];
 
 export const newsItems: NewsItem[] = [
@@ -705,13 +703,13 @@ export const newsItems: NewsItem[] = [
 ];
 
 export const biography = [
-  "NADINE ABOU ZAKI is a Lebanese-French sculptor, writer and director. She is certified in artistic mediation from the Institut National d\u2019Expression, de Cr\u00e9ation, d\u2019Art et de Transformation (INECAT) and is currently pursuing a Master\u2019s degree in Dramatherapy at Universit\u00e9 Paris Cit\u00e9. She holds a PhD in Philosophy from Sorbonne-Paris IV, and taught Philosophy for nine years at the American University of Beirut. She is a researcher in \u201cHaptic Aesthetics,\u201d \u201cMuseums, Accessibility and Disability\u201d and the \u201cPhilosophy of Sex and Gender\u201d. In 2017, she founded Red Oak, a non-profit organization dedicated to education, art and mental health, with a strong focus on inclusion and access for vulnerable populations and persons with disabilities.",
-  "She is also a member of the Lebanese National Commission for UNESCO.",
-  "Taking total obscurity as a platform of experimentation, she sculpts blindfolded by substituting the sense of sight with that of touch, and inviting the visitors to touch her sculptures in the dark in her interactive performances and exhibitions \u201cPlease Touch\u201d (\u201cPri\u00e8re de Toucher\u201d). The performance was mentioned in \u201cContemporary Art and the Discovery of the Value of Tactility\u201d, a book published by the Omero National Museum of Ancona, Italy.",
-  "As a human rights activist, she used arts and culture to help advance the cause of people with disabilities. In 2018, she launched \u201cDoors. Please Touch\u201d, the first of its kind project in Lebanon to facilitate the accessibility of the blind and visually impaired, and the deaf and hard-hearing persons to the National Museum of Beirut and MACAM Museum. This project is in partnership with the Lebanese Ministry of Culture, the Omero Museum of Ancona, Italy.",
-  "She held a number of performances and solo sculpture exhibitions, and wrote and directed the dance theater performance \u201cThe Diary of a Mulberry Tree\u201d.",
-  "She was granted the Arab Fund for Arts and Culture (AFAC) for \u201cElephant in the Dark\u201d (2019), a blindfold Walk performance, and launched \u201cPerceptions\u201d, the first Theater by the Blind and Deaf in Lebanon. She was selected by the Lebanese Ministry of Culture as the sculptor ambassador for Beirut World Book Capital (2009). Her monumental sculptures are installed in front of the Lebanese Ministry of Tourism, and other public places in Lebanon and the UAE.",
-  "She has been named \u201cChevalier dans l\u2019Ordre des Palmes Acad\u00e9miques\u201d (Knight of Order of the French Academic Palms) by the French Ministry of National Education (2016), and was awarded the \u201cPrix International de la La\u00efcit\u00e9\u201d (The International Secular Award) by the Secular Republican Committee at La Mairie de Paris (2009).",
+  "Nadine Abou Zaki is a Lebanese-French multidisciplinary artist, sculptor, writer and director whose work explores touch, perception, darkness, and the relationship between the body, the artwork and the viewer.",
+  "At the core of her practice is a questioning of the dominance of sight in the experience of art. Working in total darkness, she sculpts blindfolded, replacing vision with touch and allowing form to emerge through a direct bodily encounter with matter. In her interactive performances and exhibitions Please Touch (Pri\u00e8re de Toucher), visitors are invited to move beyond looking and experience sculpture through touch, often in darkness. Her work on tactility was featured in Contemporary Art and the Discovery of the Value of Tactility, published by the Omero National Museum in Ancona, Italy.",
+  "Her practice extends into performance, theatre and participatory work. She wrote and directed the dance-theatre performance The Diary of a Mulberry Tree, received a grant from the Arab Fund for Arts and Culture (AFAC) for Elephant in the Dark, an immersive blindfolded walking performance, and developed Perceptions, a theatre project with blind and Deaf participants.",
+  "Questions of perception, disability and access to art have become an integral part of her work. In 2018, she launched Doors. Please Touch, a pioneering cultural accessibility project in Lebanon developed with museums and cultural institutions to create new ways for people with disabilities to encounter art through tactile, sensory and accessible forms of mediation.",
+  "In 2017, she founded Red Oak, a non-profit organization active in Lebanon and France, developing projects at the intersection of art, education, mental health and cultural inclusion.",
+  "Her artistic practice is informed by a longstanding engagement with philosophy and research. She holds a PhD in Philosophy from Sorbonne\u2013Paris IV and taught Philosophy for nine years at the American University of Beirut. Her research focuses on haptic aesthetics and the relationship between museums, accessibility and disability. She is certified in artistic mediation by INECAT in Paris and is currently pursuing a Master\u2019s degree in Dramatherapy at Universit\u00e9 Paris Cit\u00e9.",
+  "Her sculptures and performances have been presented in Lebanon and internationally, and her monumental works are installed in public spaces in Lebanon and the United Arab Emirates. She is a member of the Lebanese National Commission for UNESCO and was named Chevalier dans l\u2019Ordre des Palmes Acad\u00e9miques by the French Ministry of National Education.",
 ];
 
 export const siteConfig = {
