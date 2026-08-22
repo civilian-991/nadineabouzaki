@@ -40,19 +40,8 @@ export default function AboutPage() {
         });
       });
 
-      const img = document.querySelector(".about-accent-image");
-      if (img) {
-        gsap.to(img, {
-          y: -60,
-          ease: "none",
-          scrollTrigger: {
-            trigger: img,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      }
+      // No parallax on the portrait: it now sits in a text well, so drifting it
+      // out of the wrap would open a gap between the image and the copy.
     }, containerRef);
 
     return () => ctx.revert();
@@ -69,37 +58,26 @@ export default function AboutPage() {
           <div className="divider-line line-reveal origin-left" />
         </div>
 
-        {/* Image + first paragraph */}
-        <div className="reveal grid grid-cols-1 lg:grid-cols-[1fr_0.45fr] gap-12 lg:gap-20 mb-8 mt-16 items-start">
-          <div>
-            {biography.slice(0, 2).map((paragraph, i) => (
-              <p
-                key={i}
-                className="text-[var(--foreground)]/85 text-base leading-[1.9] font-light mb-5 last:mb-0"
-              >
-                {paragraph}
-              </p>
-            ))}
-          </div>
-          <div className="relative overflow-hidden hidden lg:block">
-            <div className="about-accent-image aspect-[3/4] relative">
+        {/* Biography. The portrait floats so the opening paragraphs sit beside
+            it and the rest of the text continues underneath as one column,
+            rather than being split into two blocks of differing measure. */}
+        <div className="max-w-3xl mt-16">
+          <div className="reveal float-right ml-10 mb-6 w-[290px] hidden lg:block">
+            <div className="about-accent-image relative aspect-[3/4] overflow-hidden">
               <Image
                 src="/images/about/portrait.jpg"
                 alt={siteConfig.name}
                 fill
                 className="object-cover object-top filter brightness-[0.9]"
-                sizes="300px"
+                sizes="290px"
               />
             </div>
           </div>
-        </div>
 
-        {/* Remaining paragraphs */}
-        <div className="max-w-3xl">
-          {biography.slice(2).map((paragraph, i) => (
+          {biography.map((paragraph, i) => (
             <p
               key={i}
-              className="reveal text-[var(--foreground)]/85 text-base leading-[1.9] font-light mb-5"
+              className="reveal text-[var(--foreground)]/85 text-base leading-[1.9] font-light mb-5 last:mb-0"
             >
               {paragraph}
             </p>
