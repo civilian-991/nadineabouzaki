@@ -47,7 +47,7 @@ export default function Footer() {
               {[
                 { href: "/portfolio", label: "Portfolio" },
                 { href: "/videos", label: "Videos" },
-                { href: "/news", label: "News" },
+                { href: "/news", label: "News & Highlights" },
                 { href: "/about", label: "About" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (

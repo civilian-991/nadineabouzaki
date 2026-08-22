@@ -6,7 +6,7 @@ import Link from "next/link";
 import { newsItems } from "@/lib/data";
 import gsap from "gsap";
 
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 16;
 
 export default function NewsPage() {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -50,29 +50,36 @@ export default function NewsPage() {
   const renderCard = (item: (typeof newsItems)[0]) => (
     <Link
       key={item.id}
-      href={`/news/${item.slug}`}
+      href={item.href ?? `/news/${item.slug}`}
       className="news-card group block"
     >
-      <div className="overflow-hidden bg-[var(--surface)] rounded-lg transition-colors duration-500 group-hover:bg-[var(--surface-hover)] h-[340px] flex flex-col">
-        <div className="relative w-full h-[200px] shrink-0 overflow-hidden">
-          <Image
-            src={item.image}
-            alt={item.title}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          />
-        </div>
-        <div className="p-5 flex flex-col justify-between flex-1">
-          <h3 className="text-sm text-[var(--foreground)]/90 tracking-[0.04em] uppercase font-normal leading-snug transition-colors duration-500 group-hover:text-[var(--foreground)] line-clamp-2">
-            {item.title}
-          </h3>
+      <div className="overflow-hidden bg-[var(--surface)] rounded-lg transition-colors duration-500 group-hover:bg-[var(--surface-hover)] h-[420px] flex flex-col">
+        {item.image ? (
+          <div className="relative w-full h-[200px] shrink-0 overflow-hidden">
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            />
+          </div>
+        ) : (
+          <div className="w-full h-[200px] shrink-0 bg-[var(--surface-hover)]" />
+        )}
+        <div className="p-5 flex flex-col gap-3 flex-1">
           <div className="flex items-center gap-2">
             <span className="w-4 h-px bg-[var(--accent)]" />
             <span className="text-xs tracking-[0.2em] uppercase text-[var(--muted)] font-medium">
               {item.date}
             </span>
           </div>
+          <h3 className="text-sm text-[var(--foreground)]/90 tracking-[0.04em] uppercase font-normal leading-snug transition-colors duration-500 group-hover:text-[var(--foreground)] line-clamp-2">
+            {item.title}
+          </h3>
+          <p className="font-[family-name:var(--font-body)] text-sm leading-relaxed text-[var(--muted)] font-light line-clamp-4">
+            {item.description}
+          </p>
         </div>
       </div>
     </Link>
@@ -83,7 +90,7 @@ export default function NewsPage() {
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16">
           <h1 className="font-[family-name:var(--font-display)] text-sm uppercase tracking-[0.3em] text-[var(--accent)] font-normal mb-4">
-            News
+            News &amp; Highlights
           </h1>
           <div className="divider-line" />
         </div>

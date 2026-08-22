@@ -3,7 +3,7 @@
 import { use, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { newsItems } from "@/lib/data";
+import { newsArchive } from "@/lib/data";
 import gsap from "gsap";
 
 export default function NewsDetailPage({
@@ -15,11 +15,11 @@ export default function NewsDetailPage({
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const currentIndex = newsItems.findIndex((item) => item.slug === slug);
-  const item = currentIndex !== -1 ? newsItems[currentIndex] : null;
-  const prevItem = currentIndex > 0 ? newsItems[currentIndex - 1] : null;
+  const currentIndex = newsArchive.findIndex((item) => item.slug === slug);
+  const item = currentIndex !== -1 ? newsArchive[currentIndex] : null;
+  const prevItem = currentIndex > 0 ? newsArchive[currentIndex - 1] : null;
   const nextItem =
-    currentIndex < newsItems.length - 1 ? newsItems[currentIndex + 1] : null;
+    currentIndex < newsArchive.length - 1 ? newsArchive[currentIndex + 1] : null;
 
   useEffect(() => {
     if (!item) return;
@@ -58,7 +58,7 @@ export default function NewsDetailPage({
             href="/news"
             className="font-[family-name:var(--font-body)] text-sm tracking-[0.2em] uppercase text-[var(--accent)] hover:text-[var(--foreground)] transition-colors duration-300"
           >
-            &larr; Back to News
+            &larr; Back to News &amp; Highlights
           </Link>
         </div>
       </section>
@@ -73,24 +73,26 @@ export default function NewsDetailPage({
           href="/news"
           className="inline-block font-[family-name:var(--font-body)] text-sm tracking-[0.25em] uppercase text-[var(--accent)] hover:text-[var(--foreground)] transition-colors duration-300 mb-12"
         >
-          &larr; Back to News
+          &larr; Back to News &amp; Highlights
         </Link>
 
         {/* Hero image */}
-        <div
-          ref={imageRef}
-          className="relative w-full overflow-hidden mb-12"
-          style={{ opacity: 0 }}
-        >
-          <Image
-            src={item.image}
-            alt={item.title}
-            width={1200}
-            height={800}
-            className="w-full h-auto"
-            priority
-          />
-        </div>
+        {item.image && (
+          <div
+            ref={imageRef}
+            className="relative w-full overflow-hidden mb-12"
+            style={{ opacity: 0 }}
+          >
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={1200}
+              height={800}
+              className="w-full h-auto"
+              priority
+            />
+          </div>
+        )}
 
         {/* Content */}
         <div ref={contentRef}>

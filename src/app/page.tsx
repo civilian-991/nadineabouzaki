@@ -1,41 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
 import BackToTop from "@/components/BackToTop";
-import {
-  portfolioItems,
-  socialLinks,
-  categories,
-  biography,
-  siteConfig,
-} from "@/lib/data";
-import type { Category } from "@/lib/data";
+import { homeItems, socialLinks, biography, siteConfig } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function SplitText({ text, className }: { text: string; className?: string }) {
-  return (
-    <span className={className} aria-label={text}>
-      {text.split("").map((char, i) => (
-        <span
-          key={i}
-          className="hero-char inline-block"
-          style={{ willChange: "transform, opacity" }}
-        >
-          {char === " " ? "\u00A0" : char}
-        </span>
-      ))}
-    </span>
-  );
-}
-
 export default function HomePage() {
-  const [activeFilter, setActiveFilter] = useState<Category>("All");
   const heroRef = useRef<HTMLDivElement>(null);
   const heroImageRef = useRef<HTMLDivElement>(null);
   const featuredRef = useRef<HTMLDivElement>(null);
@@ -59,36 +35,28 @@ export default function HomePage() {
         });
       }
 
-      const chars = gsap.utils.toArray<HTMLElement>(".hero-char");
-      gsap.set(chars, { opacity: 0, y: 40 });
-
       const tl = gsap.timeline({
-        defaults: { ease: "power4.out" },
+        defaults: { ease: "power3.out" },
         delay: 0.5,
       });
 
-      tl.to(chars, {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        stagger: 0.03,
-      })
-        .from(
-          ".hero-accent-line",
-          { scaleX: 0, duration: 1.2, ease: "power3.inOut" },
-          "-=0.7"
-        )
-        .from(
-          ".hero-tagline",
-          { y: 20, opacity: 0, duration: 1, ease: "power3.out" },
-          "-=0.5"
-        )
-        .from(
+      tl.fromTo(
+        ".hero-tagline",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1 }
+      )
+        .fromTo(
           ".hero-social",
-          { y: 15, opacity: 0, duration: 0.8, ease: "power3.out" },
+          { y: 15, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
           "-=0.5"
         )
-        .from(".scroll-indicator", { opacity: 0, duration: 1.2 }, "-=0.4");
+        .fromTo(
+          ".scroll-indicator",
+          { opacity: 0 },
+          { opacity: 1, duration: 1.2 },
+          "-=0.4"
+        );
 
       gsap.to(".scroll-line", {
         scaleY: 1,
@@ -106,29 +74,37 @@ export default function HomePage() {
   useEffect(() => {
     if (!featuredRef.current) return;
     const ctx = gsap.context(() => {
-      gsap.from(".featured-image", {
-        scrollTrigger: {
-          trigger: ".featured-section",
-          start: "top 75%",
-          toggleActions: "play none none none",
-        },
-        clipPath: "inset(0 100% 0 0)",
-        duration: 1.4,
-        ease: "power3.inOut",
-      });
+      gsap.fromTo(
+        ".featured-image",
+        { clipPath: "inset(0 100% 0 0)" },
+        {
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: 1.4,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: featuredRef.current,
+            start: "top 75%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
-      gsap.from(".featured-text > *", {
-        scrollTrigger: {
-          trigger: ".featured-text",
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power3.out",
-      });
+      gsap.fromTo(
+        ".featured-text > *",
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".featured-text",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     }, featuredRef);
 
     return () => ctx.revert();
@@ -137,45 +113,41 @@ export default function HomePage() {
   // Portfolio section
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".portfolio-header > *", {
-        scrollTrigger: {
-          trigger: ".portfolio-header",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-        y: 25,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.1,
-        ease: "power3.out",
-      });
-
-      gsap.from(".filter-bar", {
-        scrollTrigger: {
-          trigger: ".filter-bar",
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-
-      const items = itemsRef.current.filter(Boolean);
-      if (items.length > 0) {
-        gsap.from(items, {
+      gsap.fromTo(
+        ".portfolio-header > *",
+        { y: 25, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.1,
+          ease: "power3.out",
           scrollTrigger: {
-            trigger: ".portfolio-section",
+            trigger: ".portfolio-header",
             start: "top 85%",
             toggleActions: "play none none none",
           },
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.04,
-          ease: "power3.out",
-        });
+        }
+      );
+
+      const items = itemsRef.current.filter(Boolean);
+      if (items.length > 0) {
+        gsap.fromTo(
+          items,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.04,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: portfolioRef.current,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
       }
     }, portfolioRef);
 
@@ -186,66 +158,26 @@ export default function HomePage() {
   useEffect(() => {
     if (!aboutRef.current) return;
     const ctx = gsap.context(() => {
-      gsap.from(".about-teaser > *", {
-        scrollTrigger: {
-          trigger: ".about-teaser",
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.12,
-        ease: "power3.out",
-      });
+      gsap.fromTo(
+        ".about-teaser > *",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".about-teaser",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     }, aboutRef);
 
     return () => ctx.revert();
   }, []);
-
-  const handleFilter = useCallback(
-    (category: Category) => {
-      if (category === activeFilter) return;
-      setActiveFilter(category);
-
-      const items = itemsRef.current.filter(Boolean);
-      items.forEach((item) => {
-        if (!item) return;
-        const itemCategory = item.dataset.category;
-        const matches = category === "All" || itemCategory === category;
-
-        if (matches) {
-          gsap.to(item, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.5,
-            ease: "power2.out",
-            onStart: () => {
-              item.style.display = "";
-            },
-          });
-        } else {
-          gsap.to(item, {
-            opacity: 0,
-            scale: 0.97,
-            duration: 0.35,
-            ease: "power2.in",
-            onComplete: () => {
-              item.style.display = "none";
-            },
-          });
-        }
-      });
-    },
-    [activeFilter]
-  );
-
-  const featuredItem =
-    portfolioItems.find((p) => p.category === "Sculptures") ||
-    portfolioItems[0];
-
-  const [firstName, ...lastParts] = siteConfig.name.split(" ");
-  const lastName = lastParts.join(" ");
 
   return (
     <>
@@ -290,7 +222,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Featured Work ─── */}
+      {/* ─── Opening statement ─── */}
       <section ref={featuredRef} className="featured-section py-32 md:py-40">
         <div className="mx-auto max-w-[1300px] px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -300,8 +232,8 @@ export default function HomePage() {
               style={{ clipPath: "inset(0 0 0 0)" }}
             >
               <Image
-                src={featuredItem.image}
-                alt={featuredItem.title}
+                src="/images/portfolio/please-touch-agial.jpg"
+                alt="Please Touch — Station Beirut, 2014"
                 width={800}
                 height={1000}
                 className="w-full h-auto"
@@ -311,7 +243,6 @@ export default function HomePage() {
 
             {/* Text */}
             <div className="featured-text flex flex-col justify-center">
-              <h2 className="section-title">Featured Work</h2>
               <div className="divider-line mb-10" />
               <h3 className="section-heading text-[clamp(2rem,4vw,3.5rem)] mb-8">
                 {siteConfig.featuredHeading}
@@ -343,23 +274,11 @@ export default function HomePage() {
             </div>
             <div className="divider-line mt-6 md:mt-0 md:mb-1" />
           </div>
-
-          <div className="filter-bar flex flex-wrap justify-start gap-3 mb-14">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                className={`filter-btn ${activeFilter === cat ? "active" : ""}`}
-                onClick={() => handleFilter(cat)}
-              >
-                {cat === "All" ? "Show All" : cat}
-              </button>
-            ))}
-          </div>
         </div>
 
         <div className="mx-auto max-w-[1400px] px-2 sm:px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {portfolioItems.map((item, i) => (
+            {homeItems.map((item, i) => (
               <Link
                 key={item.id}
                 href={`/portfolio/${item.slug}`}
@@ -394,6 +313,16 @@ export default function HomePage() {
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="flex justify-center pt-16">
+            <Link
+              href="/portfolio"
+              className="group inline-flex items-center gap-5 border border-[var(--foreground)]/15 px-9 py-4 font-[family-name:var(--font-body)] text-sm uppercase tracking-[0.25em] font-medium text-[var(--accent)] transition-all duration-500 hover:border-[var(--accent)] hover:text-[var(--foreground)]"
+            >
+              View Full Portfolio
+              <span className="block w-8 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-14 group-hover:bg-[var(--foreground)]" />
+            </Link>
           </div>
         </div>
       </section>

@@ -12,15 +12,15 @@ const navLinks = [
     label: "Portfolio",
     children: [
       { href: "/portfolio", label: "All" },
-      { href: "/portfolio?category=Theater+%26+Dance", label: "Theater & Dance" },
-      { href: "/portfolio?category=Tactile+Art+Performances", label: "Tactile Art" },
+      { href: "/portfolio?category=Tactile+Performances", label: "Tactile Performances" },
+      { href: "/portfolio?category=Theatre+%26+Dance", label: "Theatre & Dance" },
       { href: "/portfolio?category=Sculptures", label: "Sculptures" },
       { href: "/portfolio?category=Lino+prints", label: "Lino Prints" },
-      { href: "/portfolio?category=Authored+Books", label: "Books" },
+      { href: "/portfolio?category=Books", label: "Books" },
     ],
   },
   { href: "/videos", label: "Videos" },
-  { href: "/news", label: "News" },
+  { href: "/news", label: "News & Highlights" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -37,10 +37,15 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
+  // Close both menus on navigation. Adjusting state during render (rather than
+  // in an effect) avoids rendering the open menu for a frame on the new route.
+  // https://react.dev/reference/react/useState#storing-information-from-previous-renders
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
     setMobileOpen(false);
     setDropdownOpen(false);
-  }, [pathname]);
+  }
 
   const linkClass = (href: string) =>
     `font-[family-name:var(--font-body)] text-[0.65rem] tracking-[0.22em] uppercase font-medium transition-all duration-500 inline-flex items-center leading-none ${
