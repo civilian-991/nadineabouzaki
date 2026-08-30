@@ -3,12 +3,21 @@ export interface Credit {
   name: string;
 }
 
+export interface SectionVideo {
+  id: string;
+  label: string;
+}
+
 export interface PortfolioSection {
   title: string;
   description?: string;
   images?: string[];
-  videoId?: string;
-  videoLabel?: string;
+  videos?: SectionVideo[];
+}
+
+export interface EditionImage {
+  src: string;
+  caption: string;
 }
 
 export interface ArchiveImage {
@@ -23,12 +32,15 @@ export interface PortfolioItem {
   venue: string;
   year: string;
   category: string;
+  /** Extra filter categories this work also belongs to. Defaults to [category]. */
+  categories?: string[];
   slug: string;
   image: string;
   /** Paragraphs are separated by a blank line. */
   description?: string;
   credits?: Credit[];
   editions?: string[];
+  editionImages?: EditionImage[];
   galleryImages?: string[];
   sections?: PortfolioSection[];
   archiveImages?: ArchiveImage[];
@@ -75,13 +87,24 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Performances",
     slug: "priere-de-toucher-2023",
     image: "/images/portfolio/gallery/priere-de-toucher-2023/1.jpg",
-    description:
-      "“Prière de toucher” (Please Touch) is an interactive tactile performance and sculpture exhibition presented at INECAT in Paris. Visitors are invited to encounter sculpture through touch rather than sight. At its centre is the living sculpture as a body-window between the visible and the invisible, opening questions of intimacy, transformation and perception.",
+    description: "“Prière de toucher” (Please Touch) is an interactive tactile performance and sculpture exhibition presented at INECAT in Paris. Visitors are invited to encounter sculpture through touch rather than sight. At its centre is the living sculpture as a body-window between the visible and the invisible, opening questions of intimacy, transformation and perception.",
     credits: [
-      { role: "Concept", name: "Nadine Abou Zaki" },
-      { role: "Living sculpture", name: "Jean-Pierre Mehansio" },
-      { role: "Textile recreation", name: "Bshara Atallah" },
-      { role: "Expressionistic film", name: "Muriel Aboulrouss" },
+      {
+        role: "Concept",
+        name: "Nadine Abou Zaki",
+      },
+      {
+        role: "Living sculpture",
+        name: "Jean-Pierre Mehansio",
+      },
+      {
+        role: "Textile recreation",
+        name: "Bshara Atallah",
+      },
+      {
+        role: "Expressionistic film",
+        name: "Muriel Aboulrouss",
+      },
     ],
     galleryImages: [
       "/images/portfolio/gallery/priere-de-toucher-2023/4.jpg",
@@ -94,29 +117,56 @@ export const portfolioItems: PortfolioItem[] = [
     id: 2,
     title: "Elephant in the Dark",
     venue: "Blindfold walk performance",
-    year: "2020",
+    year: "2019–2020",
     category: "Tactile Performances",
     slug: "elephant-in-the-dark",
     image: "/images/portfolio/elephant-night-wide.jpg",
-    description:
-      "“Elephant in the Dark” is a series of blindfolded walking performances and tactile experiments exploring what darkness reveals about space, certainty and perception. Inspired by Rumi’s parable of the elephant in the dark, the project unfolded through several stages at the Modern and Contemporary Art Museum (MACAM) and the National Museum of Beirut.\n\nMACAM, Alita-Byblos — The project began with a daytime encounter in which a blind guide led blindfolded sighted participants through the museum, reversing familiar roles of seeing and being guided. It later developed into a nocturnal blindfold walk in MACAM’s outdoor landscape, where sighted performers/dancers interacted with blindfolded participants, who in turn became performers.\n\nNational Museum of Beirut — In collaboration with the Lebanese Academy of Fine Arts (ALBA), visual arts students were introduced to haptic aesthetics and took part in a blindfolded tactile visit of archaeological objects.\n\nAcross these stages, the work shifts perception from the eye to the whole body and treats darkness as a space of uncertainty, touch and reorientation.",
+    description: "Elephant in the Dark is a series of blindfolded walking performances exploring what darkness reveals about space, certainty and perception. Inspired by Rumi’s parable of the elephant in the dark, the project unfolded at the Modern and Contemporary Art Museum (MACAM) and the National Museum of Beirut.",
     credits: [
-      { name: "Supported by the Arab Fund for Arts and Culture (AFAC)" },
-      { name: "In collaboration with Red Oak" },
+      {
+        name: "Supported by the Arab Fund for Arts and Culture (AFAC)",
+      },
+      {
+        name: "In collaboration with Red Oak",
+      },
       {
         name: "National Museum of Beirut edition developed with the Lebanese Academy of Fine Arts (ALBA)",
       },
     ],
-    galleryImages: [
-      "/images/portfolio/gallery/elephant-in-the-dark/night-close.jpg",
-      "/images/portfolio/gallery/elephant-in-the-dark/night-hands.jpg",
-      "/images/portfolio/gallery/elephant-in-the-dark/macam-blind-guide.jpg",
-      "/images/portfolio/gallery/elephant-in-the-dark/2.jpg",
-      "/images/portfolio/gallery/elephant-in-the-dark/4.jpg",
+    sections: [
+      {
+        title: "MACAM, Alita-Byblos — 2019",
+        description: "At MACAM, the project first reversed familiar roles of seeing and being guided: blindfolded sighted participants moved through the museum with a blind guide. A second nocturnal performance extended the experiment outdoors, where sighted performers/dancers interacted with blindfolded participants, who in turn became performers.",
+        images: [
+          "/images/portfolio/gallery/elephant-in-the-dark/night-close.jpg",
+          "/images/portfolio/gallery/elephant-in-the-dark/night-hands.jpg",
+          "/images/portfolio/gallery/elephant-in-the-dark/macam-with-a-blind-guide-1.jpg",
+          "/images/portfolio/gallery/elephant-in-the-dark/macam-with-a-blind-guide-3.jpg",
+          "/images/portfolio/gallery/elephant-in-the-dark/macam-with-a-blind-guide-2.jpg",
+        ],
+        videos: [
+          {
+            id: "V8_sJ8L5hAc",
+            label: "Performance video — MACAM",
+          },
+        ],
+      },
+      {
+        title: "National Museum of Beirut — 2020",
+        description: "At the National Museum of Beirut, in collaboration with the Lebanese Academy of Fine Arts (ALBA), visual-arts students were introduced to haptic aesthetics and took part in a blindfolded tactile visit of archaeological objects.",
+        images: [
+          "/images/portfolio/gallery/elephant-in-the-dark/elephant-in-the-dark.jpg",
+          "/images/portfolio/gallery/elephant-in-the-dark/national-museum-of-beirut-1.jpg",
+          "/images/portfolio/gallery/elephant-in-the-dark/national-museum-of-beirut-3.jpg",
+          "/images/portfolio/gallery/elephant-in-the-dark/national-museum-of-beirut-4.jpg",
+          "/images/portfolio/gallery/elephant-in-the-dark/national-museum-of-beirut-5.jpg",
+          "/images/portfolio/gallery/elephant-in-the-dark/national-museum-of-beirut-6.jpg",
+        ],
+      },
     ],
     archiveImages: [
       {
-        src: "/images/portfolio/elephant-in-the-dark.jpg",
+        src: "/images/portfolio/gallery/elephant-in-the-dark/elephant-in-the-dark-event-page-2.jpg",
         caption: "Project poster",
       },
     ],
@@ -128,20 +178,60 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2016",
     category: "Tactile Performances",
     slug: "please-touch-waste-studio",
-    image: "/images/portfolio/please-touch-waste-studio.jpg",
-    description:
-      "At Waste Studio, “Please Touch” invited visitors not only to touch the work, but to become part of it. For one night, visitors could take the place of the living sculpture, transforming the encounter between artist, artwork and audience. Continuing the “Please Touch” series, the performance re-examined exhibition conventions and the role of touch in experiencing sculpture.",
+    image: "/images/portfolio/please-touch-waste-studio-home.jpg",
+    description: "At Waste Studio, “Please Touch” invited visitors not only to touch the work, but to become part of it. For one night, visitors could take the place of the living sculpture, transforming the encounter between artist, artwork and audience. Continuing the “Please Touch” series, the performance re-examined exhibition conventions and the role of touch in experiencing sculpture.",
     credits: [
-      { role: "Living sculpture", name: "Bshara Atallah" },
-      { role: "Expressionistic film", name: "Muriel Aboulrouss" },
-      { role: "Artistic lighting", name: "Alaa Minawi" },
+      {
+        role: "Living sculpture",
+        name: "Bshara Atallah",
+      },
+      {
+        role: "Expressionistic film",
+        name: "Muriel Aboulrouss",
+      },
+      {
+        role: "Artistic lighting",
+        name: "Alaa Minawi",
+      },
     ],
     galleryImages: [
-      "/images/portfolio/gallery/please-touch-waste-studio/1.jpg",
-      "/images/portfolio/gallery/please-touch-waste-studio/2.jpg",
-      "/images/portfolio/gallery/please-touch-waste-studio/3.jpg",
-      "/images/portfolio/gallery/please-touch-waste-studio/4.jpg",
-      "/images/portfolio/gallery/please-touch-waste-studio/5.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-02-1.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-03-6.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-04-2.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-05-img-1058-2.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-06-n06.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-07-3.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-08-4.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-09-5.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-10-7.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-11-8.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-12-10.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-13-img-0605.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-14-img-0723.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-15-img-1071.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-16-img-1077.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-17-img-1106.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-18-img-1146.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-19-img-1206.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-20-img-1214.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-21-img-1326.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-22-img-1332.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-23-img-1402.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-24-img-1407.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-25-img-1464.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-26-img-1471.jpg",
+      "/images/portfolio/gallery/please-touch-waste-studio/ws-27-waste.jpg",
+    ],
+    sections: [
+      {
+        title: "Video",
+        videos: [
+          {
+            id: "fQQvJPNaQWU",
+            label: "Performance video",
+          },
+        ],
+      },
     ],
   },
   {
@@ -152,21 +242,43 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Performances",
     slug: "please-touch-trash",
     image: "/images/portfolio/please-touch-trash.jpg",
-    description:
-      "“Please Touch the Trash” is an interactive performance presented at BIPOD at Al Madina Theatre. Using discarded materials as a tactile and performative medium, the work questions what we call waste and the social, economic, environmental and philosophical values attached to it. Visitors encounter “living” waste that shifts shape through touch, revealing discarded matter as a trace of both intimate and collective history.",
+    description: "“Please Touch the Trash” is an interactive performance presented at BIPOD at Al Madina Theatre. Using discarded materials as a tactile and performative medium, the work questions what we call waste and the social, economic, environmental and philosophical values attached to it. Visitors encounter “living” waste that shifts shape through touch, revealing discarded matter as a trace of both intimate and collective history.",
     credits: [
-      { role: "Concept", name: "Nadine Abou Zaki" },
+      {
+        role: "Concept",
+        name: "Nadine Abou Zaki",
+      },
       {
         role: "Performers",
         name: "Bshara Atallah, Lisa Chehade, Corine Skaff, Rabih Yammine",
       },
-      { role: "Sound", name: "Zeid Hamdan" },
-      { role: "Lighting", name: "Alaa Minawi" },
-      { role: "Textile recreation", name: "Bshara Atallah" },
+      {
+        role: "Sound",
+        name: "Zeid Hamdan",
+      },
+      {
+        role: "Lighting",
+        name: "Alaa Minawi",
+      },
+      {
+        role: "Textile recreation",
+        name: "Bshara Atallah",
+      },
     ],
     galleryImages: [
       "/images/portfolio/gallery/please-touch-trash/1.jpg",
       "/images/portfolio/gallery/please-touch-trash/2.jpg",
+    ],
+    sections: [
+      {
+        title: "Video",
+        videos: [
+          {
+            id: "lRkIo7bdEFQ",
+            label: "Performance video",
+          },
+        ],
+      },
     ],
   },
   {
@@ -177,21 +289,109 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Tactile Performances",
     slug: "please-touch-baf-2015",
     image: "/images/portfolio/please-touch-baf-2015.jpg",
-    description:
-      "Presented within the “Virtual/Reality” segment curated by Pascal Odille at Beirut Art Fair, “Please Touch” transformed four performers into living sculptures. Concealed within sculptural textile forms, their bodies responded to visitors’ touch and continually reshaped the work. The performance destabilized the usual boundaries between sculpture and performer, viewer and artwork, inviting the audience to experience form through touch rather than sight.",
+    description: "Presented within the “Virtual/Reality” segment curated by Pascal Odille at Beirut Art Fair, “Please Touch” transformed four performers into living sculptures. Concealed within sculptural textile forms, their bodies responded to visitors’ touch and continually reshaped the work. The performance destabilized the usual boundaries between sculpture and performer, viewer and artwork, inviting the audience to experience form through touch rather than sight.",
     credits: [
-      { role: "Concept", name: "Nadine Abou Zaki" },
+      {
+        role: "Concept",
+        name: "Nadine Abou Zaki",
+      },
       {
         role: "Living sculptures",
         name: "Lisa Chehade, Bshara Atallah, Corine Skaff, Rabih Yammine",
       },
-      { role: "Textile recreation", name: "Bshara Atallah" },
-      { role: "Expressionistic film", name: "Muriel Aboulrouss" },
-      { role: "Artistic lighting", name: "Alaa Minawi" },
+      {
+        role: "Textile recreation",
+        name: "Bshara Atallah",
+      },
+      {
+        role: "Expressionistic film",
+        name: "Muriel Aboulrouss",
+      },
+      {
+        role: "Artistic lighting",
+        name: "Alaa Minawi",
+      },
     ],
     galleryImages: [
-      "/images/portfolio/please-touch-living-2015.jpg",
-      "/images/portfolio/please-touch-baf-perf-2015.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-1.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-2.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-3.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-4.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-6.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-7.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-9.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-8.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-12.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-10.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-14.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-16.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-17.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-18-2.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-18.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-img-2903.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-15.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-13.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/living-img-2212.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-1-0.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-4-2.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-2886.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-kp-7835.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-4-0.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-3664.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-elie-saab.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-bassam-fattouh.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-9944.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-3-0.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-0087.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-1-2.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-2-2.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-3-2.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-1999.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-2-0.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-6-0.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-dans.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-2277.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-2707.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-kp-7833.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-kp-7850.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-2328.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-2953.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-3287.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-3446.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-3688.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-3741.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-9347.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-9959.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-img-9960.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafb-mona-saudi.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-0.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-2-1.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-5.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-3-2-0.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-img-9386.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-kp-7511.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-2-2-0.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-7-1.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-4-1.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-img-9223.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-6-1.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-may-khalil.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-kp-7820.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-img-3111.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-3-1.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-img-9655.jpg",
+      "/images/portfolio/gallery/please-touch-baf-2015/bafa-kp-7479.jpg",
+    ],
+    sections: [
+      {
+        title: "Video",
+        videos: [
+          {
+            id: "XlN7PJHVZlk",
+            label: "Performance video",
+          },
+        ],
+      },
     ],
   },
   {
@@ -200,86 +400,201 @@ export const portfolioItems: PortfolioItem[] = [
     venue: "Station Beirut · Curated by Agial Art Gallery",
     year: "2014",
     category: "Tactile Performances",
+    categories: [
+      "Tactile Performances",
+      "Sculptures",
+    ],
     slug: "please-touch-agial",
     image: "/images/portfolio/gallery/please-touch-sculptures-2014/3.jpg",
-    description:
-      "“Please Touch” at Station Beirut brought together blindfolded sculpting, tactile sculpture, living sculpture and an expressionistic film within one immersive project. Visitors entered a darkened space and encountered form through touch. A living sculpture concealed beneath textile responded to contact and transformed into new forms, while the sculptural works were created blindfolded. The project questioned the primacy of vision and the shifting boundaries between body, sculpture and viewer.",
+    description: "Please Touch brought together around twenty sculptures created blindfolded, alongside an interactive living-sculpture performance and an expressionistic film. Visitors were invited to encounter the sculptures through touch and in darkness, shifting the experience of sculpture from sight to tactile perception.\n\nThe project explored the role of touch in artistic creation, its relationship to memory, and the boundaries between body, sculpture and viewer. What if you have to touch to see?",
     credits: [
-      { role: "Concept", name: "Nadine Abou Zaki" },
-      { role: "Living sculpture", name: "Lisa Chehade" },
-      { role: "Textile recreation", name: "Bshara Atallah" },
-      { role: "Expressionistic film", name: "Muriel Aboulrouss" },
-      { role: "Artistic lighting", name: "Alaa Minawi" },
-      { role: "Touch-sound design", name: "Zeid Hamdan" },
+      {
+        role: "Concept",
+        name: "Nadine Abou Zaki",
+      },
+      {
+        role: "Living sculpture",
+        name: "Lisa Chehade",
+      },
+      {
+        role: "Textile recreation",
+        name: "Bshara Atallah",
+      },
+      {
+        role: "Expressionistic film",
+        name: "Muriel Aboulrouss",
+      },
+      {
+        role: "Artistic lighting",
+        name: "Alaa Minawi",
+      },
+      {
+        role: "Touch-sound design",
+        name: "Zeid Hamdan",
+      },
     ],
     sections: [
       {
-        title: "Sculptures",
-        description:
-          "Please Touch was presented at Station Beirut in 2014, curated by Agial Art Gallery. The project included approximately 20 sculptures created blindfolded, alongside an interactive performance with a living sculpture and an expressionistic film. Visitors were invited to encounter the sculptures through touch and darkness.",
+        title: "Interactive Performance & Living Sculpture",
+        description: "A living sculpture concealed beneath textile responded to contact and transformed into new forms. Visitors entered a darkened space and encountered the work through touch rather than sight.",
         images: [
-          "/images/portfolio/gallery/please-touch-agial/2.jpg",
-          "/images/portfolio/gallery/please-touch-agial/4.jpg",
-          "/images/portfolio/gallery/please-touch-agial/5.jpg",
-          "/images/portfolio/gallery/please-touch-agial/1.jpg",
-          "/images/portfolio/gallery/please-touch-sculptures-2014/2.jpg",
-          "/images/portfolio/gallery/please-touch-sculptures-2014/4.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-2-img-3734.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-16-img-3741.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-1-img-3724.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-3-img-3727.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-4-img-3731.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-5-img-3736.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-12-img-3590.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-13-img-3776-2.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-14-img-3775-copy.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-6-img-20141127-200246.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-7-img-3488.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-8-img-3496.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-9-img-3504.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-10-img-3511.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-11-img-3510.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-15-img-2239.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-17-img-2172.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-18-img-2155.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-19-img-2150.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-20-img-2147.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-21-img-3583.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-22-img-2168.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-23-img-2165.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-24-img-2325.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-25-img-2477.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-26-img-3597.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-27-img-3708.jpg",
+          "/images/portfolio/gallery/please-touch-agial/living2014-28-img-2158.jpg",
+          "/images/portfolio/gallery/please-touch-agial/bestof-touching-the-sculptures-9.jpg",
+          "/images/portfolio/gallery/please-touch-agial/bestof-touching-the-sculptures-3-0.jpg",
+          "/images/portfolio/gallery/please-touch-agial/bestof-touching-the-sculptures-1-0.jpg",
+          "/images/portfolio/gallery/please-touch-agial/bestof-touching-the-sculptures-2-0.jpg",
+          "/images/portfolio/gallery/please-touch-agial/bestof-touching-the-sculptures-4-1.jpg",
+          "/images/portfolio/gallery/please-touch-agial/bestof-touching-the-sculptures-5-0.jpg",
+          "/images/portfolio/gallery/please-touch-agial/bestof-touching-the-sculptures-6.jpg",
+          "/images/portfolio/gallery/please-touch-agial/bestof-touching-the-sculptures-7.jpg",
+          "/images/portfolio/gallery/please-touch-agial/bestof-touching-the-sculptures-8.jpg",
+          "/images/portfolio/gallery/please-touch-agial/bestof-touching-the-sculptures-10.jpg",
         ],
       },
       {
-        title: "Living sculpture & performance",
+        title: "Sculpture Exhibition",
+        description: "Approximately twenty sculptures created blindfolded, shown so that each work could be approached and touched.",
         images: [
-          "/images/portfolio/gallery/please-touch-living-sculptures-2014/1.jpg",
-          "/images/portfolio/gallery/please-touch-living-sculptures-2014/2.jpg",
-          "/images/portfolio/gallery/please-touch-living-sculptures-2014/3.jpg",
-          "/images/portfolio/gallery/please-touch-living-sculptures-2014/4.jpg",
-          "/images/portfolio/gallery/please-touch-living-sculptures-2014/5.jpg",
-          "/images/portfolio/gallery/best-of-please-touch/1.jpg",
-          "/images/portfolio/gallery/best-of-please-touch/4.jpg",
-          "/images/portfolio/gallery/best-of-please-touch/5.jpg",
-          "/images/portfolio/gallery/best-of-please-touch/2.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-6.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-3.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-4.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-5.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-7.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-8.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-9.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-10.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-11.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-12.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-13.jpg",
+          "/images/portfolio/gallery/please-touch-agial/sculpt-please-dont-touch-without-ads-2.jpg",
+          "/images/portfolio/gallery/please-touch-agial/exh-1-2-2124.jpg",
+          "/images/portfolio/gallery/please-touch-agial/exh-2-img-4241.jpg",
+          "/images/portfolio/gallery/please-touch-agial/exh-3-img-1829.jpg",
+          "/images/portfolio/gallery/please-touch-agial/exh-3-img-4175.jpg",
+          "/images/portfolio/gallery/please-touch-agial/exh-5-img-4170-s.jpg",
+          "/images/portfolio/gallery/please-touch-agial/exh-6-img-1927.jpg",
+          "/images/portfolio/gallery/please-touch-agial/exh-7-img-1776-resize.jpg",
         ],
       },
       {
-        title: "Expressionistic film",
-        description:
-          "An expressionistic film portraying the artist’s emotions while sculpting blindfolded in the dark. All sounds and images are extracted from her universe. Directed by Muriel Aboulrouss, produced by Denise Jabbour, edited by Liliane Hanbali.",
-        images: ["/images/portfolio/gallery/please-touch-film/1.jpg"],
-        videoId: "acn0FVo538g",
-        videoLabel: "Watch the film",
+        title: "Expressionistic Film",
+        description: "An expressionistic film portraying the artist’s emotions while sculpting blindfolded in the dark. All sounds and images are extracted from her universe. Directed by Muriel Aboulrouss, produced by Denise Jabbour, edited by Liliane Hanbali.",
+        videos: [
+          {
+            id: "acn0FVo538g",
+            label: "Watch the film",
+          },
+        ],
+      },
+    ],
+    archiveImages: [
+      {
+        src: "/images/portfolio/please-dont-touch-poster.jpg",
+        caption: "PLEASE DON’T TOUCH — original exhibition poster, Station Beirut 2014",
       },
     ],
   },
-
   // ─── Sculptures ───
   {
     id: 7,
     title: "Public Sculptures",
-    venue: "Beirut",
-    year: "2010",
+    venue: "Lebanon & UAE",
+    year: "1999–2010",
     category: "Sculptures",
     slug: "public-monuments",
     image: "/images/portfolio/gallery/public-monuments/2.jpg",
-    description:
-      "This page brings together public sculptures created for sites in Beirut, including The Garden of Dialogue (2010) and The Traveller (2002).",
+    description: "Public Sculptures brings together works created for public sites and international sculpture symposia in Lebanon and the UAE.",
     sections: [
       {
         title: "The Garden of Dialogue — Beirut — 2010",
-        description:
-          "Created within the framework of Beirut World Book Capital, The Garden of Dialogue consists of five stone sculpture-benches installed in a public square in Beirut. The sculptures pay tribute to Gibran Khalil Gibran, Nadia Tueni, Abdallah Alayli and Hussein Mroueh. They were designed both as sculptures and as benches where people can sit and read.",
+        description: "Created within the framework of Beirut World Book Capital, The Garden of Dialogue consists of five stone sculpture-benches installed in Beirut. The sculptures pay tribute to Gibran Khalil Gibran, Nadia Tueni, Abdallah Alayli and Hussein Mroueh. They were designed both as sculptures and as benches where people can sit and read.",
         images: [
+          "/images/portfolio/gallery/public-monuments/beirut-world-capital-img1-0.jpg",
+          "/images/portfolio/gallery/public-monuments/beirut-world-capital-img2-0.jpg",
+          "/images/portfolio/gallery/public-monuments/beirut-world-capital-img3-0.jpg",
+          "/images/portfolio/gallery/public-monuments/beirut-world-capital-img4-0.jpg",
+          "/images/portfolio/gallery/public-monuments/2.jpg",
           "/images/portfolio/gallery/public-monuments/3.jpg",
           "/images/portfolio/gallery/public-monuments/5.jpg",
           "/images/portfolio/gallery/public-monuments/4.jpg",
         ],
       },
       {
-        title: "The Traveller — Ministry of Tourism, Beirut — 2002",
-        description:
-          "The Traveller is an architectural constructivist sculpture conceived for the Lebanese Ministry of Tourism and inaugurated on 30 November 2002. The work developed from questions about travel, place and virtual communication in the age of globalization.",
+        title: "Chamber of Commerce and Industry — Beirut — 2009",
+        description: "Monumental sculpture installed in front of the Chamber of Commerce and Industry in Beirut in 2009.",
         images: [
+          "/images/portfolio/gallery/public-monuments/pf8b-1.jpg",
+        ],
+      },
+      {
+        title: "Jeux de la Francophonie — Beirut — 2009",
+        description: "Work in Murano glass created for the 6th Jeux de la Francophonie in Beirut, where Nadine Abou Zaki represented Lebanon as Sculptor Ambassador.",
+        images: [
+          "/images/portfolio/gallery/public-monuments/pf9-1.jpg",
+        ],
+      },
+      {
+        title: "Emaar International Art Symposium — Dubai — 2008",
+        description: "Sculpture created during participation in the Emaar International Art Symposium in Dubai in 2008.",
+        images: [
+          "/images/portfolio/gallery/public-monuments/pf10b-0.jpg",
+        ],
+      },
+      {
+        title: "International Sculpture Symposium — Mechref, Lebanon",
+        description: "Sculpture created during the International Sculpture Symposium at Mechref, Lebanon.",
+        images: [
+          "/images/portfolio/gallery/public-monuments/mechref-public-monument-0.jpg",
+        ],
+      },
+      {
+        title: "Marble International Symposium of Sculpture — Lebanon",
+        description: "Sculpture created during the Marble International Symposium of Sculpture in Lebanon.",
+        images: [
+          "/images/portfolio/gallery/public-monuments/pf12-0.jpg",
+        ],
+      },
+      {
+        title: "The Traveller — Ministry of Tourism, Beirut — 2002",
+        description: "The Traveller is an architectural constructivist sculpture conceived for the Lebanese Ministry of Tourism and inaugurated on 30 November 2002. The work developed from questions about travel, place and virtual communication in the age of globalization.",
+        images: [
+          "/images/portfolio/gallery/public-monuments/pf11b-0.jpg",
           "/images/portfolio/public-monuments.jpg",
-          "/images/portfolio/gallery/public-monuments/1.jpg",
+        ],
+      },
+      {
+        title: "Aley International Art Symposium — Mount Lebanon — 1999–2001",
+        description: "Sculptures created during participation in the Aley International Art Symposium in Mount Lebanon between 1999 and 2001.",
+        images: [
+          "/images/portfolio/gallery/public-monuments/pf13-0-0.jpg",
+          "/images/portfolio/gallery/public-monuments/pf14b-0.jpg",
         ],
       },
     ],
@@ -292,14 +607,29 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Sculptures",
     slug: "and-i-fly-off",
     image: "/images/portfolio/and-i-fly-off.jpg",
-    description:
-      "And I Fly Off (Et je m’envole) was a solo exhibition presented at Surface Libre in Lebanon in 2008. It brought together 26 sculptures in stone and wood. The accompanying text focused on desire, transformation, multiplicity and the idea of an imagined elsewhere.",
+    description: "And I Fly Off (Et je m’envole) was a solo exhibition presented at Surface Libre in Lebanon in 2008. It brought together 26 sculptures in stone and wood. The accompanying text focused on desire, transformation, multiplicity and the idea of an imagined elsewhere.",
     galleryImages: [
-      "/images/portfolio/gallery/and-i-fly-off/1.jpg",
-      "/images/portfolio/gallery/and-i-fly-off/2.jpg",
-      "/images/portfolio/gallery/and-i-fly-off/3.jpg",
-      "/images/portfolio/gallery/and-i-fly-off/4.jpg",
-      "/images/portfolio/gallery/and-i-fly-off/5.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf24.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf27.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf23.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf25.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf26.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf35.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf28.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf36.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf30.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf37.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf29.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf41.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf32.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf40.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf31.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf33.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf38.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf39.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf34.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf43.jpg",
+      "/images/portfolio/gallery/and-i-fly-off/pf42.jpg",
     ],
   },
   {
@@ -309,15 +639,25 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2004",
     category: "Sculptures",
     slug: "the-one-acts",
-    image: "/images/portfolio/the-one-acts.jpg",
-    description:
-      "The One Acts, the Other Contemplates (L’un regarde, l’autre agit) was presented at Espace SD in Beirut in 2004. The exhibition comprised 18 sculptures: nine in stone and nine in wood. Catalogue text by Nazih Khater.",
+    image: "/images/portfolio/the-one-acts-home.jpg",
+    description: "The One Acts, the Other Contemplates (L’un regarde, l’autre agit) was presented at Espace SD in Beirut in 2004. The exhibition comprised 18 sculptures: nine in stone and nine in wood. Catalogue text by Nazih Khater.",
     galleryImages: [
-      "/images/portfolio/gallery/the-one-acts/1.jpg",
-      "/images/portfolio/gallery/the-one-acts/2.jpg",
-      "/images/portfolio/gallery/the-one-acts/3.jpg",
-      "/images/portfolio/gallery/the-one-acts/4.jpg",
-      "/images/portfolio/gallery/the-one-acts/5.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf47.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf60.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf55.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf49.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf50.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf58.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf59.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf51.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf54.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf56.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf52.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf61.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf57.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf53.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf62.jpg",
+      "/images/portfolio/gallery/the-one-acts/pf48.jpg",
     ],
   },
   {
@@ -327,18 +667,26 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2002",
     category: "Sculptures",
     slug: "towers-of-silence",
-    image: "/images/portfolio/towers-of-silence.jpg",
-    description:
-      "Towers of Silence (Tours du Silence) was Nadine Abou Zaki’s first solo sculpture exhibition, presented at Espace SD in Beirut in 2002. Catalogue text by Aref Rayess.",
+    image: "/images/portfolio/gallery/towers-of-silence/pf65.jpg",
+    description: "Towers of Silence (Tours du Silence) was Nadine Abou Zaki’s first solo sculpture exhibition, presented at Espace SD in Beirut in 2002. Catalogue text by Aref Rayess.",
     galleryImages: [
-      "/images/portfolio/gallery/towers-of-silence/1.jpg",
-      "/images/portfolio/gallery/towers-of-silence/2.jpg",
-      "/images/portfolio/gallery/towers-of-silence/3.jpg",
-      "/images/portfolio/gallery/towers-of-silence/4.jpg",
-      "/images/portfolio/gallery/towers-of-silence/5.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf66.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf68.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf80.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf69.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf70.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf72.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf67.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf73.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf79.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf74.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf77.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf75.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf76.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf71.jpg",
+      "/images/portfolio/gallery/towers-of-silence/pf78.jpg",
     ],
   },
-
   // ─── Theatre & Dance ───
   {
     id: 11,
@@ -348,17 +696,40 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Theatre & Dance",
     slug: "diary-mulberry-tree-2018",
     image: "/images/portfolio/gallery/diary-mulberry-tree-2018/3.jpg",
-    description:
-      "The Diary of a Mulberry Tree is a dance-theatre work written and directed by Nadine Abou Zaki, first presented at Al Madina Theatre in Beirut in 2017 and later developed at Hammana Artist House in 2018. Inspired by the Lebanese Civil War and Eastern philosophy, the work gives voice to a mulberry tree that bears witness to the intimate lives and conflicts unfolding around it. Through dance, narration, poetry and music, the performance explores memory, nature, human violence and our relationship with the living world.",
+    description: "The Diary of a Mulberry Tree is a dance-theatre work written and directed by Nadine Abou Zaki, first presented at Al Madina Theatre in Beirut in 2017 and later developed at Hammana Artist House in 2018. Inspired by the Lebanese Civil War and Eastern philosophy, the work gives voice to a mulberry tree that bears witness to the intimate lives and conflicts unfolding around it. Through dance, narration, poetry and music, the performance explores memory, nature, human violence and our relationship with the living world.",
     credits: [
-      { role: "Written & directed by", name: "Nadine Abou Zaki" },
-      { role: "Choreographer & dancer", name: "Jean-Paul Mehansio" },
-      { role: "Performers", name: "Dana Mikhail & Rouaida al Ghali" },
-      { role: "Assistant director", name: "Bshara Atallah" },
-      { role: "Live music", name: "Tony Elieh" },
-      { role: "Scenography & light design", name: "Alaa Minawi" },
-      { role: "Costumes", name: "Bshara Atallah" },
-      { role: "Designer", name: "Souheil Saab" },
+      {
+        role: "Written & directed by",
+        name: "Nadine Abou Zaki",
+      },
+      {
+        role: "Choreographer & dancer",
+        name: "Jean-Paul Mehansio",
+      },
+      {
+        role: "Performers",
+        name: "Dana Mikhail & Rouaida al Ghali",
+      },
+      {
+        role: "Assistant director",
+        name: "Bshara Atallah",
+      },
+      {
+        role: "Live music",
+        name: "Tony Elieh",
+      },
+      {
+        role: "Scenography & light design",
+        name: "Alaa Minawi",
+      },
+      {
+        role: "Costumes",
+        name: "Bshara Atallah",
+      },
+      {
+        role: "Designer",
+        name: "Souheil Saab",
+      },
       {
         role: "In collaboration with",
         name: "L’Institut Français du Liban & Red Oak",
@@ -368,21 +739,60 @@ export const portfolioItems: PortfolioItem[] = [
       {
         title: "Al Madina Theatre, Beirut — 2017",
         images: [
-          "/images/portfolio/gallery/diary-mulberry-tree-2018/5.jpg",
-          "/images/portfolio/gallery/diary-mulberry-tree-2018/4.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-facebook-event-page-1.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-1-0.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-17.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-2-mulberry-tree.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-the-diary-of-a-mulberry-tree-2018-0.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-9.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-2-0.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-6-0.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-7-0.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-8-0.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-3-1.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-4-0.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-10-0.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-11.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-11-mulberry-tree.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-12.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-13.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-14.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-15.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-16.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-performance-1.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-performance-2.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/almadina2017-the-diary-of-a-mulberry-tree-poster-2017.jpg",
         ],
-        videoId: "IiR9x1REd0c",
-        videoLabel: "Watch the trailer",
+        videos: [
+          {
+            id: "IiR9x1REd0c",
+            label: "Trailer",
+          },
+          {
+            id: "fYtY4hdasos",
+            label: "Performance video — 10 min",
+          },
+        ],
       },
       {
         title: "Hammana Artist House — 2018",
-        images: ["/images/portfolio/gallery/diary-mulberry-tree-2018/1.jpg"],
-      },
-    ],
-    archiveImages: [
-      {
-        src: "/images/portfolio/diary-mulberry-tree-2017.jpg",
-        caption: "Al Madina Theatre, 2017 — original poster",
+        images: [
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-facebook-the-diary-of-a-mulberry-tree-2.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-unnamed-1.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-unnamed-2.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-unnamed-3.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-unnamed-4.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-unnamed-5.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-unnamed-6.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-unnamed-8.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-1-1.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-6-1.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-3-2.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-4-1.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-6-2.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-img-6557.jpg",
+          "/images/portfolio/gallery/diary-mulberry-tree-2018/hammana2018-the-diary-of-a-mulberry-tree-antoine-poster.jpg",
+        ],
       },
     ],
   },
@@ -394,10 +804,12 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Theatre & Dance",
     slug: "perceptions",
     image: "/images/portfolio/gallery/perceptions/1.jpg",
-    description:
-      "PERCEPTIONS is a theatre project developed with separate groups of blind and Deaf participants in Lebanon. Through theatre-based workshops and collaborative creation, the project explored expression, communication and participation through different sensory experiences. Written by Nadine Abou Zaki and co-directed with Rouaida al Ghali Hornig, the project was developed with Red Oak and supported by the Euro-Mediterranean Foundation of Support to Human Rights Defenders (EMHRF).",
+    description: "PERCEPTIONS is a theatre project developed with separate groups of blind and Deaf participants in Lebanon. Through theatre-based workshops and collaborative creation, the project explored expression, communication and participation through different sensory experiences. Written by Nadine Abou Zaki and co-directed with Rouaida al Ghali Hornig, the project was developed with Red Oak and supported by the Euro-Mediterranean Foundation of Support to Human Rights Defenders (EMHRF).",
     credits: [
-      { role: "Written by", name: "Nadine Abou Zaki" },
+      {
+        role: "Written by",
+        name: "Nadine Abou Zaki",
+      },
       {
         role: "Co-directed by",
         name: "Rouaida al Ghali Hornig & Nadine Abou Zaki",
@@ -416,27 +828,28 @@ export const portfolioItems: PortfolioItem[] = [
       "/images/portfolio/gallery/perceptions/3.jpg",
     ],
   },
-
   // ─── Lino prints ───
   {
     id: 13,
     title: "Lino Prints",
     venue: "",
-    year: "2023",
+    year: "2024",
     category: "Lino prints",
     slug: "lino-prints",
     image: "/images/portfolio/lino-prints.jpg",
-    description:
-      "The search for transcendence and the insatiable quest to transcend the limits of existence form the core of this series of linocut prints. Each print captures moments of introspection and spiritual elevation. The textures and raised surfaces of the embossings are designed to be tactile and accessible to all, inviting sensory exploration through touch.",
+    description: "The search for transcendence and the insatiable quest to transcend the limits of existence form the core of this series of linocut prints. Each print captures moments of introspection and spiritual elevation. The textures and raised surfaces of the embossings are designed to be tactile and accessible to all, inviting sensory exploration through touch.",
     galleryImages: [
-      "/images/portfolio/gallery/lino-prints/1.jpg",
-      "/images/portfolio/gallery/lino-prints/2.jpg",
-      "/images/portfolio/gallery/lino-prints/3.jpg",
-      "/images/portfolio/gallery/lino-prints/4.jpg",
-      "/images/portfolio/gallery/lino-prints/5.jpg",
+      "/images/portfolio/gallery/lino-prints/6-souffle.jpg",
+      "/images/portfolio/gallery/lino-prints/1-dans-le-vent.jpg",
+      "/images/portfolio/gallery/lino-prints/2-envol.jpg",
+      "/images/portfolio/gallery/lino-prints/3-envol-tactile-1.jpg",
+      "/images/portfolio/gallery/lino-prints/5-hybride.jpg",
+      "/images/portfolio/gallery/lino-prints/7-l-ailleurs.jpg",
+      "/images/portfolio/gallery/lino-prints/4-a-contre-courant-tactile.jpg",
+      "/images/portfolio/gallery/lino-prints/10-devenir.jpg",
+      "/images/portfolio/gallery/lino-prints/11-a-contre-courant.jpg",
     ],
   },
-
   // ─── Books ───
   {
     id: 14,
@@ -445,9 +858,8 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2020",
     category: "Books",
     slug: "la-chambre-dalberto",
-    image: "/images/portfolio/la-chambre-dalberto.jpg",
-    description:
-      "Linda rents an apartment in Paris for a few days and is immediately unsettled by the photograph of a man she has never met. Convinced that something inexplicably connects them, she begins to uncover the traces of his life and the secrets of a man who believes his illness is linked to his radical political engagement in 1970s Italy. The novel moves between intuition, memory and the elusive presence of another life.",
+    image: "/images/portfolio/books/la-chambre-dalberto.jpg",
+    description: "Linda rents an apartment in Paris for a few days and is immediately unsettled by the photograph of a man she has never met. Convinced that something inexplicably connects them, she begins to uncover the traces of his life and the secrets of a man who believes his illness is linked to his radical political engagement in 1970s Italy. The novel moves between intuition, memory and the elusive presence of another life.",
   },
   {
     id: 15,
@@ -456,9 +868,8 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2018",
     category: "Books",
     slug: "le-journal-dun-murier",
-    image: "/images/portfolio/le-journal-dun-murier.jpg",
-    description:
-      "Do trees have memory or consciousness? Can they communicate with their environment and respond emotionally to human beings? Inspired by the Lebanese Civil War and Hindu philosophy, the book gives voice to a mulberry tree that bears witness to the intimate daily lives of those around it. Through this non-human perspective, it explores memory, violence, nature and our responsibility towards the living world.",
+    image: "/images/portfolio/books/le-journal-dun-murier.jpg",
+    description: "Do trees have memory or consciousness? Can they communicate with their environment and respond emotionally to human beings? Inspired by the Lebanese Civil War and Hindu philosophy, the book gives voice to a mulberry tree that bears witness to the intimate daily lives of those around it. Through this non-human perspective, it explores memory, violence, nature and our responsibility towards the living world.",
     relatedLink: {
       label: "Related work: The Diary of a Mulberry Tree",
       href: "/portfolio/diary-mulberry-tree-2018",
@@ -467,51 +878,60 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 16,
     title: "L’homme terrible de la ville",
-    subtitle:
-      "Nazih Khater : témoin, acteur et inspirateur de la vie culturelle de Beyrouth de 1960 à 2014",
+    subtitle: "Nazih Khater : témoin, acteur et inspirateur de la vie culturelle de Beyrouth de 1960 à 2014",
     venue: "Biographical portrait · L’Harmattan",
     year: "2015",
     category: "Books",
     slug: "lhomme-terrible-de-la-ville",
-    image: "/images/portfolio/lhomme-terrible.jpg",
-    description:
-      "A literary portrait and biographical journey through the life of Lebanese art critic Nazih Khater, a decisive and controversial figure in Beirut’s cultural life for more than half a century. Drawing on memories, conversations and testimonies, the book revisits a man who witnessed — and helped shape — the city’s artistic and intellectual life from the 1960s to 2014.",
+    image: "/images/portfolio/books/lhomme-terrible-harmattan-2015.jpg",
+    description: "A literary portrait and biographical journey through the life of Lebanese art critic Nazih Khater, a decisive and controversial figure in Beirut’s cultural life for more than half a century. Drawing on memories, conversations and testimonies, the book revisits a man who witnessed — and helped shape — the city’s artistic and intellectual life from the 1960s to 2014.",
     editions: [
-      "French edition: L’Harmattan, 2015.",
-      "Arabic translation: Dar An-Nahar, Beirut · 2015 · translated by Nahla Baydoun.",
+      "French edition: L’Harmattan, Paris · 2015.",
+      "Arabic edition: Dar An-Nahar, Beirut · 2015 · translated by Nahla Baydoun.",
+    ],
+    editionImages: [
+      {
+        src: "/images/portfolio/books/lhomme-terrible-harmattan-2015.jpg",
+        caption: "L’Harmattan, Paris — French edition, 2015",
+      },
     ],
   },
   {
     id: 17,
     title: "De femme à homme",
-    subtitle:
-      "Sur l’actuel féminin — Récits et correspondance avec Pierre-Marie Hasse",
+    subtitle: "Sur l’actuel féminin — Récits et correspondance avec Pierre-Marie Hasse",
     venue: "Narratives & correspondence with Pierre-Marie Hasse · L’Harmattan",
     year: "2012",
     category: "Books",
     slug: "de-femme-a-homme",
-    image: "/images/portfolio/de-femme-a-homme.jpg",
-    description:
-      "A collection of narratives, observations and correspondence with philosopher Pierre-Marie Hasse on the contemporary condition of women. Drawing on travel observations and personal experience, the book develops into a frank dialogue between an Arab woman and a French man, addressing the body, motherhood, work, gender equality, sexuality and the contradictions surrounding what it means to be a woman today.",
+    image: "/images/portfolio/books/de-femme-a-homme-harmattan-2012.jpg",
+    description: "A collection of narratives, observations and correspondence with philosopher Pierre-Marie Hasse on the contemporary condition of women. Drawing on travel observations and personal experience, the book develops into a frank dialogue between an Arab woman and a French man, addressing the body, motherhood, work, gender equality, sexuality and the contradictions surrounding what it means to be a woman today.",
     editions: [
       "Original edition: L’Harmattan, Paris · 2012.",
-      "Second edition: Marsam, Rabat · 2013.",
+      "Second edition: Marsam, Rabat, Morocco · 2013.",
       "Arabic edition: من امرأة إلى رجل · Dar al-Farabi, Beirut · 2017.",
     ],
-    galleryImages: ["/images/portfolio/de-femme-a-homme-morocco.jpg"],
+    editionImages: [
+      {
+        src: "/images/portfolio/books/de-femme-a-homme-harmattan-2012.jpg",
+        caption: "L’Harmattan, Paris — 2012",
+      },
+      {
+        src: "/images/portfolio/books/de-femme-a-homme-marsam-2013.jpg",
+        caption: "Marsam, Rabat — second edition, 2013",
+      },
+    ],
   },
   {
     id: 18,
     title: "Le lieu et le corps",
-    subtitle:
-      "Du lieu délocalisé à la perte du corps : vers la dé-mondialisation",
+    subtitle: "Du lieu délocalisé à la perte du corps : vers la dé-mondialisation",
     venue: "Bilingual French–Arabic philosophical essay · L’Harmattan",
     year: "2010",
     category: "Books",
     slug: "le-lieu-et-le-corps",
-    image: "/images/portfolio/le-lieu-et-le-corps.jpg",
-    description:
-      "At a time when technology promises mobility, connectivity and a world without borders, this philosophical essay examines a paradox: can increased communication also produce a loss of place, body and genuine encounter? It explores how new technologies transform our relationship to space, time, others and ourselves, and questions what remains of travel, communication and desire when place becomes increasingly detached from physical presence.",
+    image: "/images/portfolio/books/le-lieu-et-le-corps.jpg",
+    description: "At a time when technology promises mobility, connectivity and a world without borders, this philosophical essay examines a paradox: can increased communication also produce a loss of place, body and genuine encounter? It explores how new technologies transform our relationship to space, time, others and ourselves, and questions what remains of travel, communication and desire when place becomes increasingly detached from physical presence.",
   },
   {
     id: 19,
@@ -521,9 +941,8 @@ export const portfolioItems: PortfolioItem[] = [
     year: "2006",
     category: "Books",
     slug: "introduction-aux-epitres",
-    image: "/images/portfolio/introduction-aux-epitres.jpg",
-    description:
-      "A comparative philosophical study of Druze Tawhîd and Śaṅkara’s Advaita Vedanta. Through three central questions — the Absolute, the relationship between the world and the Absolute, and liberation — the book brings two geographically distant philosophical and spiritual traditions into dialogue and offers an interpretation of the Druze Epistles of Wisdom through this comparative perspective.",
+    image: "/images/portfolio/books/introduction-aux-epitres.jpg",
+    description: "A comparative philosophical study of Druze Tawhîd and Śaṅkara’s Advaita Vedanta. Through three central questions — the Absolute, the relationship between the world and the Absolute, and liberation — the book brings two geographically distant philosophical and spiritual traditions into dialogue and offers an interpretation of the Druze Epistles of Wisdom through this comparative perspective.",
   },
 ];
 
@@ -531,9 +950,9 @@ export const portfolioItems: PortfolioItem[] = [
 export const homeSelection = [
   "priere-de-toucher-2023",
   "diary-mulberry-tree-2018",
-  "and-i-fly-off",
+  "the-one-acts",
   "elephant-in-the-dark",
-  "please-touch-baf-2015",
+  "please-touch-waste-studio",
   "le-journal-dun-murier",
   "public-monuments",
   "lino-prints",
@@ -549,33 +968,28 @@ export const homeItems: PortfolioItem[] = homeSelection
 
 export const videoItems: VideoItem[] = [
   { id: 1, title: "Prière de toucher", venue: "INECAT", year: "2023", youtubeId: "pGSWEwTEnIM" },
-  { id: 4, title: "The Diary of a Mulberry Tree", venue: "Al Madina Theater", year: "2020", youtubeId: "fYtY4hdasos" },
-  { id: 3, title: "Please Touch (Prière de Toucher)", venue: "Beirut Art Fair", year: "2020", youtubeId: "XlN7PJHVZlk" },
-  { id: 2, title: "Elephant in the Dark", venue: "MACAM", year: "2020", youtubeId: "V8_sJ8L5hAc" },
-  { id: 11, title: "Please Touch", venue: "TV interview — Future TV", year: "2016", youtubeId: "2n-ljAGAEWg" },
-  { id: 7, title: "Doors. Please Touch — MACAM", venue: "TV interview — Al Araby TV", year: "2019", youtubeId: "tE26NyE3Pts" },
-  { id: 10, title: "Please Touch the Trash", venue: "Beirut International Platform of Dance", year: "2016", youtubeId: "lRkIo7bdEFQ" },
-  { id: 5, title: "Please Touch (Prière de Toucher)", venue: "Waste Studio", year: "2019", youtubeId: "fQQvJPNaQWU" },
-  { id: 15, title: "Please Touch", venue: "Sculpting Blindfolded", year: "2014", youtubeId: "acn0FVo538g" },
-  { id: 9, title: "Doors. Please Touch — National Museum of Beirut", venue: "TV interview — LBCI", year: "2017", youtubeId: "hGTE1nDIE6Y" },
-  { id: 16, title: "Please Touch", venue: "Exhibition & Performance", year: "2014", youtubeId: "RIydAu3nEpI" },
-  { id: 14, title: "Please Touch", venue: "Al Hurra TV", year: "2015", youtubeId: "mqZnaEXLzv8" },
-  { id: 8, title: "The Diary of a Mulberry Tree", venue: "Trailer", year: "2017", youtubeId: "IiR9x1REd0c" },
-  { id: 18, title: "Le Lieu et le corps", venue: "MTV", year: "2010", youtubeId: "2CaruHpYFwM" },
-  { id: 12, title: "Nazih Khater", venue: "L'homme terrible de la ville", year: "2016", youtubeId: "TnBdmih2ef4" },
-  { id: 13, title: "The Father of the Blinds", venue: "", year: "2015", youtubeId: "RHBy8j-V8Vo" },
+  { id: 2, title: "The Diary of a Mulberry Tree", venue: "Al Madina Theatre", year: "2020", youtubeId: "fYtY4hdasos" },
+  { id: 3, title: "The Diary of a Mulberry Tree", venue: "Trailer", year: "2017", youtubeId: "IiR9x1REd0c" },
+  { id: 4, title: "Please Touch", venue: "Beirut Art Fair", year: "2020", youtubeId: "XlN7PJHVZlk" },
+  { id: 5, title: "Elephant in the Dark", venue: "MACAM", year: "2020", youtubeId: "V8_sJ8L5hAc" },
+  { id: 6, title: "Please Touch the Trash", venue: "Beirut International Platform of Dance", year: "2016", youtubeId: "lRkIo7bdEFQ" },
+  { id: 7, title: "Please Touch", venue: "Waste Studio", year: "2019", youtubeId: "fQQvJPNaQWU" },
+  { id: 8, title: "Please Touch", venue: "Sculpting Blindfolded", year: "2014", youtubeId: "acn0FVo538g" },
+  { id: 9, title: "Please Touch", venue: "Exhibition & Performance", year: "2014", youtubeId: "RIydAu3nEpI" },
+  { id: 10, title: "Doors. Please Touch — MACAM", venue: "TV interview — Al Araby TV", year: "2019", youtubeId: "tE26NyE3Pts" },
+  { id: 11, title: "Doors. Please Touch — National Museum of Beirut", venue: "TV interview — LBCI", year: "2017", youtubeId: "hGTE1nDIE6Y" },
+  { id: 12, title: "Please Touch", venue: "TV interview — Future TV", year: "2016", youtubeId: "2n-ljAGAEWg" },
+  { id: 13, title: "Please Touch", venue: "TV interview — Al Hurra TV", year: "2015", youtubeId: "mqZnaEXLzv8" },
+  { id: 14, title: "Le lieu et le corps", venue: "TV interview — MTV", year: "2010", youtubeId: "2CaruHpYFwM" },
+  { id: 15, title: "L’homme terrible de la ville", venue: "Nazih Khater", year: "2016", youtubeId: "TnBdmih2ef4" },
+  { id: 16, title: "The Father of the Blind", venue: "", year: "2015", youtubeId: "RHBy8j-V8Vo" },
 ];
 
-/**
- * News & Highlights — the curated, reverse-chronological listing.
- * Items with `href` link straight to their Portfolio or Books page; the rest
- * keep their legacy detail page, which is served from `newsArchive` below.
- */
 export const newsItems: NewsItem[] = [
   {
     id: 1,
     title: "Lino Prints — Centre hospitalier des Quatre Villes, Saint-Cloud",
-    date: "Mar–Apr 2024",
+    date: "2024",
     description:
       "A solo presentation of Nadine Abou Zaki’s linocuts was shown at the Centre hospitalier des Quatre Villes in Saint-Cloud. The exhibition explored movement, inner transformation and the desire to transcend the limits of existence through linocut.",
     image: "/images/news/quatre-villes.jpg",
@@ -585,7 +999,7 @@ export const newsItems: NewsItem[] = [
   {
     id: 2,
     title: "Prière de toucher — INECAT, Paris",
-    date: "Sep 2023",
+    date: "2023",
     description:
       "“Prière de toucher” (Please Touch) was presented at INECAT in Paris during “Fenêtres”, from 29 September to 1 October 2023. The programme combined the tactile workshop “Terre… Prière de toucher” with an interactive performance and sculpture exhibition centred on touch, perception and the living sculpture.",
     image: "/images/portfolio/gallery/priere-de-toucher-2023/1.jpg",
@@ -594,6 +1008,16 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 3,
+    title: "Lino Prints Exhibition",
+    date: "2023",
+    description:
+      "A presentation of Nadine Abou Zaki\u2019s linocut prints, a series exploring movement, inner transformation and the desire to transcend the limits of existence.",
+    image: "/images/news/lino-prints-exhibition.jpg",
+    slug: "lino-prints-exhibition",
+    href: "/portfolio/lino-prints",
+  },
+  {
+    id: 4,
     title: "Elephant in the Dark",
     date: "2020",
     description:
@@ -603,9 +1027,9 @@ export const newsItems: NewsItem[] = [
     href: "/portfolio/elephant-in-the-dark",
   },
   {
-    id: 4,
+    id: 5,
     title: "Le journal d’un mûrier — Braille edition",
-    date: "Oct 2018",
+    date: "2018",
     description:
       "“Le journal d’un mûrier” was published in Braille. The edition was printed by Blessed School, with a relief cover produced by the Omero National Museum of Ancona, and distributed to schools, centres and organisations serving blind and visually impaired readers.",
     image: "/images/news/nazih-khater-braille.jpg",
@@ -613,17 +1037,17 @@ export const newsItems: NewsItem[] = [
     href: "/portfolio/le-journal-dun-murier",
   },
   {
-    id: 5,
+    id: 6,
     title: "The Diary of a Mulberry Tree — Al Madina Theatre, Beirut",
     date: "2017",
     description:
       "“The Diary of a Mulberry Tree”, a dance-theatre work written and directed by Nadine Abou Zaki, was presented at Al Madina Theatre in Beirut. The work brings together dance, narration, poetry and music around memory, nature and the Lebanese Civil War.",
-    image: "/images/portfolio/gallery/diary-mulberry-tree-2018/3.jpg",
+    image: "/images/news/diary-mulberry-tree-wide.jpg",
     slug: "diary-mulberry-tree-al-madina-2017",
     href: "/portfolio/diary-mulberry-tree-2018",
   },
   {
-    id: 6,
+    id: 7,
     title: "Chevalier dans l’Ordre des Palmes Académiques",
     date: "2016",
     description:
@@ -631,9 +1055,9 @@ export const newsItems: NewsItem[] = [
     slug: "palmes-academiques",
   },
   {
-    id: 7,
+    id: 8,
     title: "Please Touch — Beirut Art Fair",
-    date: "Sep 2015",
+    date: "2015",
     description:
       "“Please Touch” was presented at Beirut Art Fair within the “Virtual/Reality” segment curated by Pascal Odille. Four performers became living sculptures, responding to visitors’ touch and shifting the boundary between sculpture, body and audience.",
     image: "/images/portfolio/please-touch-baf-2015.jpg",
@@ -641,9 +1065,9 @@ export const newsItems: NewsItem[] = [
     href: "/portfolio/please-touch-baf-2015",
   },
   {
-    id: 8,
+    id: 9,
     title: "Please Touch — Station Beirut / Agial Gallery",
-    date: "Nov 2014",
+    date: "2014",
     description:
       "“Please Touch” was presented at Station Beirut, curated by Agial Art Gallery. The project brought together a sculpture exhibition, blindfolded sculpting, living sculpture, film, sound and light, inviting visitors to encounter sculpture through touch and darkness.",
     image: "/images/portfolio/gallery/please-touch-sculptures-2014/3.jpg",
@@ -651,9 +1075,19 @@ export const newsItems: NewsItem[] = [
     href: "/portfolio/please-touch-agial",
   },
   {
-    id: 9,
+    id: 10,
+    title: "The second edition of De femme \u00e0 homme (Marsam ed. Morocco) at Paris Book Fair",
+    date: "2014",
+    description:
+      "The second edition of \u201cDe femme \u00e0 homme\u201d, published by Marsam in Rabat, was presented at the Paris Book Fair.",
+    image: "/images/news/de-femme-a-homme-paris-book-fair.jpg",
+    slug: "de-femme-a-homme-paris-book-fair",
+    href: "/portfolio/de-femme-a-homme",
+  },
+  {
+    id: 11,
     title: "De femme à homme — Institut du monde arabe, Paris",
-    date: "Dec 2012",
+    date: "2012",
     description:
       "Nadine Abou Zaki and philosopher Pierre-Marie Hasse presented and discussed “De femme à homme” at the Institut du monde arabe in Paris during a Café littéraire moderated by François Zabbal.",
     image: "/images/news/arab-world-institute-paris.jpg",
@@ -661,7 +1095,7 @@ export const newsItems: NewsItem[] = [
     href: "/portfolio/de-femme-a-homme",
   },
   {
-    id: 10,
+    id: 12,
     title: "Book signing at the 18th Francophone Book Fair — Beirut",
     date: "2011",
     description:
@@ -670,7 +1104,7 @@ export const newsItems: NewsItem[] = [
     slug: "book-signing-18th-francophone-beirut",
   },
   {
-    id: 11,
+    id: 13,
     title: "Le lieu et le corps — Le Scribe / L’Harmattan, Paris",
     date: "2010",
     description:
@@ -680,9 +1114,9 @@ export const newsItems: NewsItem[] = [
     href: "/portfolio/le-lieu-et-le-corps",
   },
   {
-    id: 12,
+    id: 14,
     title: "The Garden of Dialogue — Beirut World Book Capital",
-    date: "Apr 2010",
+    date: "2010",
     description:
       "Five stone sculpture-benches forming “The Garden of Dialogue” were inaugurated in Beirut as part of Beirut World Book Capital. The works honour Gibran Khalil Gibran, Nadia Tueni, Abdallah Alayli and Hussein Mroueh, and were conceived for sitting, reading and dialogue.",
     image: "/images/portfolio/gallery/public-monuments/2.jpg",
@@ -690,27 +1124,36 @@ export const newsItems: NewsItem[] = [
     href: "/portfolio/public-monuments",
   },
   {
-    id: 13,
+    id: 15,
+    title: "Book signing at the 17th Francophone Book Fair \u2014 Beirut",
+    date: "2010",
+    description:
+      "Nadine Abou Zaki signed \u201cLe lieu et le corps / Al Makan Wal Jasad\u201d at the 17th Francophone Book Fair in Beirut.",
+    image: "/images/news/book-signing-17th-francophone.jpg",
+    slug: "book-signing-17th-francophone-beirut",
+  },
+  {
+    id: 16,
     title: "Sculptor Ambassador — Jeux de la Francophonie",
-    date: "Oct 2009",
+    date: "2009",
     description:
       "Nadine Abou Zaki was selected by the Lebanese Ministry of Culture as Lebanon’s Sculptor Ambassador for the 6th Jeux de la Francophonie in Beirut.",
     image: "/images/news/sculptor-ambassador-francophone.jpg",
     slug: "sculptor-ambassador-francophone-games",
   },
   {
-    id: 14,
+    id: 17,
     title: "International Secular Award — Paris",
-    date: "Jan 2009",
+    date: "2009",
     description:
       "Nadine Abou Zaki received the 4th International Secular Award (Prix International de la Laïcité) from the Comité de la laïcité républicaine at Paris City Hall.",
     image: "/images/news/secular-award-paris.jpg",
     slug: "secular-award-paris",
   },
   {
-    id: 15,
+    id: 18,
     title: "And I Fly Off — solo sculpture exhibition, Beirut",
-    date: "Oct 2008",
+    date: "2008",
     description:
       "Nadine Abou Zaki presented her third solo sculpture exhibition, “And I Fly Off”, at Surface Libre in Beirut, bringing together 26 sculptures in stone and wood.",
     image: "/images/news/and-i-fly-off-surface-libre.jpg",
@@ -807,7 +1250,7 @@ export const newsArchive: NewsItem[] = [
   },
   {
     id: 10,
-    title: "The Diary of a Mulberry Tree - Al Madina Theater 2017",
+    title: "The Diary of a Mulberry Tree - Al Madina Theatre 2017",
     date: "September 2017",
     description:
       "Do trees have a memory? Do they have consciousness? Do they communicate with their environment? Can they hear, smell and feel? How do they respond emotionally to humans? Do they feel pain or experience joy or sadness? What is our responsibility as humans towards the nature and environment in today's digital age?",
@@ -1077,12 +1520,12 @@ export const newsArchive: NewsItem[] = [
 ];
 
 export const biography = [
-  "Nadine Abou Zaki is a Lebanese-French multidisciplinary artist, sculptor, writer and director whose work explores touch, perception, darkness, and the relationship between the body, the artwork and the viewer.",
-  "At the core of her practice is a questioning of the dominance of sight in the experience of art. Working in total darkness, she sculpts blindfolded, replacing vision with touch and allowing form to emerge through a direct bodily encounter with matter. In her interactive performances and exhibitions Please Touch (Pri\u00e8re de Toucher), visitors are invited to move beyond looking and experience sculpture through touch, often in darkness. Her work on tactility was featured in Contemporary Art and the Discovery of the Value of Tactility, published by the Omero National Museum in Ancona, Italy.",
+  "Nadine Abou Zaki is a Lebanese-French multidisciplinary artist, writer and director whose work explores touch, perception, darkness, and the relationship between the body, the artwork and the viewer.",
+  "At the core of her practice is a questioning of the dominance of sight in the experience of art. Working in total darkness, she sculpts blindfolded, allowing touch to guide the emergence of form through a direct bodily encounter with matter. In her interactive performances and exhibitions Please Touch (Pri\u00e8re de Toucher), visitors are invited to move beyond looking and experience sculpture through touch, often in darkness. Her work on tactility was featured in Contemporary Art and the Discovery of the Value of Tactility, published by the Omero National Museum in Ancona, Italy.",
   "Her practice extends into performance, theatre and participatory work. She wrote and directed the dance-theatre performance The Diary of a Mulberry Tree, received a grant from the Arab Fund for Arts and Culture (AFAC) for Elephant in the Dark, an immersive blindfolded walking performance, and developed Perceptions, a theatre project with blind and Deaf participants.",
   "Questions of perception, disability and access to art have become an integral part of her work. In 2018, she launched Doors. Please Touch, a pioneering cultural accessibility project in Lebanon developed with museums and cultural institutions to create new ways for people with disabilities to encounter art through tactile, sensory and accessible forms of mediation.",
   "In 2017, she founded Red Oak, a non-profit organization active in Lebanon and France, developing projects at the intersection of art, education, mental health and cultural inclusion.",
-  "Her artistic practice is informed by a longstanding engagement with philosophy and research. She holds a PhD in Philosophy from Sorbonne\u2013Paris IV and taught Philosophy for nine years at the American University of Beirut. Her research focuses on haptic aesthetics and the relationship between museums, accessibility and disability. She is certified in artistic mediation by INECAT in Paris and is currently pursuing a Master\u2019s degree in Dramatherapy at Universit\u00e9 Paris Cit\u00e9.",
+  "Her artistic practice is informed by a longstanding engagement with philosophy and research. She holds a PhD in Philosophy from Sorbonne\u2013Paris IV. Her research focuses on haptic aesthetics and the relationship between museums, accessibility and disability. She holds a certification in artistic mediation from the Institut National d\u2019Expression, de Cr\u00e9ation, d\u2019Art et de Transformation (INECAT \u2013 Art & Th\u00e9rapie) in Paris and is currently pursuing a Master\u2019s degree in Dramatherapy at Universit\u00e9 Paris Cit\u00e9.",
   "Her sculptures and performances have been presented in Lebanon and internationally, and her monumental works are installed in public spaces in Lebanon and the United Arab Emirates. She is a member of the Lebanese National Commission for UNESCO and was named Chevalier dans l\u2019Ordre des Palmes Acad\u00e9miques by the French Ministry of National Education.",
 ];
 
@@ -1102,6 +1545,5 @@ export const siteConfig = {
 
 export const socialLinks = {
   facebook: "https://www.facebook.com/nadineabouzaki",
-  twitter: "https://twitter.com/NadineAbouZaki",
   linkedin: "http://lb.linkedin.com/pub/nadine-abou-zaki/21/4b8/878",
 };

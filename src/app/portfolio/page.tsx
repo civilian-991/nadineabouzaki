@@ -17,7 +17,9 @@ function PortfolioContent() {
   const filteredItems =
     activeFilter === "All"
       ? portfolioItems
-      : portfolioItems.filter((item) => item.category === activeFilter);
+      : portfolioItems.filter((item) =>
+          (item.categories ?? [item.category]).includes(activeFilter)
+        );
 
   useEffect(() => {
     if (hasAnimated.current || !gridRef.current) return;

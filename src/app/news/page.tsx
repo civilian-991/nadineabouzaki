@@ -6,7 +6,7 @@ import Link from "next/link";
 import { newsItems } from "@/lib/data";
 import gsap from "gsap";
 
-const ITEMS_PER_PAGE = 16;
+const ITEMS_PER_PAGE = 24;
 
 export default function NewsPage() {
   const gridRef = useRef<HTMLDivElement>(null);

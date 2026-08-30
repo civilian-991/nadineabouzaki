@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Gallery from "@/components/Gallery";
 import { portfolioItems } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -82,7 +83,6 @@ export default function PortfolioDetailPage({
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const galleryRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
 
   const itemIndex = portfolioItems.findIndex((item) => item.slug === slug);
@@ -113,27 +113,6 @@ export default function PortfolioDetailPage({
           { opacity: 0, y: 30 },
           { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 },
           "-=0.6"
-        );
-      }
-
-      // Gallery images animate on scroll
-      if (galleryRef.current) {
-        const galleryItems =
-          galleryRef.current.querySelectorAll(".gallery-item");
-        gsap.fromTo(
-          galleryItems,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.08,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: galleryRef.current,
-              start: "top 85%",
-            },
-          }
         );
       }
 
@@ -195,14 +174,15 @@ export default function PortfolioDetailPage({
           {/* Image */}
           <div
             ref={imageRef}
-            className="relative overflow-hidden opacity-0"
+            className="relative overflow-hidden border border-white/10 bg-black/20 opacity-0"
+            style={{ aspectRatio: "16 / 9" }}
           >
             <Image
               src={item.image}
               alt={item.title}
-              width={600}
-              height={500}
-              className="w-full h-auto object-cover"
+              fill
+              className="object-contain"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               priority
             />
           </div>
@@ -296,6 +276,30 @@ export default function PortfolioDetailPage({
                 </ul>
               </div>
             )}
+
+            {item.editionImages && item.editionImages.length > 1 && (
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                {item.editionImages.map((edition) => (
+                  <figure key={edition.src}>
+                    <div
+                      className="relative overflow-hidden border border-white/10 bg-black/20"
+                      style={{ aspectRatio: "16 / 9" }}
+                    >
+                      <Image
+                        src={edition.src}
+                        alt={edition.caption}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 1024px) 50vw, 25vw"
+                      />
+                    </div>
+                    <figcaption className="mt-2 font-[family-name:var(--font-body)] text-xs text-[var(--muted)] font-light leading-relaxed">
+                      {edition.caption}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -316,27 +320,24 @@ export default function PortfolioDetailPage({
           </div>
 
           {section.images && section.images.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {section.images.map((img, j) => (
-                <div key={j} className="relative overflow-hidden group">
-                  <Image
-                    src={img}
-                    alt={`${section.title} — ${j + 1}`}
-                    width={600}
-                    height={450}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-              ))}
-            </div>
+            <Gallery
+              images={section.images}
+              alt={`${item.title} — ${section.title}`}
+              columns={section.images.length > 8 ? 3 : 2}
+            />
           )}
 
-          {section.videoId && (
-            <VideoLink
-              videoId={section.videoId}
-              title={section.title}
-              label={section.videoLabel ?? "Watch"}
-            />
+          {section.videos && section.videos.length > 0 && (
+            <div className="mt-8 flex flex-wrap gap-8">
+              {section.videos.map((v) => (
+                <VideoLink
+                  key={v.id}
+                  videoId={v.id}
+                  title={`${item.title} — ${v.label}`}
+                  label={v.label}
+                />
+              ))}
+            </div>
           )}
         </div>
       ))}
@@ -347,26 +348,11 @@ export default function PortfolioDetailPage({
           <div className="mb-10">
             <SectionLabel>Gallery</SectionLabel>
           </div>
-          <div
-            ref={galleryRef}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-2"
-          >
-            {item.galleryImages!.map((img, i) => (
-              <div
-                key={i}
-                className="gallery-item relative overflow-hidden group"
-                style={{ opacity: 0 }}
-              >
-                <Image
-                  src={img}
-                  alt={`${item.title} — ${i + 1}`}
-                  width={600}
-                  height={450}
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-            ))}
-          </div>
+          <Gallery
+            images={item.galleryImages!}
+            alt={item.title}
+            columns={item.galleryImages!.length > 8 ? 3 : 2}
+          />
         </div>
       )}
 
@@ -389,16 +375,19 @@ export default function PortfolioDetailPage({
           <div className="mb-8">
             <SectionLabel muted>Archive</SectionLabel>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[760px]">
             {item.archiveImages.map((archive, i) => (
               <figure key={i}>
-                <div className="relative overflow-hidden opacity-75 transition-opacity duration-500 hover:opacity-100">
+                <div
+                  className="relative overflow-hidden border border-white/10 bg-black/20"
+                  style={{ aspectRatio: "16 / 9" }}
+                >
                   <Image
                     src={archive.src}
                     alt={archive.caption ?? `${item.title} — archive ${i + 1}`}
-                    width={440}
-                    height={360}
-                    className="w-full h-auto object-cover"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 100vw, 380px"
                   />
                 </div>
                 {archive.caption && (
