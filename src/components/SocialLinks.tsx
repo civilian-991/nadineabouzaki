@@ -1,8 +1,9 @@
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 interface SocialLinksProps {
   links: {
     facebook: string;
+    instagram: string;
     linkedin: string;
   };
   size?: "sm" | "md" | "lg";
@@ -25,6 +26,15 @@ export default function SocialLinks({ links, size = "md" }: SocialLinksProps) {
         aria-label="Facebook"
       >
         <FaFacebookF />
+      </a>
+      <a
+        href={links.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`social-icon ${sizeClasses[size]}`}
+        aria-label="Instagram"
+      >
+        <FaInstagram />
       </a>
       <a
         href={links.linkedin}

@@ -5,6 +5,7 @@ import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
+import PlaceholderImage from "@/components/PlaceholderImage";
 import { categories, portfolioItems, type Category } from "@/lib/data";
 
 function PortfolioContent() {
@@ -95,15 +96,35 @@ function PortfolioContent() {
 
       <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {filteredItems.map((item) => (
-          <Link key={item.id} href={`/portfolio/${item.slug}`} className="portfolio-item">
+          <Link
+            key={item.id}
+            href={`/portfolio/${item.slug}${
+              item.categoryAnchors?.[activeFilter]
+                ? `#${item.categoryAnchors[activeFilter]}`
+                : ""
+            }`}
+            className="portfolio-item"
+          >
             <div className="relative w-full h-[300px]">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
+              {item.image ? (
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  // Book covers are shown whole; artwork fills the card.
+                  className={
+                    item.category === "Books"
+                      ? "object-contain p-4"
+                      : "object-cover"
+                  }
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              ) : (
+                <PlaceholderImage
+                  title={item.title}
+                  className="absolute inset-0"
+                />
+              )}
             </div>
             <div className="overlay">
               <div>

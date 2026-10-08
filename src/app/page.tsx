@@ -288,13 +288,22 @@ export default function HomePage() {
                 data-category={item.category}
                 className="portfolio-item"
               >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={440}
-                  height={360}
-                  className="w-full h-auto"
-                />
+                <div className="relative w-full" style={{ aspectRatio: "3 / 2" }}>
+                  {item.image && (
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      // One ratio for every card; book covers stay whole.
+                      className={
+                        item.category === "Books"
+                          ? "object-contain p-4"
+                          : "object-cover"
+                      }
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  )}
+                </div>
                 <div className="overlay">
                   <div>
                     <div className="overlay-line" />

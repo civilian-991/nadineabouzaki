@@ -6,7 +6,9 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Gallery from "@/components/Gallery";
-import { portfolioItems } from "@/lib/data";
+import PlaceholderImage from "@/components/PlaceholderImage";
+import VideoEmbed from "@/components/VideoEmbed";
+import { portfolioItems, type PosterImage } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,51 +30,28 @@ function SectionLabel({
   );
 }
 
-function VideoLink({
-  videoId,
-  title,
-  label,
-}: {
-  videoId: string;
-  title: string;
-  label: string;
-}) {
+/** A poster at a readable medium size: whole image, never cropped. */
+function Poster({ poster, alt }: { poster: PosterImage; alt: string }) {
   return (
-    <a
-      href={`https://www.youtube.com/watch?v=${videoId}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group mt-2 block max-w-[420px]"
-    >
-      <div
-        className="relative flex items-center justify-center overflow-hidden bg-[var(--surface)]"
-        style={{ aspectRatio: "16/9" }}
-      >
-        <Image
-          src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-          alt={title}
-          fill
-          className="object-cover transition-all duration-700 group-hover:scale-105 filter brightness-[0.85] group-hover:brightness-100"
-          unoptimized
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative flex items-center justify-center w-14 h-14 border border-white/15 bg-black/20 backdrop-blur-sm transition-all duration-500 group-hover:border-[var(--accent)]/40 group-hover:scale-110">
-            <svg width="12" height="14" viewBox="0 0 14 16" fill="none">
-              <path
-                d="M14 8L0 16V0L14 8Z"
-                fill="currentColor"
-                className="text-white/80 transition-all duration-500 group-hover:text-[var(--accent)]"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <span className="mt-3 inline-block font-[family-name:var(--font-body)] text-xs uppercase tracking-[0.2em] text-[var(--muted)] font-medium transition-colors duration-500 group-hover:text-[var(--accent)]">
-        {label}
-      </span>
-    </a>
+    <figure className="inline-block max-w-full">
+      <Image
+        src={poster.src}
+        alt={poster.caption ?? alt}
+        width={980}
+        height={980}
+        className="block h-auto w-auto max-w-full max-h-[560px] border border-white/20"
+        sizes="(max-width: 768px) 100vw, 640px"
+      />
+      {poster.caption && (
+        <figcaption className="mt-2.5 font-[family-name:var(--font-body)] text-xs text-[var(--muted)] font-light leading-relaxed">
+          {poster.caption}
+        </figcaption>
+      )}
+    </figure>
   );
 }
+
+const block = "max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12";
 
 export default function PortfolioDetailPage({
   params,
@@ -154,6 +133,9 @@ export default function PortfolioDetailPage({
   }
 
   const hasGallery = item.galleryImages && item.galleryImages.length > 0;
+  // Tabs only where a page holds several distinct bodies of work.
+  const anchored = (item.sections ?? []).filter((section) => section.id);
+  const sectionTabs = anchored.length >= 3 ? anchored : [];
 
   return (
     <section ref={containerRef} className="pt-28 pb-24 min-h-screen">
@@ -177,14 +159,22 @@ export default function PortfolioDetailPage({
             className="relative overflow-hidden border border-white/10 bg-black/20 opacity-0"
             style={{ aspectRatio: "16 / 9" }}
           >
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              className="object-contain"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
+            {item.image ? (
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+            ) : (
+              <PlaceholderImage
+                title={item.title}
+                aspectRatio="16 / 9"
+                className="absolute inset-0"
+              />
+            )}
           </div>
 
           {/* Details */}
@@ -230,6 +220,12 @@ export default function PortfolioDetailPage({
                   </p>
                 ))}
               </div>
+            )}
+
+            {item.note && (
+              <p className="mt-5 font-[family-name:var(--font-body)] text-sm text-[var(--muted)] font-light">
+                {item.note}
+              </p>
             )}
 
             {item.credits && item.credits.length > 0 && (
@@ -304,61 +300,140 @@ export default function PortfolioDetailPage({
         </div>
       </div>
 
+      {/* Poster: after the introduction, before any sections */}
+      {item.poster && (
+        <div className={`${block} mt-20`}>
+          <div className="mb-8">
+            <SectionLabel muted>
+              {sectionTabs.length > 0 ? "Archive / Poster" : "Poster"}
+            </SectionLabel>
+          </div>
+          <Poster poster={item.poster} alt={`${item.title} — poster`} />
+        </div>
+      )}
+
+      {/* Primary video: large, before the photographs */}
+      {item.video && (
+        <div className={`${block} mt-20`}>
+          <div className="mb-8">
+            <SectionLabel>Video</SectionLabel>
+          </div>
+          <VideoEmbed videoId={item.video.id} title={item.video.label} />
+        </div>
+      )}
+
+      {/* Section tabs */}
+      {sectionTabs.length > 0 && (
+        <nav
+          aria-label="Sections"
+          className={`${block} mt-20 flex flex-wrap gap-3`}
+        >
+          {sectionTabs.map((section) => (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className="filter-btn"
+            >
+              {section.title}
+            </a>
+          ))}
+        </nav>
+      )}
+
       {/* Sections */}
       {item.sections?.map((section, i) => (
         <div
           key={i}
-          className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 mt-20"
+          id={section.id}
+          className={`${block} mt-20 scroll-mt-28`}
         >
-          <div className="mb-8">
-            <SectionLabel>{section.title}</SectionLabel>
-            {section.description && (
-              <p className="mt-5 max-w-3xl font-[family-name:var(--font-body)] text-base leading-[1.9] text-[var(--foreground)]/80 font-light">
-                {section.description}
-              </p>
+          <div
+            className={`mb-10 ${
+              section.poster && section.description
+                ? "grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 items-start"
+                : ""
+            }`}
+          >
+            <div>
+              <SectionLabel>{section.title}</SectionLabel>
+              {section.description && (
+                <p className="mt-5 max-w-3xl font-[family-name:var(--font-body)] text-base leading-[1.9] text-[var(--foreground)]/80 font-light">
+                  {section.description}
+                </p>
+              )}
+            </div>
+            {section.poster && (
+              <div
+                className={
+                  section.description ? "md:max-w-[360px]" : "mt-6 max-w-[360px]"
+                }
+              >
+                <Poster
+                  poster={section.poster}
+                  alt={`${item.title} — ${section.title} poster`}
+                />
+              </div>
             )}
           </div>
+
+          {section.videos?.map((v) => (
+            <div key={v.id} className="mb-12">
+              <VideoEmbed videoId={v.id} title={v.label} />
+            </div>
+          ))}
 
           {section.images && section.images.length > 0 && (
             <Gallery
               images={section.images}
+              captions={section.captions}
               alt={`${item.title} — ${section.title}`}
               columns={section.images.length > 8 ? 3 : 2}
             />
-          )}
-
-          {section.videos && section.videos.length > 0 && (
-            <div className="mt-8 flex flex-wrap gap-8">
-              {section.videos.map((v) => (
-                <VideoLink
-                  key={v.id}
-                  videoId={v.id}
-                  title={`${item.title} — ${v.label}`}
-                  label={v.label}
-                />
-              ))}
-            </div>
           )}
         </div>
       ))}
 
       {/* Gallery */}
       {hasGallery && (
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 mt-20">
-          <div className="mb-10">
+        <div className={`${block} ${item.video ? "mt-16" : "mt-20"}`}>
+          <div className="mb-8">
             <SectionLabel>Gallery</SectionLabel>
           </div>
-          <Gallery
-            images={item.galleryImages!}
-            alt={item.title}
-            columns={item.galleryImages!.length > 8 ? 3 : 2}
+          {item.galleryLayout === "prints" ? (
+            <Gallery
+              images={item.galleryImages!}
+              alt={item.title}
+              columns={2}
+              ratio="4 / 5"
+              padded
+            />
+          ) : (
+            <Gallery
+              images={item.galleryImages!}
+              alt={item.title}
+              columns={item.galleryImages!.length > 8 ? 3 : 2}
+            />
+          )}
+        </div>
+      )}
+
+      {/* Secondary video, kept apart from the main one */}
+      {item.secondaryVideo && (
+        <div className={`${block} mt-20`}>
+          <div className="mb-8">
+            <SectionLabel muted>Trailer</SectionLabel>
+          </div>
+          <VideoEmbed
+            videoId={item.secondaryVideo.id}
+            title={item.secondaryVideo.label}
+            size="small"
           />
         </div>
       )}
 
       {/* Related work */}
       {item.relatedLink && (
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 mt-16">
+        <div className={`${block} mt-16`}>
           <Link
             href={item.relatedLink.href}
             className="group inline-flex items-center gap-4 font-[family-name:var(--font-body)] text-sm text-[var(--accent)] font-light transition-colors duration-500 hover:text-[var(--foreground)]"
@@ -366,38 +441,6 @@ export default function PortfolioDetailPage({
             {item.relatedLink.label}
             <span className="block w-8 h-px bg-[var(--accent)] transition-all duration-500 group-hover:w-14 group-hover:bg-[var(--foreground)]" />
           </Link>
-        </div>
-      )}
-
-      {/* Archive */}
-      {item.archiveImages && item.archiveImages.length > 0 && (
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 mt-20">
-          <div className="mb-8">
-            <SectionLabel muted>Archive</SectionLabel>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[760px]">
-            {item.archiveImages.map((archive, i) => (
-              <figure key={i}>
-                <div
-                  className="relative overflow-hidden border border-white/10 bg-black/20"
-                  style={{ aspectRatio: "16 / 9" }}
-                >
-                  <Image
-                    src={archive.src}
-                    alt={archive.caption ?? `${item.title} — archive ${i + 1}`}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 640px) 100vw, 380px"
-                  />
-                </div>
-                {archive.caption && (
-                  <figcaption className="mt-2.5 font-[family-name:var(--font-body)] text-xs text-[var(--muted)] font-light leading-relaxed">
-                    {archive.caption}
-                  </figcaption>
-                )}
-              </figure>
-            ))}
-          </div>
         </div>
       )}
 

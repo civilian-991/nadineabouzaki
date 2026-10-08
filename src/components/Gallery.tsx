@@ -27,6 +27,10 @@ interface GalleryProps {
   /** Container aspect ratio. Images are contained, never cropped.
    *  Defaults to 16/9, close to the 980x474 source files so letterboxing stays small. */
   ratio?: string;
+  /** Optional caption per image, matched by index. */
+  captions?: string[];
+  /** Inner padding so whole works (prints) sit inside an even margin. */
+  padded?: boolean;
 }
 
 /**
@@ -42,6 +46,8 @@ export default function Gallery({
   alt,
   columns = 2,
   ratio = "16 / 9",
+  captions,
+  padded = false,
 }: GalleryProps) {
   const gridRef = useRef<HTMLDivElement>(null);
 
@@ -73,21 +79,32 @@ export default function Gallery({
   if (!images.length) return null;
 
   return (
-    <div ref={gridRef} className={`grid gap-4 ${columnClass[columns]}`}>
+    <div
+      ref={gridRef}
+      className={`grid ${padded ? "gap-6" : "gap-4"} ${columnClass[columns]}`}
+    >
       {images.map((src, i) => (
-        <div
-          key={src + i}
-          className="gallery-item relative overflow-hidden border border-white/10 bg-black/20"
-          style={{ aspectRatio: ratio }}
-        >
-          <Image
-            src={src}
-            alt={`${alt} — ${i + 1}`}
-            fill
-            className="object-contain"
-            sizes={sizesFor[columns]}
-          />
-        </div>
+        <figure key={src + i} className="gallery-item">
+          <div
+            className="relative overflow-hidden border border-white/20 bg-black/20"
+            style={{ aspectRatio: ratio }}
+          >
+            <div className={padded ? "absolute inset-6" : "absolute inset-0"}>
+              <Image
+                src={src}
+                alt={captions?.[i] ?? `${alt} — ${i + 1}`}
+                fill
+                className="object-contain"
+                sizes={sizesFor[columns]}
+              />
+            </div>
+          </div>
+          {captions?.[i] && (
+            <figcaption className="mt-2.5 font-[family-name:var(--font-body)] text-xs text-[var(--muted)] font-light leading-relaxed">
+              {captions[i]}
+            </figcaption>
+          )}
+        </figure>
       ))}
     </div>
   );
